@@ -9,8 +9,8 @@ const { data, CardComponent } = Astro.props
 <div class="swiper my-swiper">
     <div class="swiper-wrapper">
         {
-            data.map((item, index) => (
-                <div class="swiper-slide" key={index}>
+            data.map((item) => (
+                <div class="swiper-slide">
                     <CardComponent data={item.frontmatter} />
                 </div>
             ))
@@ -24,7 +24,6 @@ const { data, CardComponent } = Astro.props
     <!-- Pagination -->
     <div class="swiper-pagination"></div>
 </div>
-
 <script>
     import Swiper from 'swiper'
     import { Navigation, Pagination, Autoplay } from '../../node_modules/swiper/modules'

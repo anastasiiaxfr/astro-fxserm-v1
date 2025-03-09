@@ -3,7 +3,6 @@ import Layout from '../layouts/Layout.astro'
 import Banner from '../components/ui/Banner.astro'
 import { Content, frontmatter } from '../md/policy.md'
 
-const bgColor = 'var(--color-black-1)'
 const bgImg = '/assets/img/bg/policy.jpg'
 const bgFill = 'contain'
 const bannerBgImg = '/assets/img/banner/banner_1.png'
@@ -14,7 +13,7 @@ const banner = {
 }
 ---
 
-<Layout bg={{ color: bgColor, img: bgImg, fill: bgFill }}>
+<Layout bg={{ bgImg: bgImg, bgFill: bgFill }}>
     <section class="section hero">
         <div class="container text-center">
             <h1>{frontmatter.title}</h1>

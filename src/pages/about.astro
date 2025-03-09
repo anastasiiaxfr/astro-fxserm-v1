@@ -5,7 +5,6 @@ import Benfits from '../components/sections/_benefits.astro'
 import Team from '../components/sections/_team.astro'
 import { Content, frontmatter } from '../md/about.md'
 
-const bgColor = 'var(--color-black-1)'
 const bgImg = '/assets/img/bg/about.jpg'
 const bgFill = 'contain'
 const bannerBgImg = '/assets/img/banner/banner_2.png'
@@ -16,11 +15,11 @@ const banner = {
 }
 ---
 
-<Layout bg={{ color: bgColor, img: bgImg, fill: bgFill }}>
+<Layout bg={{ bgImg: bgImg, bgFill: bgFill }}>
     <section class="section hero">
         <div class="container hero__content">
             <h1>{frontmatter.title}</h1>
-            <p>{frontmatter.desc}</p>
+            <p class="text--lg">{frontmatter.desc}</p>
             <a href={frontmatter.btn.url} class="btn">
                 {frontmatter.btn.label}
                 <svg class="icon" width="24" height="24">

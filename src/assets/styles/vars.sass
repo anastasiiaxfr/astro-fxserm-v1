@@ -3,11 +3,12 @@
 	--color-secondary: #FF0000
 	--color-black-0: #04030C
 	--color-black-1: #08071B
+	--color-white-1: #fff
 	
 $black: #000
 $white: #fff
 $dark: var(--color-black-0)
-$light: #F1F1F1
+$light: #f9f9f9
 
 $main: var(--color-main)
 $primary: var(--color-secondary)
@@ -20,7 +21,7 @@ $color_1: #22CCEE
 $color_2: #FF744A
 $color_3: #89F8CA
 
-
+$light_1:  var(--color-white-1)
 
 
 $grad: linear-gradient(308.97deg, #FF0000 4.47%, #FF005C 91.06%)
@@ -44,7 +45,7 @@ $sm: 768
 $lsm: 640
 $xsm: 520
 $xs: 480
-$xxs: 380
+$xxs: 340
 
 
 $trs: all 0.35s ease-in-out
@@ -74,8 +75,17 @@ $gap6: 48px
 	@if $theme == white
 		background-color: $white
 		color: $black
+	@if $theme == light
+		background-color: $light
+		color: $black
 	@if $theme == dark
 		background-color: $dark
+		color: $white
+	@if $theme == dark2
+		background-color: $dark_2
+		color: $white
+	@if $theme == black
+		background-color: $dark_1
 		color: $white
 	@if $theme == main
 		background-color: $main

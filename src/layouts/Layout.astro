@@ -7,7 +7,7 @@ import Footer from '../components/TheFooter.astro'
 import SVG from '../components/_svg.astro'
 
 const { bg } = Astro.props
-const { color, img, fill } = bg || {}
+const { bgImg, bgFill } = bg || {}
 ---
 
 <!doctype html>
@@ -18,7 +18,11 @@ const { color, img, fill } = bg || {}
         <meta name="generator" content={Astro.generator} />
         <SEO />
     </head>
-    <body class="page__body" style={`background: ${color} url(${img}) no-repeat top center/${fill};`}>
+    <body
+        class="page__body"
+        data-bs-theme="dark"
+        style={bgImg ? { backgroundImage: `url(${bgImg})`, backgroundSize: bgFill } : {}}
+    >
         <div class="page__wrapper">
             <Header />
             <main>

@@ -16,10 +16,20 @@
 	&:hover, &:focus, &:active
 		background: $grad2
 		border-color: transparent
+		color: $white
 	
 	&s
 		+flex(flex, center, start, nowrap)
 		gap: $gap2
+	&-bd
+		@extend .btn
+		background: none
+		color: $main
+		border-color: $main
+		&:hover, &:active, &:focus
+			background: none
+			border-color: $main
+			color: $main
 	&-secondary
 		@extend .btn
 		background: $dark
@@ -30,9 +40,10 @@
 	+flex(flex, center, center, nowrap)
 	+sz(8em, 8em)
 	border-radius: 50%
-	box-shadow: 0 0 0 2em $dark_1
 	border: none
 	+theme(white)
 	z-index: 2
+	[data-bs-theme="light"] &
+		+theme(dark)
 	&:hover
 		transform: scale(0.9)

@@ -1,0 +1,40 @@
+.teams
+	display: grid
+	gap: $gap3
+	grid-template-columns: repeat(auto-fit, minmax(350px, 1fr))
+.team
+	&__footer
+		+flex(flex, center, center, nowrap)
+		gap: $gap1
+		transform: translateY(-50%)
+	&__ava
+		background: url('../img/bg/shadow-1.svg') no-repeat 50%/contain
+		img
+			display: block
+			max-height: 300px
+			margin-left: auto
+			margin-right: auto
+	&__body
+		flex: 1
+		padding: 2em
+		background: url('../img/corner/shape_1.svg') no-repeat 50%/cover
+		backdrop-filter: blur(25px)
+		border-radius: $brs2
+		[data-bs-theme="light"] &
+			background: rgba($black, 0.05) url('../img/corner/shape_1.svg') no-repeat 50%/cover
+		p
+			margin-bottom: 0
+			opacity: $op
+	&__title
+		@extend .h5
+		margin-bottom: $gap1
+	
+	button
+		@extend %circle-btn
+		position: relative
+		+sz(4em, 4em)
+		box-shadow: none
+		+maw($xs)
+				&__title
+					+ft(17, 17*1.4, 500)
+			

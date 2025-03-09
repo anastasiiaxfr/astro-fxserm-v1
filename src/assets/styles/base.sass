@@ -8,7 +8,11 @@ html, body
 
 
 body
-	+theme(dark)
+	//+theme(dark)
+	&[data-bs-theme="dark"]
+		+theme(black)
+	&[data-bs-theme="light"]
+		background-image: none !important
 	&::-webkit-scrollbar
 		width: 10px
 		height: 10px
