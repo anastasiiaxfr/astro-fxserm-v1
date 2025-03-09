@@ -113,7 +113,7 @@
     &__btm
         padding: var(--gap2) 0
         text-align: center
-        opacity: 0.5
+        opacity: $op
     &__col-1
         display: flex
         flex-direction: column
@@ -128,7 +128,7 @@
             gap: $gap1
             align-items: start
             a
-                opacity: 0.5
+                opacity: $op
                 +ft(14, 14*1.2, 400)
                 &:hover
                     opacity: 1
@@ -169,3 +169,17 @@
 
 .hero
     padding: 5em 0
+    @extend .my-0
+    &__content
+        max-width: 750px
+        margin-left: auto
+        margin-right: auto
+        text-align: center
+        p
+            opacity: $op
+            font-size: 140%
+            margin-bottom: $gap4
+    +maw($md)
+        &__content
+            p
+                font-size: 100%

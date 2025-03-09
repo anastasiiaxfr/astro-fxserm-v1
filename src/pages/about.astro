@@ -1,12 +1,14 @@
 ---
 import Layout from '../layouts/Layout.astro'
 import Banner from '../components/ui/Banner.astro'
-import { Content, frontmatter } from '../md/policy.md'
+import Benfits from '../components/sections/_benefits.astro'
+import Team from '../components/sections/_team.astro'
+import { Content, frontmatter } from '../md/about.md'
 
 const bgColor = 'var(--color-black-1)'
-const bgImg = '/assets/img/bg/policy.jpg'
+const bgImg = '/assets/img/bg/about.jpg'
 const bgFill = 'contain'
-const bannerBgImg = '/assets/img/banner/banner_1.png'
+const bannerBgImg = '/assets/img/banner/banner_2.png'
 
 const banner = {
     title: 'Эффективный маркетинг в криптовалюте',
@@ -16,16 +18,26 @@ const banner = {
 
 <Layout bg={{ color: bgColor, img: bgImg, fill: bgFill }}>
     <section class="section hero">
-        <div class="container text-center">
+        <div class="container hero__content">
             <h1>{frontmatter.title}</h1>
+            <p>{frontmatter.desc}</p>
+            <a href={frontmatter.btn.url} class="btn">
+                {frontmatter.btn.label}
+                <svg class="icon" width="24" height="24">
+                    <use xlink:href="#arr-t-r"></use>
+                </svg>
+            </a>
         </div>
     </section>
     <section class="section page-container">
         <div class="container">
-            <div class="page-content">
+            <div class="page-content-base">
                 <Content />
             </div>
         </div>
+        <Benfits />
+        <Team />
+
+        <Banner title={banner.title} desc={banner.desc} bg={bannerBgImg} />
     </section>
-    <Banner title={banner.title} desc={banner.desc} bg={bannerBgImg} />
 </Layout>

@@ -1,5 +1,6 @@
 .btn
 	+flex(inline-flex, center, center, nowrap)
+	gap: $gap2
 	height: 50px
 	min-width: 50px
 	padding: $gap2 $gap3
@@ -24,4 +25,14 @@
 		background: $dark
 		color: $white
 		
-	
+%circle-btn
+	+ps(absolute, (b, 0), (r, 0))
+	+flex(flex, center, center, nowrap)
+	+sz(8em, 8em)
+	border-radius: 50%
+	box-shadow: 0 0 0 2em $dark_1
+	border: none
+	+theme(white)
+	z-index: 2
+	&:hover
+		transform: scale(0.9)

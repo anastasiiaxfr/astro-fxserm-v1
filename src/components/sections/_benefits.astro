@@ -1,0 +1,58 @@
+---
+const title = 'Наши преимущества в направлении SERM'
+
+const features = [
+    {
+        title: 'Узкая специализация',
+        icon: 'i1',
+        desc: 'Наши специалисты знают все сложности и особенности SERM в вертикалях Forex и Crypto.',
+    },
+    {
+        title: 'Опыт',
+        icon: 'i2',
+        desc: 'Мы работаем в нише финтех более 3 лет, собрали большую базу медиа-партнеров, разработали кейсы по SERM для криптобирж и форекс-брокеров.',
+    },
+    {
+        title: 'Гибкость',
+        icon: 'i3',
+        desc: 'Каждый проект для нас – это новая история, под которую мы разрабатываем индивидуальную стратегию управления репутацией.',
+    },
+    {
+        title: 'Узкая специализация',
+        icon: 'i1',
+        desc: 'Наши специалисты знают все сложности и особенности SERM в вертикалях Forex и Crypto.',
+    },
+    {
+        title: 'Опыт',
+        icon: 'i2',
+        desc: 'Мы работаем в нише финтех более 3 лет, собрали большую базу медиа-партнеров, разработали кейсы по SERM для криптобирж и форекс-брокеров.',
+    },
+    {
+        title: 'Гибкость',
+        icon: 'i3',
+        desc: 'Каждый проект для нас – это новая история, под которую мы разрабатываем индивидуальную стратегию управления репутацией.',
+    },
+]
+---
+
+<section class="section section_benefits">
+    <div class="container">
+        <h2 class="text-center">{title}</h2>
+
+        <div class="cards">
+            {
+                features.map((feature) => (
+                    <article class="card">
+                        <div class="card__icon">
+                            <svg class="icon" width="50" height="50">
+                                <use xlink:href=`#${feature.icon}` />
+                            </svg>
+                        </div>
+                        <div class="card__title">{feature.title}</div>
+                        <div class="card__desc">{feature.desc}</div>
+                    </article>
+                ))
+            }
+        </div>
+    </div>
+</section>
