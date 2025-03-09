@@ -1,0 +1,18 @@
+h1, h2, h3, h4, h5, h6
+    font-family: $ffHeading, $ffBack
+
+
+.text
+    &--note
+        display: inline-block
+        font-size: 140%
+        font-weight: 600
+        transition: $trs
+        &:hover
+            @extend %text-grad
+            box-shadow: 0 2px 0 0 $main
+
+
+h5, .h5
+    +ft(16, 16*1.4, 500)
+    margin-bottom: $gap2

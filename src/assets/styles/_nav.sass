@@ -1,0 +1,69 @@
+header
+    background: #000
+    
+.footer
+    +theme(dark)
+    hr
+        margin: 0
+    &__top
+        padding: 3em 0
+        .container
+            display: grid
+            grid-template-columns: 0.5fr 2fr auto
+            gap: $gap3
+    &__btm
+        padding: var(--gap2) 0
+        text-align: center
+        opacity: 0.5
+    &__col-1
+        display: flex
+        flex-direction: column
+        gap: $gap2
+    &__nav
+        display: grid
+        grid-template-columns: repeat(4, auto)
+        gap: $gap3
+        &-col
+            display: flex
+            flex-direction: column
+            gap: $gap1
+            align-items: start
+            a
+                opacity: 0.5
+                +ft(14, 14*1.2, 400)
+                &:hover
+                    opacity: 1
+    &__soc
+        padding: 0
+        display: flex
+        flex-direction: column
+        gap: $gap1 $gap3
+        li
+            +flex(flex, center, start, nowrap)
+            gap: $gap1
+            list-style-type: none
+            a
+                transition: $trs
+                &:hover
+                    color: $main
+    +maw(1200)
+        &__top
+            .container
+                grid-template-columns: 1fr 2fr
+                div:last-child
+                    grid-column: 2
+        &__soc
+            flex-direction: row
+        &__nav
+            grid-template-columns: 1fr 1fr
+    +maw($md)
+        &__top
+            .container
+                grid-template-columns: 1fr
+                div:last-child
+                    grid-column: 1
+    +maw(375)
+        &__nav
+            grid-template-columns: 1fr
+        &__soc
+            flex-direction: column
