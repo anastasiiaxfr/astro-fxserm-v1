@@ -1,6 +1,98 @@
-header
-    background: #000
+.header
+    padding: 1em 0
+    .container
+        +flex(flex, center, space-between, nowrap)
+        gap: $gap2
+    &__menu
+        +flex(flex, center, start, nowrap)
+        gap: $gap3
+        a
+            &:hover
+                color: $main
+        .dropdown-toggle
+            svg
+                transform: rotate(180deg)
+            &::after
+                display: none
+            &.show
+                svg
+                    transform: none
+        .dropdown-menu
+            +theme(dark)
+            border: $bd
+            border-radius: $brs1
+            a
+                color: $white
+                &:hover
+                    background: none
+                    color: $main
+    +maw($lg)
+        &__menu
+            display: none
+    +maw($sm)
+        .btn-secondary
+            display: none
+        .logo
+            width: 100%
+            height: auto
     
+.drawer
+    +ps(fixed, (r, 0), (t, 0)) 
+    z-index: 100500
+    max-width: 300px
+    width: 100%
+    +theme(dark)
+    height: 100vh
+    padding: $gap3
+    transform: translateX(100%)
+    transition: $trs
+    &.show
+        transform: none
+    .accordion
+        &-item
+            background: none
+            border: none
+            color: inherit
+        &-button
+            +flex(flex, center, space-between, nowrap)
+            gap: $gap1
+            background: none
+            color: inherit
+            padding: 0
+            box-shadow: none
+            svg
+                transform: rotate(180deg)
+            &::after
+              display: none  
+            &[aria-expanded="true"]
+                svg
+                    transform: rotate(0deg)
+        &-body
+            a
+                display: block
+    &__header
+        +flex(flex, center, space-between, nowrap)
+        gap: $gap1
+        margin-bottom: $gap3
+        padding-bottom: $gap3
+        border-bottom: 1px solid rgba($white, 0.5)
+    &__menu
+        display: flex
+        flex-direction: column
+        gap: $gap2
+    &__toggle
+        background: none
+        border: none
+        padding: 0
+        color: inherit
+    a
+        &:hover
+            color: $main
+    +miw($lg)
+        display: none
+        &__toggle
+             display: none
+
 .footer
     +theme(dark)
     hr

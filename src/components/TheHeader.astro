@@ -1,8 +1,162 @@
 ---
+import Logo from './Logo.astro'
+
+const nav = [
+    {
+        title: 'Услуги',
+        url: '#',
+        child: [
+            { title: 'services-1', url: '#', hasChild: false },
+            { title: 'services-2', url: '#', hasChild: false },
+            { title: 'services-3', url: '#', hasChild: false },
+            { title: 'services-4', url: '#', hasChild: false },
+            { title: 'services-5', url: '#', hasChild: false },
+        ],
+    },
+    { title: 'Кейсы', url: '#' },
+    { title: 'О нас', url: '#' },
+    { title: 'Наша команда', url: '#' },
+    { title: 'Карьера', url: '#' },
+    { title: 'Контакты', url: '#' },
+    { title: 'Блог', url: '#' },
+]
 ---
 
-<header>
+<header class="header sticky-top">
     <div class="container">
-        header
+        <Logo />
+
+        <nav class="header__menu">
+            {
+                nav.map((item) =>
+                    item.child ? (
+                        <div class="dropdown">
+                            <a
+                                class="dropdown-toggle"
+                                href="#"
+                                role="button"
+                                data-bs-toggle="dropdown"
+                                aria-expanded="false"
+                            >
+                                {item.title}
+                                <svg class="icon" width="16" height="16">
+                                    <use xlink:href="#arr-top" />
+                                </svg>
+                            </a>
+
+                            <ul class="dropdown-menu">
+                                {item.child.map((child) => (
+                                    <li>
+                                        <a class="dropdown-item" href={child.url}>
+                                            {child.title}
+                                        </a>
+                                    </li>
+                                ))}
+                            </ul>
+                        </div>
+                    ) : (
+                        <a href={item.url} class="menu-item">
+                            {item.title}
+                        </a>
+                    )
+                )
+            }
+        </nav>
+
+        <div class="btns">
+            <a href="#" class="btn-secondary">Напишите нам</a>
+            <a href="#" class="btn p-2">
+                <svg class="icon" width="24" height="24">
+                    <use xlink:href="#tm"></use>
+                </svg>
+            </a>
+            <button class="drawer__toggle">
+                <svg class="icon" width="24" height="24">
+                    <use xlink:href="#menu"></use>
+                </svg>
+            </button>
+        </div>
     </div>
 </header>
+
+<div class="drawer">
+    <div class="drawer__header">
+        <Logo height="25" />
+        <button class="drawer__toggle">
+            <svg class="icon" width="24" height="24">
+                <use xlink:href="#close"></use>
+            </svg>
+        </button>
+    </div>
+    <div class="drawer__menu">
+        {
+            nav.map((item, ind) =>
+                item.child ? (
+                    <div class="accordion" id="accordionExample">
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button
+                                    class="accordion-button"
+                                    type="button"
+                                    data-bs-toggle="collapse"
+                                    data-bs-target={`#collapse-${ind}`}
+                                    aria-expanded="true"
+                                    aria-controls="collapseOne"
+                                >
+                                    {item.title}
+                                    <svg class="icon" width="16" height="16">
+                                        <use xlink:href="#arr-top" />
+                                    </svg>
+                                </button>
+                            </h2>
+                            <div
+                                id={`collapse-${ind}`}
+                                class="accordion-collapse collapse"
+                                data-bs-parent="#accordionExample"
+                            >
+                                <div class="accordion-body">
+                                    <nav>
+                                        {item.child.map((i) => (
+                                            <a href={i.url} class="menu-item">
+                                                {i.title}
+                                            </a>
+                                        ))}
+                                    </nav>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                ) : (
+                    <a href={item.url} class="menu-item">
+                        {item.title}
+                    </a>
+                )
+            )
+        }
+    </div>
+</div>
+
+<script type="module">
+    const drawerToggleBtns = document.querySelectorAll('.drawer__toggle')
+    const drawer = document.querySelector('.drawer')
+    const drawerMenu = document.querySelector('.drawer__menu')
+
+    drawerToggleBtns.forEach((button) => {
+        button.addEventListener('click', () => {
+            drawer.classList.toggle('show')
+        })
+    })
+
+    const drawerLinks = drawerMenu.querySelectorAll('a')
+    drawerLinks.forEach((link) => {
+        link.addEventListener('click', () => {
+            drawer.classList.remove('show')
+        })
+    })
+
+    document.addEventListener('click', (e) => {
+        if (!drawer.contains(e.target) && !e.target.closest('.drawer__toggle')) {
+            drawer.classList.remove('show')
+        }
+    })
+</script>

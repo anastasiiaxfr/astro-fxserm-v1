@@ -1,26 +1,29 @@
 ---
-import '../assets/styles/main.sass';
-import SEO from '../components/SEO.astro';
-import Header from '../components/TheHeader.astro';
-import Footer from '../components/TheFooter.astro';
-import SVG from '../components/_svg.astro';
+import '../assets/styles/main.sass'
+
+import SEO from '../components/SEO.astro'
+import Header from '../components/TheHeader.astro'
+import Footer from '../components/TheFooter.astro'
+import SVG from '../components/_svg.astro'
 ---
+
 <!doctype html>
 <html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<SEO />
-	</head>
-	<body class="page__body">
-		<div class="page__wrapper">
-			<Header />
-			<main>
-				<slot />
-			</main>	
-		</div>
-		<Footer />
-		<SVG />
-	</body>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width" />
+        <meta name="generator" content={Astro.generator} />
+        <SEO />
+    </head>
+    <body class="page__body">
+        <div class="page__wrapper">
+            <Header />
+            <main>
+                <slot />
+            </main>
+        </div>
+        <Footer />
+        <SVG />
+        <script src="../assets/js/main.js"></script>
+    </body>
 </html>

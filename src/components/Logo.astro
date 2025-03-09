@@ -1,8 +1,9 @@
 ---
 const site_name = 'TheSite';
 import image from '../assets/img/logo.svg';  
+const { height = 45 } = Astro.props;
 ---
 
 <a href="/" class="logo">
-    <img src={image.src} alt={site_name} height="45">
+    <img src={image.src} alt={site_name} height={height}>
 </a>

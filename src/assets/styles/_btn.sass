@@ -1,13 +1,27 @@
 .btn
 	+flex(inline-flex, center, center, nowrap)
 	height: 50px
-	padding: 8px 2em
-	border: 0px solid transparent
-	background: $main
+	min-width: 50px
+	padding: $gap2 $gap3
+	border: 2px solid $main
+	background: $grad
+	border-radius: $brs1
 	color: $white
 	text-align: center
-	text-transform: uppercase
+	text-transform: initial
 	+ft(18, 18, 500)
 	transition: $trs
 	cursor: pointer
+	&:hover, &:focus, &:active
+		background: $grad2
+		border-color: transparent
+	
+	&s
+		+flex(flex, center, start, nowrap)
+		gap: $gap2
+	&-secondary
+		@extend .btn
+		background: $dark
+		color: $white
+		
 	
