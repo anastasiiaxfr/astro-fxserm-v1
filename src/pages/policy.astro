@@ -1,0 +1,24 @@
+---
+import Layout from '../layouts/Layout.astro'
+import { Content, frontmatter } from '../md/policy.md'
+
+const bgColor = '#08071B'
+const bgImg = '/assets/img/bg/policy.jpg'
+const bgFill = 'contain'
+---
+
+<Layout bg={{ color: bgColor, img: bgImg, fill: bgFill }}>
+    <section class="section hero">
+        <div class="container text-center">
+            <h1>{frontmatter.title}</h1>
+        </div>
+    </section>
+
+    <section class="section page-container">
+        <div class="container">
+            <div class="page-content">
+                <Content />
+            </div>
+        </div>
+    </section>
+</Layout>

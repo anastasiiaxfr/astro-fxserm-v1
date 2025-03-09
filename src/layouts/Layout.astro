@@ -5,6 +5,9 @@ import SEO from '../components/SEO.astro'
 import Header from '../components/TheHeader.astro'
 import Footer from '../components/TheFooter.astro'
 import SVG from '../components/_svg.astro'
+
+const { bg } = Astro.props
+const { color, img, fill } = bg || {}
 ---
 
 <!doctype html>
@@ -15,7 +18,7 @@ import SVG from '../components/_svg.astro'
         <meta name="generator" content={Astro.generator} />
         <SEO />
     </head>
-    <body class="page__body">
+    <body class="page__body" style={`background: ${color} url(${img}) no-repeat top center/${fill};`}>
         <div class="page__wrapper">
             <Header />
             <main>
