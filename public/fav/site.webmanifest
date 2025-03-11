@@ -6,8 +6,8 @@
   "background_color": "#04030C",
   "display": "standalone",
   "orientation": "portrait",
-  "start_url": ".",
-  "id": "/fav/",
+  "start_url": "https://astro-ex-1.vercel.app",
+  "id": "/",
   "icons": [
     {
       "src": "../fav/web-app-manifest-192x192.png",
@@ -26,46 +26,44 @@
       "sizes": "36x36",
       "type": "image/png",
       "density": "0.75"
-     },
-     {
+    },
+    {
       "src": "../fav/android-icon-48x48.png",
       "sizes": "48x48",
       "type": "image/png",
       "density": "1.0"
-     },
-     {
+    },
+    {
       "src": "../fav/android-icon-72x72.png",
       "sizes": "72x72",
       "type": "image/png",
       "density": "1.5"
-     },
-     {
+    },
+    {
       "src": "../fav/android-icon-96x96.png",
       "sizes": "96x96",
       "type": "image/png",
       "density": "2.0"
-     },
-     {
+    },
+    {
       "src": "../fav/android-icon-144x144.png",
       "sizes": "144x144",
       "type": "image/png",
       "density": "3.0"
-     }
+    }
   ],
   "screenshots": [
-        {
-            "src": "../seo/v.png",
-            "type": "image/png",
-            "sizes": "540x720",
-            "form_factor": "narrow"
-        },
-        {
-            "src": "../seo/h.png",
-            "type": "image/png",
-            "sizes": "720x540",
-            "form_factor": "wide"
-        }
-      
-    ]
- 
+    {
+      "src": "../seo/v.png",
+      "type": "image/png",
+      "sizes": "540x720",
+      "form_factor": "narrow"
+    },
+    {
+      "src": "../seo/h.png",
+      "type": "image/png",
+      "sizes": "720x540",
+      "form_factor": "wide"
+    }
+  ]
 }

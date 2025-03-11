@@ -7,7 +7,24 @@ const { data } = Astro.props
         {data.title}
     </div>
     <div class="service__body">
-        <div class="service__icon"></div>
+        <button class="service__cta">
+            <svg class="icon" width="48" height="48">
+                <use xlink:href="#arr-t-r"></use>
+            </svg>
+        </button>
+        <div class="service__corner">
+            <svg viewBox="0 0 160.6 160">
+                <g>
+                    <path
+                        d="M161.1,1.1C161,43,143.8,39.4,116,43c-31,4-44,11-56,24c-12.8,13.9-14.1,30.9-16,55c-0.7,8.9-6,38-44,38
+		l0.1,0.1l0,0L161,160"
+                    ></path>
+                </g>
+            </svg>
+        </div>
+        <div class="service__icon">
+            <img src={data.icon} alt={data.title} width="40" height="40" />
+        </div>
         <div class="service__title">
             {data.title}
         </div>
@@ -19,17 +36,26 @@ const { data } = Astro.props
 
 <script>
     document.addEventListener('astro:page-load', () => {
-        document.querySelectorAll('.service').forEach((service) => {
+        document.querySelectorAll('.service').forEach((service, index) => {
             const header = service.querySelector('.service__header')
             const body = service.querySelector('.service__body')
 
-            body.style.display = 'none'
+            // Initially hide the header and show the body for the first item
+            if (index === 0) {
+                header.style.display = 'none' // Hide the header of the first card
+                body.style.display = 'block' // Show the body of the first card
+            } else {
+                header.style.display = 'block' // Make sure other headers are visible
+                body.style.display = 'none' // Make sure other bodies are hidden
+            }
 
+            // Toggle visibility on header click
             header.addEventListener('click', () => {
                 header.style.display = 'none'
                 body.style.display = 'block'
             })
 
+            // Toggle visibility on body click
             body.addEventListener('click', () => {
                 header.style.display = 'block'
                 body.style.display = 'none'
