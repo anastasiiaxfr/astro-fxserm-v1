@@ -1,0 +1,43 @@
+---
+const title = 'Заполни форму'
+---
+
+<form action="/" class="form" novalidate>
+    <div class="form__body">
+        {title && <p class="form__title">{title}</p>}
+        <div class="form__row form__row--inline">
+            <label for="">
+                <svg class="icon" width="24" height="24">
+                    <use xlink:href={`#f1`}></use>
+                </svg>
+                <input type="text" placeholder="Имя" />
+            </label>
+            <label for="">
+                <svg class="icon" width="24" height="24">
+                    <use xlink:href={`#f2`}></use>
+                </svg>
+                <input type="text" placeholder="Email" />
+            </label>
+            <label for="">
+                <svg class="icon" width="24" height="24">
+                    <use xlink:href={`#f3`}></use>
+                </svg>
+                <input type="text" placeholder="Telegram или WhatsApp" />
+            </label>
+        </div>
+        <div>
+            <textarea name="" rows="3" id="" placeholder="Сообщение"></textarea>
+        </div>
+    </div>
+    <div class="form__row my-4">
+        <input type="checkbox" checked id="policy"> <label for="policy">
+            <span>Я согласен на обработку персональных данных и хочу подписаться на информацию о наших последних новостях, исследованиях и событиях.</span>
+        </label>
+
+    </div>
+    <div>
+        <button class="btn"> Отправить  <svg class="icon" width="24" height="24">
+            <use xlink:href="#arr-t-r" />
+        </svg></button>
+    </div>
+</form>
