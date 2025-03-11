@@ -1,0 +1,52 @@
+---
+import Layout from '../layouts/Layout.astro'
+import Card from '../components/sections/_service-card.astro'
+const allServices = Object.values(import.meta.glob('../md/services/*.md', { eager: true }))
+const bgImg = '/assets/img/bg/services.jpg'
+const bgFill = 'contain'
+
+const title = 'Услуги'
+
+const servicesByCategory = allServices.reduce((acc, service) => {
+    const { category } = service.frontmatter
+    if (category) {
+        if (!acc[category]) {
+            acc[category] = []
+        }
+        acc[category].push(service)
+    }
+    return acc
+}, {})
+---
+
+<Layout bg={{ bgImg: bgImg, bgFill: bgFill }}>
+    <section class="section hero">
+        <div class="container hero__content">
+            <h1>{title}</h1>
+        </div>
+    </section>
+    <section class="section page-container">
+        <div class="container">
+            <div class="page-content-base">
+                <div class="">
+                    {
+                        Object.entries(servicesByCategory).map(([category, services]) => (
+                            <section class="service__block" key={category}>
+                                <div>
+                                    <h2 class="my-0">{category}</h2>
+                                </div>
+                                <div>
+                                    <div class="services">
+                                        {services.map((service) => (
+                                            <Card data={service.frontmatter} />
+                                        ))}
+                                    </div>
+                                </div>
+                            </section>
+                        ))
+                    }
+                </div>
+            </div>
+        </div>
+    </section>
+</Layout>

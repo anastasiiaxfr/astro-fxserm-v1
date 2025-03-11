@@ -1,0 +1,53 @@
+.contacts
+	display: grid
+	grid-template-columns: repeat(3, 1fr)
+	gap: $gap3
+	align-items: start
+	.contact
+		&:hover
+			& > svg
+				transform: translateY(-10px) rotate(-15deg)
+		svg
+			transition: $trs
+		&__label
+			margin-top: $gap2
+			margin-bottom: $gap1
+			opacity: $op
+		.btns
+			svg:hover
+				transform: rotate(-15deg)
+	+maw($sm)
+		grid-template-columns: repeat(2, 1fr)
+	+maw($xs)
+		grid-template-columns: 1fr
+		text-align: center
+		.btns
+			justify-content: center
+
+.address
+	display: grid
+	gap: $gap2
+	margin-top: $gap4
+	&__item
+		+flex(flex, center, start, nowrap)
+		gap: $gap2
+		@extend .h6, .my-0
+		svg
+			min-width: 24px
+		&:hover
+			text-decoration: underline
+	+maw($md)
+		grid-template-columns: repeat(3, auto)
+		align-items: start
+		&__item
+			&:last-child
+				grid-column: 1/-1
+			span br
+				display: none
+	+maw($sm)
+		grid-template-columns: 1fr
+	+maw($xs)
+		&__item
+			span br
+				display: block
+			

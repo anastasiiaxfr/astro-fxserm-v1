@@ -1,0 +1,39 @@
+---
+const { data } = Astro.props
+---
+
+<article class="service">
+    <div class="service__header">
+        {data.title}
+    </div>
+    <div class="service__body">
+        <div class="service__icon"></div>
+        <div class="service__title">
+            {data.title}
+        </div>
+        <div class="service__desc">
+            {data.desc}
+        </div>
+    </div>
+</article>
+
+<script>
+    document.addEventListener('astro:page-load', () => {
+        document.querySelectorAll('.service').forEach((service) => {
+            const header = service.querySelector('.service__header')
+            const body = service.querySelector('.service__body')
+
+            body.style.display = 'none'
+
+            header.addEventListener('click', () => {
+                header.style.display = 'none'
+                body.style.display = 'block'
+            })
+
+            body.addEventListener('click', () => {
+                header.style.display = 'block'
+                body.style.display = 'none'
+            })
+        })
+    })
+</script>
