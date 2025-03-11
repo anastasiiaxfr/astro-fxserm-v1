@@ -15,15 +15,34 @@ const nav = [
         ],
     },
     { title: 'Кейсы', url: '#' },
-    { title: 'О нас', url: '#' },
+    { title: 'О нас', url: '/about' },
     { title: 'Наша команда', url: '#' },
     { title: 'Карьера', url: '#' },
     { title: 'Контакты', url: '#' },
     { title: 'Блог', url: '#' },
 ]
+
+const anim = {
+  old: {
+    name: 'fadeIn',
+    duration: '0.5s',
+    easing: 'ease-in',
+    direction: 'reverse',
+  },
+  new: {
+    name: 'fadeIn',
+    duration: '0.5s',
+    easing: 'ease-in-out',
+  },
+};
+
+const customTransition = {
+  forwards: anim,
+  backwards: anim,
+};
 ---
 
-<header class="header sticky-top">
+<header class="header sticky-top" transition:animate={ customTransition}>
     <div class="container">
         <Logo />
 
@@ -131,27 +150,34 @@ const nav = [
     </div>
 </div>
 
-<script type="module">
-    const drawerToggleBtns = document.querySelectorAll('.drawer__toggle')
-    const drawer = document.querySelector('.drawer')
-    const drawerMenu = document.querySelector('.drawer__menu')
+<script is:client>
+    document.addEventListener('astro:page-load', () => {
+        console.log("Page loaded, initializing drawer toggle...");
 
-    drawerToggleBtns.forEach((button) => {
-        button.addEventListener('click', () => {
-            drawer.classList.toggle('show')
-        })
-    })
+        const drawerToggleBtns = document.querySelectorAll('.drawer__toggle');
+        const drawer = document.querySelector('.drawer');
+        const drawerMenu = document.querySelector('.drawer__menu');
 
-    const drawerLinks = drawerMenu.querySelectorAll('a')
-    drawerLinks.forEach((link) => {
-        link.addEventListener('click', () => {
-            drawer.classList.remove('show')
-        })
-    })
+        drawerToggleBtns.forEach((button) => {
+            button.addEventListener('click', () => {
+                drawer.classList.toggle('show');
+                console.log("Drawer toggled!");
+            });
+        });
 
-    document.addEventListener('click', (e) => {
-        if (!drawer.contains(e.target) && !e.target.closest('.drawer__toggle')) {
-            drawer.classList.remove('show')
-        }
-    })
+        const drawerLinks = drawerMenu.querySelectorAll('a');
+        drawerLinks.forEach((link) => {
+            link.addEventListener('click', () => {
+                drawer.classList.remove('show');
+                console.log("Link clicked, drawer closed.");
+            });
+        });
+
+        document.addEventListener('click', (e) => {
+            if (!drawer.contains(e.target) && !e.target.closest('.drawer__toggle')) {
+                drawer.classList.remove('show');
+                console.log("Clicked outside, closing drawer.");
+            }
+        });
+    });
 </script>

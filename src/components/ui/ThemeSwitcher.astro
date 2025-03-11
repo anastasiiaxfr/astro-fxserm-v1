@@ -4,28 +4,28 @@
     </svg>
 </button>
 
-<script type="module" defer>
+<script is:inline data-astro-rerun>
     function toggleTheme() {
-        const body = document.body
-        const currentTheme = body.getAttribute('data-bs-theme') || 'dark'
-        const newTheme = currentTheme === 'light' ? 'dark' : 'light'
-
-        body.setAttribute('data-bs-theme', newTheme)
-        localStorage.setItem('theme', newTheme)
-        updateIcon(newTheme)
+        const body = document.body;
+        const currentTheme = body.getAttribute('data-bs-theme') || 'dark';
+        const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+body.setAttribute('data-bs-theme', newTheme);
+        localStorage.setItem('theme', newTheme);
+        updateIcon(newTheme);
     }
 
     function updateIcon(theme) {
-        const icon = document.getElementById('theme-icon')
-        const iconUse = icon.querySelector('use')
-        iconUse.setAttribute('xlink:href', theme === 'dark' ? '#icon-night' : '#icon-day')
+        const icon = document.getElementById('theme-icon');
+        const iconUse = icon.querySelector('use');
+        iconUse.setAttribute('xlink:href', theme === 'dark' ? '#icon-night' : '#icon-day');
     }
 
-    document.addEventListener('DOMContentLoaded', () => {
-        const savedTheme = localStorage.getItem('theme') || 'dark'
-        document.body.setAttribute('data-bs-theme', savedTheme)
-        updateIcon(savedTheme)
+    // Initialize theme
+    const savedTheme = localStorage.getItem('theme') || 'dark';
+    document.body.setAttribute('data-bs-theme', savedTheme);
+    updateIcon(savedTheme);
 
-        document.getElementById('theme-toggle').addEventListener('click', toggleTheme)
-    })
+    document.addEventListener('astro:page-load', () => {
+        document.getElementById('theme-toggle').addEventListener('click', toggleTheme);
+    });
 </script>

@@ -26,20 +26,27 @@ const { data, CardComponent } = Astro.props
 </div>
 
 <script>
-    import Swiper from 'swiper'
+    import Swiper from '../../node_modules/swiper'
     import { Navigation, Pagination, Autoplay } from '../../node_modules/swiper/modules'
 
-    new Swiper('.my-swiper', {
-        modules: [Navigation, Pagination, Autoplay],
-        spaceBetween: 30,
-        slidesPerView: 1,
-        // navigation: { nextEl: '.swiper-button-next', prevEl: '.swiper-button-prev' },
-        pagination: { el: '.swiper-pagination', clickable: true },
-        //autoplay: { delay: 3000, disableOnInteraction: false },
-
-        breakpoints: {
-            1000: { slidesPerView: 3 },
-            640: { slidesPerView: 2 },
-        },
+    document.addEventListener('astro:page-load', () => {
+       
+        
+            new Swiper('.my-swiper', {
+                modules: [Navigation, Pagination, Autoplay],
+                spaceBetween: 30,
+                slidesPerView: 1,
+                // navigation: { 
+                //     nextEl: '.swiper-button-next', 
+                //     prevEl: '.swiper-button-prev' 
+                // },
+                pagination: { el: '.swiper-pagination', clickable: true },
+                autoplay: { delay: 3000, disableOnInteraction: false },
+                breakpoints: {
+                    1000: { slidesPerView: 3 },
+                    640: { slidesPerView: 2 },
+                },
+            })
+       
     })
 </script>
