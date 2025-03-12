@@ -49,5 +49,7 @@ Feel free to check [our documentation](https://docs.astro.build) or jump into ou
 
 ## PAGES:
 
-- https://astro-ex-1.vercel.app/policy
 - https://astro-ex-1.vercel.app/about
+- https://astro-ex-1.vercel.app/policy
+- https://astro-ex-1.vercel.app/contacts
+- https://astro-ex-1.vercel.app/services

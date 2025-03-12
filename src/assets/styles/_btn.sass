@@ -172,3 +172,21 @@
 			padding-left: 2px
 		.tag
 			font-size: 0.8em
+
+.search
+	display: block
+	max-width: 750px
+	margin: $gap3 auto
+	input
+		border: none
+		background: none
+		color: inherit
+		flex: 1
+	&__field
+		+flex(flex, center, start, nowrap)
+		gap: $gap1
+		padding: 0.65em 1em
+		border: 2px solid rgba($white, 0.2)
+		border-radius: $brs1
+		svg
+			min-width: 24px

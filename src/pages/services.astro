@@ -2,19 +2,24 @@
 import Layout from '../layouts/Layout.astro'
 import Card from '../components/sections/_service-card.astro'
 import Tags from '../components/ui/Tag.astro'
+import Search from '../components/ui/Search.astro'
 
-const allServices = Object.values(import.meta.glob('../md/services/*.md', { eager: true }))
+const allServices = Object.values(
+    import.meta.glob('../md/services/*.md', { eager: true })
+)
 const bgImg = '/assets/img/bg/services.jpg'
 const bgFill = 'contain'
 
 const title = 'Услуги'
 
 // Collect all unique categories
-const allTags = Array.from(new Set(
-    allServices
-        .flatMap(service => service.frontmatter.category || []) 
-        .map(category => category.trim()) 
-));
+const allTags = Array.from(
+    new Set(
+        allServices
+            .flatMap((service) => service.frontmatter.category || [])
+            .map((category) => category.trim())
+    )
+)
 
 const servicesByCategory = allServices.reduce((acc, service) => {
     const { category } = service.frontmatter
@@ -26,16 +31,18 @@ const servicesByCategory = allServices.reduce((acc, service) => {
     }
     return acc
 }, {})
+
+// Function to filter services by search term and category
+let searchTerm = ''
+let selectedCategory = 'All'
 ---
 
 <Layout bg={{ bgImg: bgImg, bgFill: bgFill }}>
     <section class="section hero">
         <div class="container text-center">
             <h1>{title}</h1>
-
-            <Tags data={['All', ...allTags]} onclick="filterCategory(event)"/>
-
-
+            <Search />
+            <Tags data={['All', ...allTags]} onclick="filterCategory(event)" />
         </div>
     </section>
 
@@ -44,57 +51,105 @@ const servicesByCategory = allServices.reduce((acc, service) => {
             <div class="">
                 <div class="service-sections">
                     <div id="services-container">
-                        {Object.entries(servicesByCategory).map(([category, services]) => (
-                            <section 
-                                class="service__block" 
-                                key={category} 
-                                data-category={category}>
-                                <div>
-                                    <h2 class="my-0">{category}</h2>
-                                </div>
-                                <div>
-                                    <div class="services">
-                                        {services.map((service) => (
-                                            <Card data={service.frontmatter} />
-                                        ))}
-                                    </div>
-                                </div>
-                            </section>
-                        ))}
+                        {
+                            Object.entries(servicesByCategory).map(
+                                ([category, services]) => (
+                                    <section
+                                        class="service__block"
+                                        key={category}
+                                        data-category={category}
+                                    >
+                                        <div>
+                                            <h2 class="my-0">{category}</h2>
+                                        </div>
+                                        <div>
+                                            <div class="services">
+                                                {services.map((service) => (
+                                                    <Card
+                                                        data={
+                                                            service.frontmatter
+                                                        }
+                                                    />
+                                                ))}
+                                            </div>
+                                        </div>
+                                    </section>
+                                )
+                            )
+                        }
                     </div>
                 </div>
             </div>
         </div>
     </section>
-
 </Layout>
 
 <script is:inline data-astro-rerun>
-    document.addEventListener('astro:page-load', () => {
-        function filterCategory(event) {
-            const selectedCategory = event.target.dataset.category;
+    function filterCategory(event) {
+        const selectedCategory = event.target.dataset.category
+        const serviceSections = document.querySelectorAll('.service__block')
+        const serviceCards = document.querySelectorAll('.service')
 
-            const serviceSections = document.querySelectorAll('.service__block');
+        serviceCards.forEach((card) => {
+            card.style.display = 'grid'
+        })
 
-            serviceSections.forEach(section => {
-                section.style.display = 'none'; 
-            });
+        serviceSections.forEach((section) => {
+            section.style.display = 'none'
+        })
 
-            if (selectedCategory === 'All') {
-                serviceSections.forEach(section => {
-                    section.style.display = 'grid';
-                });
-            } else {
-                const selectedSections = document.querySelectorAll(`[data-category="${selectedCategory}"]`);
-                selectedSections.forEach(section => {
-                    section.style.display = 'grid';
-                });
-            }
+        if (selectedCategory === 'All') {
+            serviceSections.forEach((section) => {
+                section.style.display = 'grid'
+            })
+        } else {
+            const selectedSections = document.querySelectorAll(
+                `[data-category="${selectedCategory}"]`
+            )
+            selectedSections.forEach((section) => {
+                section.style.display = 'grid'
+            })
         }
+    }
 
-        const categoryButtons = document.querySelectorAll('.tag');
-        categoryButtons.forEach(button => {
-            button.addEventListener('click', filterCategory);
-        });
-    });
+    document.addEventListener('astro:page-load', () => {
+        const searchInput = document.querySelector('input[type="search"]')
+        const serviceSections = document.querySelectorAll('.service__block')
+
+        searchInput.addEventListener('input', (event) => {
+        const searchTerm = event.target.value.toLowerCase()
+
+        serviceSections.forEach((section) => {
+            const serviceCards = section.querySelectorAll('.service')
+            let hasVisibleCards = false
+
+            serviceCards.forEach((card) => {
+                const title =
+                    card.querySelector('h3')?.textContent.toLowerCase() || ''
+
+                if (title.includes(searchTerm)) {
+                    card.style.display = 'block'
+                    hasVisibleCards = true
+                } else {
+                    card.style.display = 'none'
+                }
+            })
+
+            if (hasVisibleCards) {
+                section.style.display = 'grid'
+            } else {
+                section.style.display = 'none'
+            }
+        })
+    })
+    
+    const categoryButtons = document.querySelectorAll('.tag')
+        categoryButtons.forEach((button) => {
+            
+            button.addEventListener('click', function(){
+                searchInput.value = ''
+                filterCategory
+            })
+        })
+    })
 </script>
