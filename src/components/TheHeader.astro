@@ -36,10 +36,14 @@ const anim = {
   },
 };
 
+
+
 const customTransition = {
   forwards: anim,
   backwards: anim,
 };
+
+
 ---
 
 <header class="header sticky-top t-0" transition:animate={ customTransition}>
@@ -100,7 +104,7 @@ const customTransition = {
     </div>
 </header>
 
-<div class="drawer">
+<div class="drawer" transition:animate="fade">
     <div class="drawer__header">
         <Logo height="25" />
         <button class="drawer__toggle">
