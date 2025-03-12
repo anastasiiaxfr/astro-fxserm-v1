@@ -1,0 +1,73 @@
+---
+import Layout from '../layouts/Layout.astro'
+import Search from '../components/ui/Search.astro'
+import Tag from '../components/ui/Tag.astro'
+
+const allPosts = Object.values(
+    import.meta.glob('../md/blog/*.md', { eager: true })
+)
+
+// Collect all unique categories
+const allTags = Array.from(
+    new Set(
+        allPosts
+            .flatMap((service) => service.frontmatter.category || [])
+            .map((category) => category.trim())
+    )
+)
+
+const bgImg = '/assets/img/bg/blog.jpg'
+const bgFill = 'contain'
+
+const title = 'Блог'
+---
+
+<Layout bg={{ bgImg: bgImg, bgFill: bgFill }}>
+    <section class="section hero">
+        <div class="container text-center">
+            <h1>{title}</h1>
+            <Search />
+            <Tag data={allTags} />
+            
+        </div>
+    </section>
+    <section class="section page-container">
+        <div class="container">
+            <div class="">
+              <section>
+                <h2>Последнее</h2>
+              </section>
+              <section>
+                <h2>Все посты</h2>
+
+                <div class="posts">
+                    {allPosts.slice(8).map(i => 
+                    <article class="post">
+                        <div class="post__img">
+                            <img src={i.frontmatter.thumbnail} alt={i.frontmatter.title} />
+                        </div>
+                        <div class="post__body">
+                            <div class="post__meta">
+                                <span>
+                                    {i.frontmatter.pubdate}
+                                </span>
+                                <span>
+                                    {i.frontmatter.read || '5 min'}
+                                </span>
+                            </div>
+                            <div class="post__content">
+                                <h3 class="post__title">
+                                    {i.frontmatter.title}
+                                </h3>
+                            </div>
+                        </div>
+                    </article>
+                        )}
+                </div>
+
+              </section>
+            </div>
+        </div>
+    </section>
+    
+</Layout>
