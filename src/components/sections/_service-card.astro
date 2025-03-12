@@ -3,9 +3,9 @@ const { data } = Astro.props
 ---
 
 <article class="service">
-    <div class="service__header">
+    <h3 class="service__header">
         {data.title}
-    </div>
+    </h3>
     <div class="service__body">
         <button class="service__cta">
             <svg class="icon" width="48" height="48">
@@ -25,9 +25,9 @@ const { data } = Astro.props
         <div class="service__icon">
             <img src={data.icon} alt={data.title} width="40" height="40" />
         </div>
-        <div class="service__title">
+        <h3 class="service__title">
             {data.title}
-        </div>
+        </h3>
         <div class="service__desc">
             {data.desc}
         </div>

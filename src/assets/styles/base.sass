@@ -14,15 +14,8 @@ body
 	&[data-bs-theme="light"]
 		background-image: none !important
 		+theme(white)
-	&::-webkit-scrollbar
-		width: 10px
-		height: 10px
+	@extend %scroll
 
-	&::-webkit-scrollbar-track
-		background-color: $black
-
-	&::-webkit-scrollbar-thumb
-		background: $main
 
 
 *

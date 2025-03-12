@@ -1,0 +1,19 @@
+---
+const { data, onclick } = Astro.props
+---
+
+<div class="tags">
+   <nav class="tags__inner">
+    {
+        data.map((tag) => (
+            <button
+                class="tag"
+                data-category={tag}
+                onclick={onclick}
+            >
+                {tag}
+            </button>
+        ))
+    }
+   </nav>
+</div>

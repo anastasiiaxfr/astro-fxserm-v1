@@ -1,11 +1,20 @@
 ---
 import Layout from '../layouts/Layout.astro'
 import Card from '../components/sections/_service-card.astro'
+import Tags from '../components/ui/Tag.astro'
+
 const allServices = Object.values(import.meta.glob('../md/services/*.md', { eager: true }))
 const bgImg = '/assets/img/bg/services.jpg'
 const bgFill = 'contain'
 
 const title = 'Услуги'
+
+// Collect all unique categories
+const allTags = Array.from(new Set(
+    allServices
+        .flatMap(service => service.frontmatter.category || []) 
+        .map(category => category.trim()) 
+));
 
 const servicesByCategory = allServices.reduce((acc, service) => {
     const { category } = service.frontmatter
@@ -21,17 +30,25 @@ const servicesByCategory = allServices.reduce((acc, service) => {
 
 <Layout bg={{ bgImg: bgImg, bgFill: bgFill }}>
     <section class="section hero">
-        <div class="container hero__content">
+        <div class="container text-center">
             <h1>{title}</h1>
+
+            <Tags data={['All', ...allTags]} onclick="filterCategory(event)"/>
+
+
         </div>
     </section>
+
     <section class="section page-container">
         <div class="container">
-            <div class="page-content-base">
-                <div class="">
-                    {
-                        Object.entries(servicesByCategory).map(([category, services]) => (
-                            <section class="service__block" key={category}>
+            <div class="">
+                <div class="service-sections">
+                    <div id="services-container">
+                        {Object.entries(servicesByCategory).map(([category, services]) => (
+                            <section 
+                                class="service__block" 
+                                key={category} 
+                                data-category={category}>
                                 <div>
                                     <h2 class="my-0">{category}</h2>
                                 </div>
@@ -43,10 +60,41 @@ const servicesByCategory = allServices.reduce((acc, service) => {
                                     </div>
                                 </div>
                             </section>
-                        ))
-                    }
+                        ))}
+                    </div>
                 </div>
             </div>
         </div>
     </section>
+
 </Layout>
+
+<script is:inline data-astro-rerun>
+    document.addEventListener('astro:page-load', () => {
+        function filterCategory(event) {
+            const selectedCategory = event.target.dataset.category;
+
+            const serviceSections = document.querySelectorAll('.service__block');
+
+            serviceSections.forEach(section => {
+                section.style.display = 'none'; 
+            });
+
+            if (selectedCategory === 'All') {
+                serviceSections.forEach(section => {
+                    section.style.display = 'grid';
+                });
+            } else {
+                const selectedSections = document.querySelectorAll(`[data-category="${selectedCategory}"]`);
+                selectedSections.forEach(section => {
+                    section.style.display = 'grid';
+                });
+            }
+        }
+
+        const categoryButtons = document.querySelectorAll('.tag');
+        categoryButtons.forEach(button => {
+            button.addEventListener('click', filterCategory);
+        });
+    });
+</script>
