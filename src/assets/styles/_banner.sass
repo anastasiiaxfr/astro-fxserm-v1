@@ -16,7 +16,6 @@
 	&__corner
 		+ps(absolute, (l, auto), (b, 0), (r, 0))
 		+sz(15em, 15em)
-		
 		// clip-path: url(#menu)
 		// will-change: transform
 		svg
@@ -26,7 +25,11 @@
 				fill: $light_1
 
 	&__clip
-		+sz(0, 0)
+		+ps(absolute, (l, auto), (b, 0), (r, 0))
+		+sz(100%, 100%)
+		clip-path: url(#menu)
+		will-change: transform
+		background: yellow
 	&__content
 		max-width: 650px
 	&__title

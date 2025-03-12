@@ -34,28 +34,24 @@ const { data } = Astro.props
     </div>
 </article>
 
-<script>
+<script is:inline data-astro-rerun>
     document.addEventListener('astro:page-load', () => {
         document.querySelectorAll('.service').forEach((service, index) => {
             const header = service.querySelector('.service__header')
             const body = service.querySelector('.service__body')
-
-            // Initially hide the header and show the body for the first item
             if (index === 0) {
-                header.style.display = 'none' // Hide the header of the first card
-                body.style.display = 'block' // Show the body of the first card
+                header.style.display = 'none'
+                body.style.display = 'block'
             } else {
-                header.style.display = 'block' // Make sure other headers are visible
-                body.style.display = 'none' // Make sure other bodies are hidden
+                header.style.display = 'block'
+                body.style.display = 'none' 
             }
 
-            // Toggle visibility on header click
             header.addEventListener('click', () => {
                 header.style.display = 'none'
                 body.style.display = 'block'
             })
 
-            // Toggle visibility on body click
             body.addEventListener('click', () => {
                 header.style.display = 'block'
                 body.style.display = 'none'
