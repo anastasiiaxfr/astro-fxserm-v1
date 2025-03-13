@@ -1,6 +1,6 @@
 ---
 import Layout from '../layouts/Layout.astro'
-import Card from '../components/sections/_service-card.astro'
+import Card from '../components/cards/_service-card.astro'
 import Tags from '../components/ui/Tag.astro'
 import Search from '../components/ui/Search.astro'
 
@@ -31,10 +31,6 @@ const servicesByCategory = allServices.reduce((acc, service) => {
     }
     return acc
 }, {})
-
-// Function to filter services by search term and category
-let searchTerm = ''
-let selectedCategory = 'All'
 ---
 
 <Layout bg={{ bgImg: bgImg, bgFill: bgFill }}>
@@ -117,36 +113,36 @@ let selectedCategory = 'All'
         const serviceSections = document.querySelectorAll('.service__block')
 
         searchInput.addEventListener('input', (event) => {
-        const searchTerm = event.target.value.toLowerCase()
+            const searchTerm = event.target.value.toLowerCase()
 
-        serviceSections.forEach((section) => {
-            const serviceCards = section.querySelectorAll('.service')
-            let hasVisibleCards = false
+            serviceSections.forEach((section) => {
+                const serviceCards = section.querySelectorAll('.service')
+                let hasVisibleCards = false
 
-            serviceCards.forEach((card) => {
-                const title =
-                    card.querySelector('h3')?.textContent.toLowerCase() || ''
+                serviceCards.forEach((card) => {
+                    const title =
+                        card.querySelector('h3')?.textContent.toLowerCase() ||
+                        ''
 
-                if (title.includes(searchTerm)) {
-                    card.style.display = 'block'
-                    hasVisibleCards = true
+                    if (title.includes(searchTerm)) {
+                        card.style.display = 'block'
+                        hasVisibleCards = true
+                    } else {
+                        card.style.display = 'none'
+                    }
+                })
+
+                if (hasVisibleCards) {
+                    section.style.display = 'grid'
                 } else {
-                    card.style.display = 'none'
+                    section.style.display = 'none'
                 }
             })
-
-            if (hasVisibleCards) {
-                section.style.display = 'grid'
-            } else {
-                section.style.display = 'none'
-            }
         })
-    })
-    
-    const categoryButtons = document.querySelectorAll('.tag')
+
+        const categoryButtons = document.querySelectorAll('.tag')
         categoryButtons.forEach((button) => {
-            
-            button.addEventListener('click', function(){
+            button.addEventListener('click', function () {
                 searchInput.value = ''
                 filterCategory
             })

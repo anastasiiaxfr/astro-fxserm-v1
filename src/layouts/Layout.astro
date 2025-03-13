@@ -2,8 +2,8 @@
 import '../assets/styles/main.sass'
 
 import SEO from '../components/SEO.astro'
-import Header from '../components/TheHeader.astro'
-import Footer from '../components/TheFooter.astro'
+import Header from './TheHeader/index.astro'
+import Footer from './TheFooter/index.astro'
 import SVG from '../components/_svg.astro'
 
 const { bg } = Astro.props
@@ -14,23 +14,23 @@ import { ClientRouter } from 'astro:transitions'
 import 'animate.css'
 
 const anim = {
-  old: {
-    name: 'fadeIn',
-    duration: '0.5s',
-    easing: 'ease-in',
-    direction: 'reverse',
-  },
-  new: {
-    name: 'fadeIn',
-    duration: '0.5s',
-    easing: 'ease-in-out',
-  },
-};
+    old: {
+        name: 'fadeIn',
+        duration: '0.5s',
+        easing: 'ease-in',
+        direction: 'reverse',
+    },
+    new: {
+        name: 'fadeIn',
+        duration: '0.5s',
+        easing: 'ease-in-out',
+    },
+}
 
 const customTransition = {
-  forwards: anim,
-  backwards: anim,
-};
+    forwards: anim,
+    backwards: anim,
+}
 ---
 
 <!doctype html>
@@ -45,7 +45,9 @@ const customTransition = {
     <body
         class="page__body"
         data-bs-theme="dark"
-        style={bgImg ? { backgroundImage: `url(${bgImg})`, backgroundSize: bgFill } : {}}
+        style={bgImg
+            ? { backgroundImage: `url(${bgImg})`, backgroundSize: bgFill }
+            : {}}
     >
         <div class="page__wrapper">
             <Header />
