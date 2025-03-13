@@ -1,0 +1,15 @@
+---
+import Card from '../../components/cards/_post-card.astro'
+
+const { count } = Astro.props
+const allPosts = Object.values(
+    import.meta.glob('../../md/blog/*.md', { eager: true })
+)
+const sortedPosts = allPosts.sort((a, b) => {
+    return new Date(b.frontmatter.pubdate) - new Date(a.frontmatter.pubdate)
+})
+---
+
+<div class="posts posts--top">
+    {sortedPosts.slice(0, count).map((i) => <Card data={i.frontmatter} />)}
+</div>

@@ -4,12 +4,17 @@ import Search from '../../components/ui/Search.astro'
 import Tag from '../../components/ui/Tag.astro'
 import Card from '../../components/cards/_post-card.astro'
 import Pagination from '../../components/ui/Pagination.astro'
+import TopPosts from './_top-posts.astro'
 
 export async function getStaticPaths({ paginate }) {
     const allPosts = Object.values(
         import.meta.glob('../../md/blog/*.md', { eager: true })
     )
-    return paginate(allPosts, { pageSize: 6 })
+    const sortedPosts = allPosts.sort((a, b) => {
+        return new Date(b.frontmatter.pubdate) - new Date(a.frontmatter.pubdate)
+    })
+
+    return paginate(sortedPosts, { pageSize: 6 })
 }
 
 const { page } = Astro.props
@@ -18,6 +23,8 @@ const bgImg = '/assets/img/bg/blog.jpg'
 const bgFill = 'contain'
 
 const title = 'Блог'
+
+const count = 2
 ---
 
 <Layout bg={{ bgImg: bgImg, bgFill: bgFill }}>
@@ -30,8 +37,9 @@ const title = 'Блог'
     <section class="section page-container">
         <div class="container">
             <div class="">
-                <section>
+                <section class="mb-5">
                     <h2>Последнее</h2>
+                    <TopPosts count={count} />
                 </section>
                 <section>
                     <h2>Все посты</h2>

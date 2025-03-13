@@ -3,10 +3,14 @@ import Layout from '../../layouts/Layout.astro'
 import Search from '../../components/ui/Search.astro'
 import Tag from '../../components/ui/Tag.astro'
 import Card from '../../components/cards/_post-card.astro'
+import TopPosts from './_top-posts.astro'
 
 const allPosts = Object.values(
     import.meta.glob('../../md/blog/*.md', { eager: true })
 )
+const sortedPosts = allPosts.sort((a, b) => {
+    return new Date(b.frontmatter.pubdate) - new Date(a.frontmatter.pubdate)
+})
 
 // Collect all unique categories
 const allTags = Array.from(
@@ -34,18 +38,30 @@ const title = 'Блог'
     <section class="section page-container">
         <div class="container">
             <div class="">
-                <section>
+                <section class="mb-5">
                     <h2>Последнее</h2>
+
+                    <TopPosts count={2} />
                 </section>
                 <section>
                     <h2>Все посты</h2>
 
                     <div class="posts">
                         {
-                            allPosts
-                                .slice(8, 14)
+                            sortedPosts
+                                .slice(0, 6)
                                 .map((i) => <Card data={i.frontmatter} />)
                         }
+                    </div>
+
+                    <div class="pagination">
+                        <span class="active">1</span>
+                        <a href={'/blog/2'}>2</a>
+                        <a href={'/blog/2'}>3</a>
+                        <a href={'/blog/2'}>Next</a>
+                        <a href={`/blog/${Math.ceil(allPosts.length / 6)}`}
+                            >Last</a
+                        >
                     </div>
                 </section>
             </div>

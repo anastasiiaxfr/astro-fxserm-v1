@@ -6,7 +6,7 @@ authors: ['XFR', 'John Galt']
 thumbnail: '/assets/img/blog/blog-7.jpg'
 poster: '/assets/img/blog/b0.jpg'
 excerpt: 'A brief excerpt of your article...'
-pubdate: '2025-03-12T10:00:00Z'
+pubdate: '2025-03-03T10:00:00Z'
 ---
 
 ## Вступление
