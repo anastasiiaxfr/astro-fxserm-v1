@@ -1,9 +1,3 @@
----
-import Logo from './Logo.astro'
-const email = 'mail@fx-serm.com'
-const copyright = '© 2023 FxSerm. All rights reserved.'
-const note = 'для Форекс брокеров, крипто бирж, необанков, блокчейн проектов'
-
 const soc = [
     {
         title: 'Facebook',
@@ -109,58 +103,5 @@ const nav = [
         ],
     },
 ]
----
 
-<footer class="footer">
-    <div class="footer__top">
-        <div class="container">
-            <div class="footer__col-1">
-                <Logo height={45} />
-                <p>
-                    {note}
-                </p>
-                <p class="my-0">
-                    <a class="text--note" href={`mailto:${email}`}>{email}</a>
-                </p>
-            </div>
-            <div>
-                <div class="footer__nav">
-                    {
-                        nav.map((i) => (
-                            <nav class="footer__nav-col">
-                                <h4 class="h6">{i.group}</h4>
-                                {i.links.map((j) => (
-                                    <a href={j.url}>{j.title}</a>
-                                ))}
-                            </nav>
-                        ))
-                    }
-                </div>
-            </div>
-            <div>
-                <h4 class="h5">Следи за нами</h4>
-
-                <ul class="footer__soc">
-                    {
-                        soc.map((i) => (
-                            <li>
-                                <a href={i.url} target="_blank" rel="noopener noreferrer">
-                                    {i.title}
-                                </a>
-                                <svg class="icon" width="24" height="24">
-                                    <use xlink:href="#arrow-up-right" />
-                                </svg>
-                            </li>
-                        ))
-                    }
-                </ul>
-            </div>
-        </div>
-    </div>
-    <hr />
-    <div class="footer__btm">
-        <div class="container">
-            {copyright}
-        </div>
-    </div>
-</footer>
+export { soc, nav }

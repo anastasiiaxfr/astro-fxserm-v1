@@ -1,9 +1,10 @@
 ---
-title: "Смени канал: пиар против рекламы криптопроектов"
+title: "PBN - private blog network. Преимущества и недостатки инструмента. "
+slug: 'post-1'
 read: 2 min
 category: 'Crypto'
 authors: ['XFR', 'John Galt']
-thumbnail: '/assets/img/blog/blog-1.jpg'
+thumbnail: '/assets/img/blog/blog-1.png'
 poster: '/assets/img/blog/b0.jpg'
 excerpt: 'A brief excerpt of your article...'
 pubdate: '2025-03-12T10:00:00Z'

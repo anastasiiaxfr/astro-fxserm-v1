@@ -1,12 +1,14 @@
 ---
-title: "Смени канал: пиар против рекламы криптопроектов"
+title: "Don’t Sell AI Agents, Sell AI Infrastructures Instead — The Billion-Dollar Opportunity"
+slug: 'post-4'
+
 read: 3 min
-category: 'Crypto2'
+category: 'Форекс'
 authors: ['XFR', 'John Galt']
-thumbnail: '/assets/img/blog/blog-1.jpg'
+thumbnail: '/assets/img/blog/blog-2.png'
 poster: '/assets/img/blog/b0.jpg'
 excerpt: 'A brief excerpt of your article...'
-pubdate: '2025-03-12T10:00:00Z'
+pubdate: '2025-02-18T10:00:00Z'
 ---
 
 ## Вступление

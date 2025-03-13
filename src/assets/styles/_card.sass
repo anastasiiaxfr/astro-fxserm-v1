@@ -2,14 +2,14 @@
 .cards
 	display: grid
 	gap: $gap3
-	grid-template-columns: repeat(auto-fit, minmax(350px, 1fr))
+	grid-template-columns: repeat(auto-fill, minmax(350px, 1fr))
 	margin-top: $gap6
 	.card
 		padding: $gap4
 		border-radius: $brs1
 		transition: $trs
 		[data-bs-theme="dark"] &
-			+theme(dark2)
+		+theme(dark2)
 		[data-bs-theme="light"] &
 			+theme(white)
 			border-color: transparent
@@ -26,4 +26,3 @@
 			opacity: $op
 	+maw($xs)
 		grid-template-columns: 1fr
-	

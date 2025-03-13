@@ -1,0 +1,53 @@
+---
+import { formatPubDate } from '../../assets/js/utils'
+import Corner from './Thumbnail.astro'
+
+const thumbnailType = ['default', 'banner']
+
+const { data, type = thumbnailType[0] } = Astro.props
+const { thumbnail, title, pubdate, read, category, slug } = data
+---
+
+<article class="post">
+    <a
+        href={`/blog/${slug}`}
+        class={`${type === 'banner' ? 'post__banner' : 'post__img'}`}
+    >
+        <button class="post__cta">
+            <svg class="icon" width="48" height="48">
+                <use xlink:href="#arr-t-r"></use>
+            </svg>
+        </button>
+        <Corner type={type} img={thumbnail} />
+    </a>
+    <div class="post__body">
+        <div class="post__meta">
+            <div class="post__info">
+                <div>
+                    <svg class="icon" width="24" height="24">
+                        <use xlink:href="#date"></use>
+                    </svg>
+                    <span>
+                        {formatPubDate(pubdate)}
+                    </span>
+                </div>
+                <div>
+                    <svg class="icon" width="24" height="24">
+                        <use xlink:href="#time"></use>
+                    </svg>
+                    <span>
+                        {read || '5 min'}
+                    </span>
+                </div>
+            </div>
+            <button class="chip">
+                {category}
+            </button>
+        </div>
+        <a class="post__content" href={`/blog/${slug}`}>
+            <h3 class="post__title">
+                {title}
+            </h3>
+        </a>
+    </div>
+</article>

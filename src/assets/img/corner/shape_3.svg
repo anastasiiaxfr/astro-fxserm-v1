@@ -1,0 +1,9 @@
+<svg viewBox="0 0 840 500" fill="none">
+<path d="M0 40C0 17.9086 17.9086 0 40 0H800C822.091 0 840 17.9086 840 40V339.833C840 361.794 822.295 379.648 800.335 379.832L760.156 380.168C738.182 380.352 720.471 398.227 720.49 420.202L720.525 459.965C720.545 482.07 702.63 500 680.525 500H615.166H420H40C17.9086 500 0 482.091 0 460V40Z" fill="url(#pattern0_984_2744)"/>
+<defs>
+<pattern id="pattern0_984_2744" patternContentUnits="objectBoundingBox" width="1" height="1">
+<use xlink:href="#image0_984_2744" transform="matrix(0.000244141 0 0 0.000410156 0 -0.0600684)"/>
+</pattern>
+
+</defs>
+</svg>

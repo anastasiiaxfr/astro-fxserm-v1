@@ -1,0 +1,34 @@
+---
+import Layout from '../../layouts/Layout.astro'
+import { sortedPosts } from './constant.js'
+import { render } from 'astro:content'
+
+export async function getStaticPaths() {
+    return sortedPosts.map((post) => ({
+        params: { slug: post.frontmatter.slug },
+        props: { post },
+    }))
+}
+
+const { post } = Astro.props
+const { Content, frontmatter } = post
+
+const bgImg = '/assets/img/bg/blog.jpg'
+const bgFill = 'contain'
+---
+
+<Layout bg={{ bgImg: bgImg, bgFill: bgFill }}>
+    <section class="section hero">
+        <div class="container">
+            <button class="chip">{frontmatter.category}</button>
+            <h1 class="mt-2">{frontmatter.title}</h1>
+        </div>
+    </section>
+    <article class="section page-container">
+        <div class="container">
+            <div class="page-content col-lg-10 mx-auto">
+                <Content />
+            </div>
+        </div>
+    </article>
+</Layout>

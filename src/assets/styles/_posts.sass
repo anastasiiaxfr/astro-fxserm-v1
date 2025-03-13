@@ -1,0 +1,53 @@
+.posts
+    display: grid
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr))
+    gap: $gap4 $gap4
+    &--top
+        grid-template-columns: repeat(auto-fill, minmax(450px, 1fr))
+    +maw($lg)
+        grid-template-columns: repeat(3, 1fr)
+        &--top
+            grid-template-columns: repeat(2, 1fr)
+    +maw($md)
+        &, &--top
+            grid-template-columns: repeat(2, 1fr)
+    +maw(640)
+        grid-template-columns: 1fr
+
+.post
+    transition: $trs
+    cursor: pointer
+    &:hover
+        .post__title
+            text-decoration: underline
+            color: $main
+    &__title
+        @extend .h4, .my-0
+    &__meta
+        +flex(flex, center, space-between, nowrap)
+        gap: $gap2
+        margin: $gap2 0 $gap2
+    &__info
+        +flex(flex, center, space-between, wrap)
+        gap: $gap1 $gap2
+        opacity: $op
+        & > div
+            +flex(flex, center, start, nowrap)
+            gap: $gap1
+    &__cta
+        @extend %circle-btn
+        +sz(18%, 18%)
+    &__banner
+        position: relative
+        display: block
+        .post__cta
+            +sz(5vmax, 5vmax)
+    &__img
+        position: relative
+        display: block
+        & > svg
+            +sz(100%, auto)
+    +maw($lsm)
+        &__banner
+            .post__cta
+                +sz(10vmin, 10vmin)

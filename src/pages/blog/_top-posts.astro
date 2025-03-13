@@ -1,0 +1,13 @@
+---
+import Card from '../../components/cards/_post-card.astro'
+
+const { count, data } = Astro.props
+---
+
+<div class="posts posts--top">
+    {
+        data
+            .slice(0, count)
+            .map((i) => <Card data={i.frontmatter} type="banner" />)
+    }
+</div>

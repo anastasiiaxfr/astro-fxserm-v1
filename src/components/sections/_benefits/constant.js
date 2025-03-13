@@ -1,6 +1,3 @@
----
-const title = 'Наши преимущества в направлении SERM'
-
 const features = [
     {
         title: 'Узкая специализация',
@@ -33,26 +30,5 @@ const features = [
         desc: 'Каждый проект для нас – это новая история, под которую мы разрабатываем индивидуальную стратегию управления репутацией.',
     },
 ]
----
 
-<section class="section section_benefits">
-    <div class="container">
-        <h2 class="text-center">{title}</h2>
-
-        <div class="cards">
-            {
-                features.map((feature) => (
-                    <article class="card">
-                        <div class="card__icon">
-                            <svg class="icon" width="50" height="50">
-                                <use xlink:href={`#${feature.icon}`} />
-                            </svg>
-                        </div>
-                        <div class="card__title">{feature.title}</div>
-                        <div class="card__desc">{feature.desc}</div>
-                    </article>
-                ))
-            }
-        </div>
-    </div>
-</section>
+export { features }

@@ -1,0 +1,52 @@
+---
+import Layout from '../../layouts/Layout.astro'
+import Search from '../../components/ui/Search.astro'
+import Tag from '../../components/ui/Tag.astro'
+import Card from '../../components/cards/_post-card.astro'
+import Pagination from '../../components/ui/Pagination.astro'
+import TopPosts from './_top-posts.astro'
+import { countTopPost, allTags, sortedPosts } from './constant.js'
+
+export async function getStaticPaths({ paginate }) {
+    const otherPosts = sortedPosts.slice(countTopPost)
+
+    return paginate(otherPosts, { pageSize: 6 })
+}
+const { page } = Astro.props
+
+const bgImg = '/assets/img/bg/blog.jpg'
+const bgFill = 'contain'
+
+const title = 'Блог'
+---
+
+<Layout bg={{ bgImg: bgImg, bgFill: bgFill }}>
+    <section class="section hero">
+        <div class="container text-center">
+            <h1>{title}</h1>
+            <Search />
+            <Tag data={['All', ...allTags]} />
+        </div>
+    </section>
+    <section class="section page-container">
+        <div class="container">
+            <div class="">
+                <section class="mb-5">
+                    <h2>Последнее</h2>
+                    <TopPosts count={countTopPost} data={sortedPosts} />
+                </section>
+                <section>
+                    <h2>Все посты</h2>
+                    <div class="cards">
+                        {
+                            page.data.map((item) => (
+                                <Card data={item.frontmatter} url={item.url} />
+                            ))
+                        }
+                    </div>
+                    <Pagination page={page} />
+                </section>
+            </div>
+        </div>
+    </section>
+</Layout>
