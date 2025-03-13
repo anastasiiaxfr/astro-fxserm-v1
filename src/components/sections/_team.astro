@@ -1,9 +1,11 @@
 ---
 const title = 'Наша команда'
-import Card from './_team-card.astro'
+import Card from '../cards/_team-card.astro'
 import Slider from '../ui/Swiper.astro'
 
-const teamMembers = Object.values(import.meta.glob('../../md/team/*.md', { eager: true }))
+const teamMembers = Object.values(
+    import.meta.glob('../../md/team/*.md', { eager: true })
+)
 ---
 
 <section class="section section_team">

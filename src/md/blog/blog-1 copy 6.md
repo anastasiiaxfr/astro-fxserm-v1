@@ -1,12 +1,12 @@
 ---
-title: "Смени канал: пиар против рекламы криптопроектов"
+title: "Смени канал: пиар против рекламы криптопроектов 11"
 read: 2 min
 category: 'Crypto3'
 authors: ['XFR', 'John Galt']
-thumbnail: '/assets/img/blog/blog-1.jpg'
+thumbnail: '/assets/img/blog/blog-6.png'
 poster: '/assets/img/blog/b0.jpg'
 excerpt: 'A brief excerpt of your article...'
-pubdate: '2025-03-12T10:00:00Z'
+pubdate: '2025-03-02T10:00:00Z'
 ---
 
 ## Вступление

@@ -1,52 +1,29 @@
 ---
-import Logo from './Logo.astro'
-import ThemeSwitcher from './ui/ThemeSwitcher.astro'
-
-const nav = [
-    {
-        title: 'Услуги',
-        url: '/services',
-        // child: [
-        //     { title: 'services-1', url: '#', hasChild: false },
-        //     { title: 'services-2', url: '#', hasChild: false },
-        //     { title: 'services-3', url: '#', hasChild: false },
-        //     { title: 'services-4', url: '#', hasChild: false },
-        //     { title: 'services-5', url: '#', hasChild: false },
-        // ],
-    },
-    { title: 'Кейсы', url: '#' },
-    { title: 'О нас', url: '/about' },
-    { title: 'Наша команда', url: '#' },
-    { title: 'Карьера', url: '#' },
-    { title: 'Контакты', url: '/contacts' },
-    { title: 'Блог', url: '/blog' },
-]
+import Logo from '../../components/Logo.astro'
+import ThemeSwitcher from '../../components/ui/ThemeSwitcher.astro'
+import { nav } from './constant'
 
 const anim = {
-  old: {
-    name: 'fadeIn',
-    duration: '0.5s',
-    easing: 'ease-in',
-    direction: 'reverse',
-  },
-  new: {
-    name: 'fadeIn',
-    duration: '0.5s',
-    easing: 'ease-in-out',
-  },
-};
-
-
+    old: {
+        name: 'fadeIn',
+        duration: '0.5s',
+        easing: 'ease-in',
+        direction: 'reverse',
+    },
+    new: {
+        name: 'fadeIn',
+        duration: '0.5s',
+        easing: 'ease-in-out',
+    },
+}
 
 const customTransition = {
-  forwards: anim,
-  backwards: anim,
-};
-
-
+    forwards: anim,
+    backwards: anim,
+}
 ---
 
-<header class="header sticky-top t-0" transition:animate={ customTransition}>
+<header class="header sticky-top t-0" transition:animate={customTransition}>
     <div class="container">
         <Logo />
 
@@ -71,7 +48,10 @@ const customTransition = {
                             <ul class="dropdown-menu">
                                 {item.child.map((child) => (
                                     <li>
-                                        <a class="dropdown-item" href={child.url}>
+                                        <a
+                                            class="dropdown-item"
+                                            href={child.url}
+                                        >
                                             {child.title}
                                         </a>
                                     </li>
@@ -133,7 +113,10 @@ const customTransition = {
                                     </svg>
                                 </button>
                             </div>
-                            <div id={`collapse-${ind}`} class="accordion-collapse collapse">
+                            <div
+                                id={`collapse-${ind}`}
+                                class="accordion-collapse collapse"
+                            >
                                 <div class="accordion-body">
                                     <nav>
                                         {item.child.map((i) => (
@@ -156,32 +139,35 @@ const customTransition = {
 
 <script is:client>
     document.addEventListener('astro:page-load', () => {
-        console.log("Page loaded, initializing drawer toggle...");
+        console.log('Page loaded, initializing drawer toggle...')
 
-        const drawerToggleBtns = document.querySelectorAll('.drawer__toggle');
-        const drawer = document.querySelector('.drawer');
-        const drawerMenu = document.querySelector('.drawer__menu');
+        const drawerToggleBtns = document.querySelectorAll('.drawer__toggle')
+        const drawer = document.querySelector('.drawer')
+        const drawerMenu = document.querySelector('.drawer__menu')
 
         drawerToggleBtns.forEach((button) => {
             button.addEventListener('click', () => {
-                drawer.classList.toggle('show');
-                console.log("Drawer toggled!");
-            });
-        });
+                drawer.classList.toggle('show')
+                console.log('Drawer toggled!')
+            })
+        })
 
-        const drawerLinks = drawerMenu.querySelectorAll('a');
+        const drawerLinks = drawerMenu.querySelectorAll('a')
         drawerLinks.forEach((link) => {
             link.addEventListener('click', () => {
-                drawer.classList.remove('show');
-                console.log("Link clicked, drawer closed.");
-            });
-        });
+                drawer.classList.remove('show')
+                console.log('Link clicked, drawer closed.')
+            })
+        })
 
         document.addEventListener('click', (e) => {
-            if (!drawer.contains(e.target) && !e.target.closest('.drawer__toggle')) {
-                drawer.classList.remove('show');
-                console.log("Clicked outside, closing drawer.");
+            if (
+                !drawer.contains(e.target) &&
+                !e.target.closest('.drawer__toggle')
+            ) {
+                drawer.classList.remove('show')
+                console.log('Clicked outside, closing drawer.')
             }
-        });
-    });
+        })
+    })
 </script>

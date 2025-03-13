@@ -17,7 +17,7 @@
 		background: $grad2
 		border-color: transparent
 		color: $white
-	
+
 	&s
 		+flex(flex, center, start, nowrap)
 		gap: $gap2
@@ -34,7 +34,7 @@
 		@extend .btn
 		background: $dark
 		color: $white
-		
+
 %circle-btn
 	+ps(absolute, (b, 0), (r, 0))
 	+flex(flex, center, center, nowrap)
@@ -69,14 +69,14 @@
 		border-width: 0 2px 0 0
 		&:last-child
 			border: none
-		
+
 	&__title
 		padding: 1em
 		@extend .h4, .my-0
 	&__body
 		border-radius: $brs
 		border: 2px solid rgba($white, 0.2)
-		
+
 	&__row
 		display: grid
 		gap: $gap1
@@ -85,7 +85,7 @@
 			border-width: 2px 0
 			display: grid
 			grid-template-columns: repeat(3, 1fr)
-			
+
 	+maw($sm)
 		&__row--inline
 			grid-template-columns: 1fr
@@ -116,7 +116,7 @@
 			min-width: 24px
 			border-radius: 4px
 			border: 2px solid rgba($white, 0.2)
-			
+
 	&:checked
 		& + label
 			&::after
@@ -132,8 +132,7 @@
 
 .tags
 	position: relative
-	
-	
+
 	&__inner
 		+flex(flex, center, center, wrap)
 		gap: $gap2
@@ -152,7 +151,7 @@
 		border: 1px solid transparent
 		border-radius: 16pc
 		user-select: none
-		
+
 		+theme(dark2)
 		opacity: $op
 		transition: $trs
@@ -190,3 +189,38 @@
 		border-radius: $brs1
 		svg
 			min-width: 24px
+
+.chip
+	+flex(flex, center, center, nowrap)
+	gap: $gap1
+	padding: $gap1 $gap2
+	border: none
+	border-radius: 16pc
+	background: $grad
+	color: $white
+	+ft(13, 13, 500)
+	transition: $trs
+	&:hover, &:active, &:focus
+		background: $grad2
+
+.pagination
+	+flex(flex, center, start, wrap)
+	gap: $gap1
+	margin-top: $gap4
+	& > *
+		+flex(flex, center, center, nowrap)
+		+sz(auto, 40px)
+		min-width: 40px
+		padding: 1em
+		border: $bd
+		border-radius: 8px
+		transition: background 0.3s ease-in-out
+		&.active
+			background: $grad
+			color: $white
+		&:hover
+			background: $grad
+			color: $white
+		&.disabled
+			display: none
+			opacity: 0
