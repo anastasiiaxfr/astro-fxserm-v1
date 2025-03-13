@@ -202,3 +202,16 @@
 	transition: $trs
 	&:hover, &:active, &:focus
 		background: $grad2
+
+.pagination
+	+flex(flex, center, start, wrap)
+	gap: $gap1
+	margin-top: $gap4
+	a
+		+flex(flex, center, center, nowrap)
+		+sz(auto, 40px)
+		min-width: 40px
+		padding: 1em
+		border: $bd
+		&.active
+			background: $grad

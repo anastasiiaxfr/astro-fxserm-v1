@@ -1,11 +1,11 @@
 ---
-import Layout from '../layouts/Layout.astro'
-import Search from '../components/ui/Search.astro'
-import Tag from '../components/ui/Tag.astro'
-import Card from '../components/cards/_post-card.astro'
+import Layout from '../../layouts/Layout.astro'
+import Search from '../../components/ui/Search.astro'
+import Tag from '../../components/ui/Tag.astro'
+import Card from '../../components/cards/_post-card.astro'
 
 const allPosts = Object.values(
-    import.meta.glob('../md/blog/*.md', { eager: true })
+    import.meta.glob('../../md/blog/*.md', { eager: true })
 )
 
 // Collect all unique categories
@@ -43,7 +43,7 @@ const title = 'Блог'
                     <div class="posts">
                         {
                             allPosts
-                                .slice(8)
+                                .slice(8, 14)
                                 .map((i) => <Card data={i.frontmatter} />)
                         }
                     </div>
