@@ -56,7 +56,6 @@
 .form
 	textarea, input:not([type=checkbox]), input:not([type=radio])
 		width: 100%
-		
 		padding: 0.75em 1em
 		background: none
 		appearance: none
@@ -76,8 +75,12 @@
 		padding: 1em
 		border: 1px solid rgba($white, 0.2)
 		border-width: 0 2px 0 0
+		[data-bs-theme="light"] &
+			border-color: darken($light, 5%)
 		&:last-child
 			border: none
+		svg
+			opacity: $op
 
 	&__title
 		padding: 1em
@@ -87,7 +90,8 @@
 	&__body
 		border-radius: $brs
 		border: 2px solid rgba($white, 0.2)
-
+		[data-bs-theme="light"] &
+			border-color: darken($light, 5%)
 	&__row
 		display: grid
 		gap: $gap1
@@ -95,6 +99,8 @@
 			+flex(flex, center, start, wrap)
 			border: 2px solid rgba($white, 0.2)
 			border-width: 2px 0
+			[data-bs-theme="light"] &
+				border-color: darken($light, 5%)
 	&__note
 		margin: $gap3 0
 
@@ -106,6 +112,8 @@
 				border: 2px solid rgba($white, 0.2)
 				border-width: 2px 0
 				width: 100%
+				[data-bs-theme="light"] &
+					border-color: darken($light, 5%)
 				&:first-child
 					border-top: 0
 	+maw($xs)
@@ -258,6 +266,11 @@
 			+sz(50px, 50px)
 			min-width: 50px
 			+theme(dark2)
+			color: rgba($white, $op)
 			border-radius: 50%
+			[data-bs-theme="light"] &
+				+theme(light)
+				color: darken($light, 10%)
 			&:hover, &:active, &:focus
 				background: $grad
+				color: $white
