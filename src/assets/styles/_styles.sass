@@ -4,7 +4,6 @@ body
 	background-position: top right
 	font-family: $ffText, $ffBack
 
-
 a
 	font-family: inherit
 	&:hover, &:focus, &:active, &:focus-visible
@@ -16,14 +15,13 @@ a
 	margin: var(--gapSection) 0
 	&_benefits
 		[data-bs-theme="dark"] &
-			+theme(dark)
+		+theme(dark)
 		[data-bs-theme="light"] &
 			+theme(light)
-		padding: var(--gapSection) 0
+			padding: var(--gapSection) 0
 	&_address
 		padding: var(--gapSection) 0
 		+theme(dark)
-		
 
 .page
 	&-container
@@ -39,7 +37,18 @@ a
 		h2
 			margin-top: 0
 		p, li
-			opacity: $op
+			color: rgba($white, $op)
+			[data-bs-theme="light"] &
+				color: rgba($black, $op)
+		p > img, & > img
+			width: 100%
+			border-radius: $brs1
+		strong
+			color: $white
+			[data-bs-theme="light"] &
+				color: $black
+		a
+			color: $main
 		&-base
 			@extend .page-content
 			grid-template-columns: 1fr
@@ -49,7 +58,7 @@ a
 					max-width: 800px
 					margin-left: auto
 					margin-right: auto
-			
+
 	+maw($md)
 		&-content
 			grid-template-columns: 1fr
@@ -60,11 +69,8 @@ a
 	+theme(dark2)
 	border-radius: $brs2
 	[data-bs-theme="light"] &
-		+theme(dark) 
+		+theme(dark)
 
-
-
-	
 .service
 	+theme(dark2)
 	border-radius: $brs2
@@ -99,7 +105,7 @@ a
 		svg
 			fill: $dark_1
 			[data-bs-theme="light"] &
-				fill: $light_1
+			fill: $light_1
 	&__title
 		@extend .h4, .mt-0
 		user-select: none
@@ -119,4 +125,3 @@ a
 			+sz(6em, 6em)
 		&__cta
 			+sz(3.5em, 3.5em)
-
