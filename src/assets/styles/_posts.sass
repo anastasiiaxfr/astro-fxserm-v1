@@ -2,6 +2,9 @@
     display: grid
     grid-template-columns: repeat(auto-fill, minmax(350px, 1fr))
     gap: $gap4 $gap4
+    &-wrap
+        display: grid
+        gap: $gap4
     &--top
         grid-template-columns: repeat(auto-fill, minmax(450px, 1fr))
     +maw($lg)
@@ -22,11 +25,14 @@
             text-decoration: underline
             color: $main
     &__title
-        @extend .h4, .my-0
+        @extend .h4
+        margin-top: 0
+        margin-bottom: 0
     &__meta
         +flex(flex, center, space-between, nowrap)
         gap: $gap2
         margin: $gap2 0 $gap2
+        +ft(14, 14*1.2, 400)
     &__info
         +flex(flex, center, space-between, wrap)
         gap: $gap1 $gap2
@@ -39,10 +45,12 @@
         +sz(18%, 18%)
     &__banner
         position: relative
+        display: block
         .post__cta
             +sz(5vmax, 5vmax)
     &__img
         position: relative
+        display: block
         & > svg
             +sz(100%, auto)
     +maw($lsm)

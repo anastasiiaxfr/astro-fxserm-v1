@@ -11,9 +11,13 @@
 		margin: $gap4 0 0
 		display: grid
 		grid-template-columns: 1fr 2fr
-		gap: $gap4
+		gap: $gap3 $gap4
+		h2
+			margin-bottom: 0
 	&__header
-		@extend .h4, .my-0
+		@extend .h4
+		margin-top: 0
+		margin-bottom: 0
 		padding: $gap3 $gap4
 		user-select: none
 		cursor: pointer
@@ -34,10 +38,13 @@
 			[data-bs-theme="light"] &
 				fill: $light_1
 	&__title
-		@extend .h4, .mt-0
+		@extend .h4
+		margin-top: 0
+		margin-bottom: $gap1
 		user-select: none
 	&__desc
 		opacity: $op
+		+ft(16, 16*1.4, 400)
 	&__icon
 		+flex(flex, center, center, nowrap)
 		+sz(80px, 80px)
@@ -52,3 +59,5 @@
 			+sz(6em, 6em)
 		&__cta
 			+sz(3.5em, 3.5em)
+		&__desc
+			+ft(15, 15*1.4, 400)

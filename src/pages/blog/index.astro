@@ -1,30 +1,17 @@
 ---
-import Layout from '../../layouts/Layout.astro'
-import Search from '../../components/ui/Search.astro'
-import Tag from '../../components/ui/Tag.astro'
-import Card from '../../components/cards/_post-card.astro'
-import TopPosts from './_top-posts.astro'
+import Layout from '../../layouts/Layout.astro';
+import Search from '../../components/ui/Search.astro';
+import Tag from '../../components/ui/Tag.astro';
+import Card from '../../components/cards/_post-card.astro';
+import TopPosts from './_top-posts.astro';
+import { countTopPost, allTags, sortedPosts } from './constant.js';
 
-const allPosts = Object.values(
-    import.meta.glob('../../md/blog/*.md', { eager: true })
-)
-const sortedPosts = allPosts.sort((a, b) => {
-    return new Date(b.frontmatter.pubdate) - new Date(a.frontmatter.pubdate)
-})
+const otherPosts = sortedPosts.slice(countTopPost);
 
-// Collect all unique categories
-const allTags = Array.from(
-    new Set(
-        allPosts
-            .flatMap((service) => service.frontmatter.category || [])
-            .map((category) => category.trim())
-    )
-)
+const bgImg = '/assets/img/bg/blog.jpg';
+const bgFill = 'contain';
 
-const bgImg = '/assets/img/bg/blog.jpg'
-const bgFill = 'contain'
-
-const title = 'Блог'
+const title = 'Блог';
 ---
 
 <Layout bg={{ bgImg: bgImg, bgFill: bgFill }}>
@@ -32,37 +19,49 @@ const title = 'Блог'
         <div class="container text-center">
             <h1>{title}</h1>
             <Search />
-            <Tag data={allTags} />
+            <Tag data={['All', ...allTags]} />
         </div>
     </section>
     <section class="section page-container">
         <div class="container">
-            <div class="">
-                <section class="mb-5">
+            <div class="posts-wrap">
+                <section class="">
                     <h2>Последнее</h2>
 
-                    <TopPosts count={2} />
+                    <TopPosts count={countTopPost} data={sortedPosts} />
                 </section>
-                <section>
+                <section class="">
                     <h2>Все посты</h2>
 
                     <div class="posts">
                         {
-                            sortedPosts
+                            otherPosts
                                 .slice(0, 6)
                                 .map((i) => <Card data={i.frontmatter} />)
                         }
                     </div>
 
-                    <div class="pagination">
-                        <span class="active">1</span>
-                        <a href={'/blog/2'}>2</a>
-                        <a href={'/blog/2'}>3</a>
-                        <a href={'/blog/2'}>Next</a>
-                        <a href={`/blog/${Math.ceil(allPosts.length / 6)}`}
-                            >Last</a
-                        >
-                    </div>
+                    {
+                        Math.ceil(otherPosts.length / 6) >= 2 && (
+                            <div class="pagination">
+                                <span class="active">1</span>
+
+                                <a href={'/blog/2'}>2</a>
+
+                                {Math.ceil(otherPosts.length / 6) >= 3 && (
+                                    <a href="/blog/3">3</a>
+                                )}
+
+                                <a href="/blog/2">Next</a>
+
+                                <a
+                                    href={`/blog/${Math.ceil(otherPosts.length / 6)}`}
+                                >
+                                    Last
+                                </a>
+                            </div>
+                        )
+                    }
                 </section>
             </div>
         </div>

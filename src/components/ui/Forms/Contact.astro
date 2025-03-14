@@ -1,5 +1,5 @@
 ---
-const title = 'Заполни форму'
+const title = 'Заполни форму';
 ---
 
 <form action="/" class="form" novalidate>
@@ -29,15 +29,21 @@ const title = 'Заполни форму'
             <textarea name="" rows="3" id="" placeholder="Сообщение"></textarea>
         </div>
     </div>
-    <div class="form__row my-4">
-        <input type="checkbox" checked id="policy"> <label for="policy">
-            <span>Я согласен на обработку персональных данных и хочу подписаться на информацию о наших последних новостях, исследованиях и событиях.</span>
+    <div class="form__row form__note">
+        <input type="checkbox" checked id="policy" />
+        <label for="policy">
+            <span
+                >Я согласен на обработку персональных данных и хочу подписаться
+                на информацию о наших последних новостях, исследованиях и
+                событиях.</span
+            >
         </label>
-
     </div>
     <div>
-        <button class="btn"> Отправить  <svg class="icon" width="24" height="24">
-            <use xlink:href="#arr-t-r" />
-        </svg></button>
+        <button class="btn">
+            Отправить <svg class="icon" width="24" height="24">
+                <use xlink:href="#arr-t-r"></use>
+            </svg></button
+        >
     </div>
 </form>

@@ -1,26 +1,26 @@
 ---
-import Logo from '../../components/Logo.astro'
-import ThemeSwitcher from '../../components/ui/ThemeSwitcher.astro'
-import { nav } from './constant'
+import Logo from '../../components/Logo.astro';
+import ThemeSwitcher from '../../components/ui/ThemeSwitcher.astro';
+import { nav } from './constant';
 
 const anim = {
     old: {
         name: 'fadeIn',
         duration: '0.5s',
         easing: 'ease-in',
-        direction: 'reverse',
+        direction: 'reverse'
     },
     new: {
         name: 'fadeIn',
         duration: '0.5s',
-        easing: 'ease-in-out',
-    },
-}
+        easing: 'ease-in-out'
+    }
+};
 
 const customTransition = {
     forwards: anim,
-    backwards: anim,
-}
+    backwards: anim
+};
 ---
 
 <header class="header sticky-top t-0" transition:animate={customTransition}>
@@ -69,7 +69,7 @@ const customTransition = {
 
         <div class="btns">
             <a href="#" class="btn-secondary">Напишите нам</a>
-            <a href="#" class="btn p-2">
+            <a href="#" class="btn btn-sqwire">
                 <svg class="icon" width="24" height="24">
                     <use xlink:href="#tm"></use>
                 </svg>
@@ -139,35 +139,30 @@ const customTransition = {
 
 <script is:client>
     document.addEventListener('astro:page-load', () => {
-        console.log('Page loaded, initializing drawer toggle...')
-
-        const drawerToggleBtns = document.querySelectorAll('.drawer__toggle')
-        const drawer = document.querySelector('.drawer')
-        const drawerMenu = document.querySelector('.drawer__menu')
+        const drawerToggleBtns = document.querySelectorAll('.drawer__toggle');
+        const drawer = document.querySelector('.drawer');
+        const drawerMenu = document.querySelector('.drawer__menu');
 
         drawerToggleBtns.forEach((button) => {
             button.addEventListener('click', () => {
-                drawer.classList.toggle('show')
-                console.log('Drawer toggled!')
-            })
-        })
+                drawer.classList.toggle('show');
+            });
+        });
 
-        const drawerLinks = drawerMenu.querySelectorAll('a')
+        const drawerLinks = drawerMenu.querySelectorAll('a');
         drawerLinks.forEach((link) => {
             link.addEventListener('click', () => {
-                drawer.classList.remove('show')
-                console.log('Link clicked, drawer closed.')
-            })
-        })
+                drawer.classList.remove('show');
+            });
+        });
 
         document.addEventListener('click', (e) => {
             if (
                 !drawer.contains(e.target) &&
                 !e.target.closest('.drawer__toggle')
             ) {
-                drawer.classList.remove('show')
-                console.log('Clicked outside, closing drawer.')
+                drawer.classList.remove('show');
             }
-        })
-    })
+        });
+    });
 </script>

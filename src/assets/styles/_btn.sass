@@ -21,6 +21,10 @@
 	&s
 		+flex(flex, center, start, nowrap)
 		gap: $gap2
+	&-sqwire
+		@extend .btn
+		max-width: 50px
+		padding: 4px
 	&-bd
 		@extend .btn
 		background: none
@@ -58,33 +62,47 @@
 		outline: none
 		border: none
 		resize: none
+		color: inherit
+		font-family: $ffText
 	button
-		max-width: 300px
+		max-width: 400px
 		width: 100%
+		margin-top: $gap3
 	label
+		flex: 1 0 auto
 		+flex(flex, center, center, nowrap)
 		gap: $gap1
 		padding: 1em
 		border: 1px solid rgba($white, 0.2)
 		border-width: 0 2px 0 0
+		[data-bs-theme="light"] &
+			border-color: darken($light, 5%)
 		&:last-child
 			border: none
+		svg
+			opacity: $op
 
 	&__title
 		padding: 1em
-		@extend .h4, .my-0
+		@extend .h4
+		margin-top: 0
+		margin-bottom: 0
 	&__body
 		border-radius: $brs
 		border: 2px solid rgba($white, 0.2)
-
+		[data-bs-theme="light"] &
+			border-color: darken($light, 5%)
 	&__row
 		display: grid
 		gap: $gap1
 		&--inline
+			+flex(flex, center, start, wrap)
 			border: 2px solid rgba($white, 0.2)
 			border-width: 2px 0
-			display: grid
-			grid-template-columns: repeat(3, 1fr)
+			[data-bs-theme="light"] &
+				border-color: darken($light, 5%)
+	&__note
+		margin: $gap3 0
 
 	+maw($sm)
 		&__row--inline
@@ -93,8 +111,11 @@
 			label
 				border: 2px solid rgba($white, 0.2)
 				border-width: 2px 0
+				width: 100%
+				[data-bs-theme="light"] &
+					border-color: darken($light, 5%)
 				&:first-child
-					border: 0
+					border-top: 0
 	+maw($xs)
 		label
 			font-size: 0.9em
@@ -107,6 +128,7 @@
 		gap: $gap2
 		padding: 0
 		user-select: none
+		line-height: 1.3
 		span
 			opacity: $op
 		&::before
@@ -127,12 +149,13 @@
 				position: absolute
 				inset: 0
 				margin: auto
-				margin-left: 7px
-				transform: scale(1.3)
+				margin-left: 9px
+				transform: scale(1.4)
 
 .tags
 	position: relative
-
+	overflow: hidden
+	width: 100%
 	&__inner
 		+flex(flex, center, center, wrap)
 		gap: $gap2
@@ -151,10 +174,12 @@
 		border: 1px solid transparent
 		border-radius: 16pc
 		user-select: none
-
+		+ft(13, 13, 500)
+		letter-spacing: 0.04em
 		+theme(dark2)
 		opacity: $op
 		transition: $trs
+		cursor: pointer
 		&:hover, &:active, &:focus
 			opacity: 1
 			border-color: $main
@@ -175,12 +200,14 @@
 .search
 	display: block
 	max-width: 750px
-	margin: $gap3 auto
+	width: 100%
+	margin: $gap2 auto
 	input
 		border: none
 		background: none
 		color: inherit
 		flex: 1
+		+ft(15, 15, 400)
 	&__field
 		+flex(flex, center, start, nowrap)
 		gap: $gap1
@@ -191,7 +218,7 @@
 			min-width: 24px
 
 .chip
-	+flex(flex, center, center, nowrap)
+	+flex(inline-flex, center, center, nowrap)
 	gap: $gap1
 	padding: $gap1 $gap2
 	border: none
@@ -224,3 +251,29 @@
 		&.disabled
 			display: none
 			opacity: 0
+
+.shared
+	+flex(flex, center, start, wrap)
+	gap: $gap2
+	span
+		opacity: $op
+	.share
+		+flex(flex, center, center, wrap)
+		gap: $gap1
+		a
+			+flex(flex, center, center, nowrap)
+			gap: $gap1
+			+sz(50px, 50px)
+			min-width: 50px
+			+theme(dark2)
+			color: rgba($white, $op)
+			border-radius: 50%
+			[data-bs-theme="light"] &
+				background: $grad
+				color: $white
+			
+			&:hover, &:active, &:focus
+				background: $grad
+				color: $white
+				transform: rotate(-15deg)
+				transform-origin: center

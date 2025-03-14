@@ -1,4 +1,7 @@
 .header
+	+ps(sticky, (t, 0), (l, 0))
+	z-index: 100500
+	width: 100%
 	padding: 1em 0
 	background-color: rgba($black, 0.1)
 	backdrop-filter: blur(10px)
@@ -41,9 +44,9 @@
 		.logo
 			width: 100%
 			height: auto
-	
+
 .drawer
-	+ps(fixed, (r, 0), (t, 0)) 
+	+ps(fixed, (r, 0), (t, 0))
 	z-index: 100500
 	max-width: 300px
 	width: 100%
@@ -66,10 +69,11 @@
 			color: inherit
 			padding: 0
 			box-shadow: none
+			cursor: pointer
 			svg
 				transform: rotate(180deg)
 			&::after
-				display: none  
+				display: none
 			&[aria-expanded="true"]
 				svg
 					transform: rotate(0deg)
@@ -82,6 +86,7 @@
 		margin-bottom: $gap3
 		padding-bottom: $gap3
 		border-bottom: 1px solid rgba($white, 0.2)
+		cursor: pointer
 	&__menu
 		display: flex
 		flex-direction: column
@@ -94,6 +99,7 @@
 		border: none
 		padding: 0
 		color: inherit
+		cursor: pointer
 	a
 		&:hover
 			color: $main
@@ -106,6 +112,7 @@
 	+theme(dark)
 	hr
 		margin: 0
+		opacity: 0.2
 	&__top
 		padding: 3em 0
 		.container
@@ -120,6 +127,8 @@
 		display: flex
 		flex-direction: column
 		gap: $gap2
+		p:last-child
+			margin: 0
 	&__nav
 		display: grid
 		grid-template-columns: repeat(4, auto)
@@ -129,6 +138,8 @@
 			flex-direction: column
 			gap: $gap1
 			align-items: start
+			h4
+				margin-bottom: $gap2
 			a
 				opacity: $op
 				+ft(14, 14*1.2, 400)
@@ -143,6 +154,7 @@
 			+flex(flex, center, start, nowrap)
 			gap: $gap1
 			list-style-type: none
+
 			a
 				transition: $trs
 				&:hover
@@ -163,6 +175,10 @@
 				grid-template-columns: 1fr
 				div:last-child
 					grid-column: 1
+	+maw(420)
+		&__soc
+			li
+				+ft(14, 14, 400)
 	+maw(375)
 		&__nav
 			grid-template-columns: 1fr
@@ -171,10 +187,20 @@
 
 .hero
 	padding: 5em 0
-	@extend .my-0
+	&.section
+		margin: 0
 	[data-bs-theme="light"] &
 		+theme(dark)
-		margin-bottom: var(--gapSection) !important
+		margin-bottom: var(--gapSection)
+	.container
+		display: flex
+		flex-direction: column
+		gap: $gap2
+		align-items: center
+
+	&-post
+		.container
+			align-items: start
 	&__content
 		max-width: 750px
 		margin-left: auto
@@ -182,5 +208,5 @@
 		text-align: center
 		p
 			opacity: $op
-			margin-bottom: $gap4
-
+			margin-top: 0
+			margin-bottom: $gap2

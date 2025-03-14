@@ -1,16 +1,16 @@
 ---
-import Layout from '../layouts/Layout.astro'
-import Card from '../components/cards/_service-card.astro'
-import Tags from '../components/ui/Tag.astro'
-import Search from '../components/ui/Search.astro'
+import Layout from '../layouts/Layout.astro';
+import Card from '../components/cards/_service-card.astro';
+import Tags from '../components/ui/Tag.astro';
+import Search from '../components/ui/Search.astro';
 
 const allServices = Object.values(
     import.meta.glob('../md/services/*.md', { eager: true })
-)
-const bgImg = '/assets/img/bg/services.jpg'
-const bgFill = 'contain'
+);
+const bgImg = '/assets/img/bg/services.jpg';
+const bgFill = 'contain';
 
-const title = 'Услуги'
+const title = 'Услуги';
 
 // Collect all unique categories
 const allTags = Array.from(
@@ -19,18 +19,18 @@ const allTags = Array.from(
             .flatMap((service) => service.frontmatter.category || [])
             .map((category) => category.trim())
     )
-)
+);
 
 const servicesByCategory = allServices.reduce((acc, service) => {
-    const { category } = service.frontmatter
+    const { category } = service.frontmatter;
     if (category) {
         if (!acc[category]) {
-            acc[category] = []
+            acc[category] = [];
         }
-        acc[category].push(service)
+        acc[category].push(service);
     }
-    return acc
-}, {})
+    return acc;
+}, {});
 ---
 
 <Layout bg={{ bgImg: bgImg, bgFill: bgFill }}>
@@ -82,70 +82,72 @@ const servicesByCategory = allServices.reduce((acc, service) => {
 
 <script is:inline data-astro-rerun>
     function filterCategory(event) {
-        const selectedCategory = event.target.dataset.category
-        const serviceSections = document.querySelectorAll('.service__block')
-        const serviceCards = document.querySelectorAll('.service')
+        const selectedCategory = event.target.dataset.category;
+        const serviceSections = document.querySelectorAll('.service__block');
+        const serviceCards = document.querySelectorAll('.service');
 
         serviceCards.forEach((card) => {
-            card.style.display = 'grid'
-        })
+            card.style.display = 'grid';
+        });
 
         serviceSections.forEach((section) => {
-            section.style.display = 'none'
-        })
+            section.style.display = 'none';
+        });
 
         if (selectedCategory === 'All') {
             serviceSections.forEach((section) => {
-                section.style.display = 'grid'
-            })
+                section.style.display = 'grid';
+            });
         } else {
             const selectedSections = document.querySelectorAll(
                 `[data-category="${selectedCategory}"]`
-            )
+            );
             selectedSections.forEach((section) => {
-                section.style.display = 'grid'
-            })
+                section.style.display = 'grid';
+            });
         }
     }
 
     document.addEventListener('astro:page-load', () => {
-        const searchInput = document.querySelector('input[type="search"]')
-        const serviceSections = document.querySelectorAll('.service__block')
+        const searchInput = document.querySelector('input[type="search"]');
+        const serviceSections = document.querySelectorAll('.service__block');
 
-        searchInput.addEventListener('input', (event) => {
-            const searchTerm = event.target.value.toLowerCase()
+        searchInput &&
+            searchInput.addEventListener('input', (event) => {
+                const searchTerm = event.target.value.toLowerCase();
 
-            serviceSections.forEach((section) => {
-                const serviceCards = section.querySelectorAll('.service')
-                let hasVisibleCards = false
+                serviceSections.forEach((section) => {
+                    const serviceCards = section.querySelectorAll('.service');
+                    let hasVisibleCards = false;
 
-                serviceCards.forEach((card) => {
-                    const title =
-                        card.querySelector('h3')?.textContent.toLowerCase() ||
-                        ''
+                    serviceCards.forEach((card) => {
+                        const title =
+                            card
+                                .querySelector('h3')
+                                ?.textContent.toLowerCase() || '';
 
-                    if (title.includes(searchTerm)) {
-                        card.style.display = 'block'
-                        hasVisibleCards = true
+                        if (title.includes(searchTerm)) {
+                            card.style.display = 'block';
+                            hasVisibleCards = true;
+                        } else {
+                            card.style.display = 'none';
+                        }
+                    });
+
+                    if (hasVisibleCards) {
+                        section.style.display = 'grid';
                     } else {
-                        card.style.display = 'none'
+                        section.style.display = 'none';
                     }
-                })
+                });
+            });
 
-                if (hasVisibleCards) {
-                    section.style.display = 'grid'
-                } else {
-                    section.style.display = 'none'
-                }
-            })
-        })
-
-        const categoryButtons = document.querySelectorAll('.tag')
+        const categoryButtons = document.querySelectorAll('.tag');
         categoryButtons.forEach((button) => {
             button.addEventListener('click', function () {
-                searchInput.value = ''
-                filterCategory
-            })
-        })
-    })
+                searchInput.value = '';
+                filterCategory;
+            });
+        });
+    });
 </script>
