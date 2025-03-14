@@ -56,6 +56,7 @@
 .form
 	textarea, input:not([type=checkbox]), input:not([type=radio])
 		width: 100%
+		
 		padding: 0.75em 1em
 		background: none
 		appearance: none
@@ -65,9 +66,11 @@
 		color: inherit
 		font-family: $ffText
 	button
-		max-width: 300px
+		max-width: 400px
 		width: 100%
+		margin-top: $gap3
 	label
+		flex: 1 0 auto
 		+flex(flex, center, center, nowrap)
 		gap: $gap1
 		padding: 1em
@@ -89,10 +92,9 @@
 		display: grid
 		gap: $gap1
 		&--inline
+			+flex(flex, center, start, wrap)
 			border: 2px solid rgba($white, 0.2)
 			border-width: 2px 0
-			display: grid
-			grid-template-columns: repeat(3, 1fr)
 	&__note
 		margin: $gap3 0
 
@@ -103,8 +105,9 @@
 			label
 				border: 2px solid rgba($white, 0.2)
 				border-width: 2px 0
+				width: 100%
 				&:first-child
-					border: 0
+					border-top: 0
 	+maw($xs)
 		label
 			font-size: 0.9em
@@ -240,3 +243,21 @@
 		&.disabled
 			display: none
 			opacity: 0
+
+.shared
+	+flex(flex, center, start, wrap)
+	gap: $gap2
+	span
+		opacity: $op
+	.share
+		+flex(flex, center, center, wrap)
+		gap: $gap1
+		a
+			+flex(flex, center, center, nowrap)
+			gap: $gap1
+			+sz(50px, 50px)
+			min-width: 50px
+			+theme(dark2)
+			border-radius: 50%
+			&:hover, &:active, &:focus
+				background: $grad
