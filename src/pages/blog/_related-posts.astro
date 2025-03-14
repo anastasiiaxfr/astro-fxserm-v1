@@ -1,0 +1,21 @@
+---
+import Card from '../../components/cards/_post-card.astro';
+import { sortedPosts } from './constant.js';
+
+const title = 'Вам также будет интересно';
+const countRelatedPosts = 3;
+---
+
+<section class="section">
+    <div class="container">
+        <h2>{title}</h2>
+
+        <div class="posts">
+            {
+                sortedPosts
+                    .slice(0, countRelatedPosts)
+                    .map((i) => <Card data={i.frontmatter} type="default" />)
+            }
+        </div>
+    </div>
+</section>

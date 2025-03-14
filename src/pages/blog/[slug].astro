@@ -3,6 +3,7 @@ import { render } from 'astro:content';
 import Layout from '../../layouts/Layout.astro';
 import PostMeta from '../../components/cards/_post-meta.astro';
 import Author from '../../components/cards/Author.astro';
+import RelatedPosts from './_related-posts.astro';
 import { sortedPosts } from './constant.js';
 
 export async function getStaticPaths() {
@@ -45,4 +46,5 @@ const bgFill = 'contain';
             </div>
         </div>
     </article>
+    <RelatedPosts />
 </Layout>
