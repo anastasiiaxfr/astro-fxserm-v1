@@ -1,12 +1,12 @@
 ---
-import { formatPubDate } from '../../assets/js/utils'
-import Corner from './Thumbnail.astro'
-import PostMeta from './_post-meta.astro'
+import { formatPubDate } from '../../assets/js/utils';
+import Corner from './Thumbnail.astro';
+import PostMeta from './_post-meta.astro';
 
-const thumbnailType = ['default', 'banner']
+const thumbnailType = ['default', 'banner'];
 
-const { data, type = thumbnailType[0] } = Astro.props
-const { thumbnail, title, pubdate, read, category, slug } = data
+const { data, type = thumbnailType[0] } = Astro.props;
+const { thumbnail, title, pubdate, read, category, slug } = data;
 ---
 
 <article class="post">
@@ -22,7 +22,11 @@ const { thumbnail, title, pubdate, read, category, slug } = data
         <Corner type={type} img={thumbnail} />
     </a>
     <div class="post__body">
-        <PostMeta pubdate={pubdate} read={read} />
+        <div class="post__meta">
+            <PostMeta pubdate={pubdate} read={read} />
+            <button class="chip">{category}</button>
+        </div>
+
         <a class="post__content" href={`/blog/${slug}`}>
             <h3 class="post__title">
                 {title}

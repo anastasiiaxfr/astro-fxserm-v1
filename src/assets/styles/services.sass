@@ -13,7 +13,9 @@
 		grid-template-columns: 1fr 2fr
 		gap: $gap4
 	&__header
-		@extend .h4, .my-0
+		@extend .h4
+		margin-top: 0
+		margin-bottom: 0
 		padding: $gap3 $gap4
 		user-select: none
 		cursor: pointer
@@ -30,14 +32,17 @@
 		+sz(10em, 10em)
 		transform: rotate(270deg)
 		svg
-			fill: $dark_1 1 !important
+			fill: $dark_1 
 			[data-bs-theme="light"] &
-				fill: $light_1 !important
+				fill: $light_1
 	&__title
-		@extend .h4, .mt-0
+		@extend .h4
+		margin-top: 0
+		margin-bottom: $gap1
 		user-select: none
 	&__desc
 		opacity: $op
+		+ft(16, 16*1.4, 400)
 	&__icon
 		+flex(flex, center, center, nowrap)
 		+sz(80px, 80px)

@@ -9,6 +9,8 @@ html, body
 
 body
 	//+theme(dark)
+	-webkit-text-size-adjust: 100%
+	-webkit-tap-highlight-color: transparent
 	&[data-bs-theme="dark"]
 		+theme(black)
 	&[data-bs-theme="light"]
@@ -22,7 +24,7 @@ body
 	//user-select: none
 	box-sizing: border-box
 	&::selection
-		background-color: $main
+		+theme(main)
 		
 
 
@@ -55,5 +57,7 @@ button, a, input
 
 .container
 	max-width: 1400px
+	margin-left: auto
+	margin-right: auto
 	padding-left: $gap3
 	padding-right: $gap3

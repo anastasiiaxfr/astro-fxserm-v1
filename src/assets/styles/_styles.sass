@@ -14,18 +14,19 @@ a
 .section
 	margin: var(--gapSection) 0
 	&_benefits
+		padding: var(--gapSection) 0
 		[data-bs-theme="dark"] &
 			+theme(dark)
 		[data-bs-theme="light"] &
 			+theme(light)
-			padding: var(--gapSection) 0
 	&_address
 		padding: var(--gapSection) 0
+		margin-bottom: 0
 		+theme(dark)
 
 .page
 	&-container
-		@extend .mt-0
+		margin-top: 0
 		margin-bottom: var(--gapSection)
 	&-content
 		display: grid
@@ -36,6 +37,8 @@ a
 			margin-bottom: $gap2
 		h2
 			margin-top: 0
+			margin-bottom: 0
+			
 		p, li
 			color: rgba($white, $op)
 			[data-bs-theme="light"] &
@@ -58,7 +61,10 @@ a
 					max-width: 800px
 					margin-left: auto
 					margin-right: auto
-
+	&-post
+		max-width: 1100px
+		margin-left: auto
+		margin-right: auto
 	+maw($md)
 		&-content
 			grid-template-columns: 1fr
@@ -70,61 +76,6 @@ a
 	border-radius: $brs2
 	[data-bs-theme="light"] &
 		+theme(dark)
-
-.service
-	+theme(dark2)
-	border-radius: $brs2
-	overflow: hidden
-	[data-bs-theme="light"] &
-		+theme(light)
-	&s
-		display: grid
-		gap: $gap3
-	&__block
-		margin: $gap4 0 0
-		display: grid
-		grid-template-columns: 1fr 2fr
-		gap: $gap4
-	&__header
-		@extend .h4, .my-0
-		padding: $gap3 $gap4
-		user-select: none
-		cursor: pointer
-	&__body
-		position: relative
-		display: none
-		padding: $gap4
-	&__cta
-		@extend %circle-btn
-		+sz(6em, 6em)
-		top: 0
-	&__corner
-		+ps(absolute, (t, -1px), (r, -1px))
-		+sz(10em, 10em)
-		transform: rotate(270deg)
-		svg
-			fill: $dark_1
-			[data-bs-theme="light"] &
-			fill: $light_1
-	&__title
-		@extend .h4, .mt-0
-		user-select: none
-	&__desc
-		opacity: $op
-	&__icon
-		+flex(flex, center, center, nowrap)
-		+sz(80px, 80px)
-		border-radius: $brs1
-		+theme(dark)
-		margin-bottom: $gap2
-	+maw($md)
-		&__block
-			grid-template-columns: 1fr
-	+maw($xs)
-		&__corner
-			+sz(6em, 6em)
-		&__cta
-			+sz(3.5em, 3.5em)
 
 .authors
 	+flex(flex, center, start, wrap)

@@ -4,6 +4,8 @@ import Layout from '../../layouts/Layout.astro';
 import PostMeta from '../../components/cards/_post-meta.astro';
 import Author from '../../components/cards/Author.astro';
 import RelatedPosts from './_related-posts.astro';
+import Form from '../../components/ui/Form.astro';
+import Shared from '../../components/ui/Shared.astro';
 import { sortedPosts } from './constant.js';
 
 export async function getStaticPaths() {
@@ -29,7 +31,7 @@ const bgFill = 'contain';
 ---
 
 <Layout bg={{ bgImg: bgImg, bgFill: bgFill }}>
-    <section class="section hero">
+    <section class="section hero hero-post">
         <div class="container">
             <button class="chip">{category}</button>
             <h1 class="mt-2">{title}</h1>
@@ -41,10 +43,23 @@ const bgFill = 'contain';
     </section>
     <article class="section page-container">
         <div class="container">
-            <div class="page-content col-lg-10 mx-auto">
+            <div class="page-content page-post">
                 <Content />
             </div>
         </div>
     </article>
+    <section class="section">
+        <div class="container">
+            <div class="row_1">
+                <div>
+                    <h2>Обсудим статью вместе?</h2>
+                    <Shared />
+                </div>
+                <div>
+                    <Form />
+                </div>
+            </div>
+        </div>
+    </section>
     <RelatedPosts />
 </Layout>

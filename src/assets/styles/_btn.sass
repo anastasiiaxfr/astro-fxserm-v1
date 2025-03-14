@@ -21,6 +21,10 @@
 	&s
 		+flex(flex, center, start, nowrap)
 		gap: $gap2
+	&-sqwire
+		@extend .btn
+		max-width: 50px
+		padding: 4px
 	&-bd
 		@extend .btn
 		background: none
@@ -58,6 +62,8 @@
 		outline: none
 		border: none
 		resize: none
+		color: inherit
+		font-family: $ffText
 	button
 		max-width: 300px
 		width: 100%
@@ -72,7 +78,9 @@
 
 	&__title
 		padding: 1em
-		@extend .h4, .my-0
+		@extend .h4
+		margin-top: 0
+		margin-bottom: 0
 	&__body
 		border-radius: $brs
 		border: 2px solid rgba($white, 0.2)
@@ -85,6 +93,8 @@
 			border-width: 2px 0
 			display: grid
 			grid-template-columns: repeat(3, 1fr)
+	&__note
+		margin: $gap3 0
 
 	+maw($sm)
 		&__row--inline
@@ -107,6 +117,7 @@
 		gap: $gap2
 		padding: 0
 		user-select: none
+		line-height: 1.3
 		span
 			opacity: $op
 		&::before
@@ -127,12 +138,13 @@
 				position: absolute
 				inset: 0
 				margin: auto
-				margin-left: 7px
-				transform: scale(1.3)
+				margin-left: 9px
+				transform: scale(1.4)
 
 .tags
 	position: relative
-
+	overflow: hidden
+	width: 100%
 	&__inner
 		+flex(flex, center, center, wrap)
 		gap: $gap2
@@ -151,10 +163,12 @@
 		border: 1px solid transparent
 		border-radius: 16pc
 		user-select: none
-
+		+ft(13, 13, 500)
+		letter-spacing: 0.04em
 		+theme(dark2)
 		opacity: $op
 		transition: $trs
+		cursor: pointer
 		&:hover, &:active, &:focus
 			opacity: 1
 			border-color: $main
@@ -175,12 +189,14 @@
 .search
 	display: block
 	max-width: 750px
-	margin: $gap3 auto
+	width: 100%
+	margin: $gap2 auto
 	input
 		border: none
 		background: none
 		color: inherit
 		flex: 1
+		+ft(15, 15, 400)
 	&__field
 		+flex(flex, center, start, nowrap)
 		gap: $gap1
@@ -191,7 +207,7 @@
 			min-width: 24px
 
 .chip
-	+flex(flex, center, center, nowrap)
+	+flex(inline-flex, center, center, nowrap)
 	gap: $gap1
 	padding: $gap1 $gap2
 	border: none

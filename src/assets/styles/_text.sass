@@ -1,11 +1,13 @@
 h1, h2, h3, h4, h5, h6
     font-family: $ffHeading, $ffBack
     margin-bottom: $gap3
-
+    margin-top: 0
 
 
 h1, .h1
     +ft(52, 52*1.4, 500)
+    margin-top: 0
+    margin-bottom: 0
     +maw($lg)
         +ft(46, 46*1.4, 500)
     +maw($md)
@@ -53,7 +55,12 @@ h5, .h5
 h6, .h6
     +ft(17, 17*1.4, 500)
 
+p, li
+    +ft(16, 16*1.4, 400)
+
 .text
+    &-center
+        text-align: center
     &--note
         display: inline-block
         font-size: 140%
