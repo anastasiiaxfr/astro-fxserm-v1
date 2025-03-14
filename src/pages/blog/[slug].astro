@@ -1,27 +1,41 @@
 ---
-import Layout from '../../layouts/Layout.astro'
-import { sortedPosts } from './constant.js'
-import { render } from 'astro:content'
+import { render } from 'astro:content';
+import Layout from '../../layouts/Layout.astro';
+import PostMeta from '../../components/cards/_post-meta.astro';
+import Author from '../../components/cards/Author.astro';
+import { sortedPosts } from './constant.js';
 
 export async function getStaticPaths() {
     return sortedPosts.map((post) => ({
         params: { slug: post.frontmatter.slug },
-        props: { post },
-    }))
+        props: { post }
+    }));
 }
 
-const { post } = Astro.props
-const { Content, frontmatter } = post
+const { post } = Astro.props;
+const { Content, frontmatter } = post;
+const {
+    category,
+    title,
+    pubdate,
+    read,
+    authors,
+    poster = '/assets/img/bg/b0.jpg'
+} = frontmatter;
 
-const bgImg = '/assets/img/bg/blog.jpg'
-const bgFill = 'contain'
+const bgImg = poster;
+const bgFill = 'contain';
 ---
 
 <Layout bg={{ bgImg: bgImg, bgFill: bgFill }}>
     <section class="section hero">
         <div class="container">
-            <button class="chip">{frontmatter.category}</button>
-            <h1 class="mt-2">{frontmatter.title}</h1>
+            <button class="chip">{category}</button>
+            <h1 class="mt-2">{title}</h1>
+            <PostMeta pubdate={pubdate} read={read} />
+            <div class="mt-4">
+                <Author data={authors} />
+            </div>
         </div>
     </section>
     <article class="section page-container">

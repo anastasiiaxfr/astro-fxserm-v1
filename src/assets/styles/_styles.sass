@@ -15,7 +15,7 @@ a
 	margin: var(--gapSection) 0
 	&_benefits
 		[data-bs-theme="dark"] &
-		+theme(dark)
+			+theme(dark)
 		[data-bs-theme="light"] &
 			+theme(light)
 			padding: var(--gapSection) 0
@@ -125,3 +125,28 @@ a
 			+sz(6em, 6em)
 		&__cta
 			+sz(3.5em, 3.5em)
+
+.authors
+	+flex(flex, center, start, wrap)
+	gap: $gap2
+	.author
+		+flex(flex, center, start, wrap)
+		gap: $gap2
+		padding: $gap2
+		+theme(dark2)
+		border-radius: $brs1
+		transition: $trs
+		cursor: pointer
+		&:hover
+			transform: translateY(-5px)
+		&__ava
+			+sz(50px, 50px)
+			border-radius: 50%
+			object-fit: cover
+		&__name
+			font-weight: 500
+		&__info
+			opacity: $op
+			font-size: 80%
+		span
+			opacity: $op

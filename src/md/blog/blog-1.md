@@ -5,7 +5,7 @@ read: 2 min
 category: 'Crypto'
 authors: ['XFR', 'John Galt']
 thumbnail: '/assets/img/blog/blog-1.png'
-poster: '/assets/img/blog/b0.jpg'
+poster: '/assets/img/blog/b3.jpg'
 excerpt: 'A brief excerpt of your article...'
 pubdate: '2025-03-12T10:00:00Z'
 ---
