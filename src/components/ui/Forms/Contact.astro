@@ -5,7 +5,7 @@ const title = 'Заполни форму';
 <form action="/" class="form" novalidate>
     <div class="form__body">
         {title && <p class="form__title">{title}</p>}
-        <div class="form__row form__row--inline">
+        <div class="form__row">
             <label for="">
                 <svg class="icon" width="24" height="24">
                     <use xlink:href={`#f1`}></use>
@@ -25,7 +25,7 @@ const title = 'Заполни форму';
                 <input type="text" placeholder="Telegram или WhatsApp" />
             </label>
         </div>
-        <div>
+        <div class="form__row">
             <textarea name="" rows="3" id="" placeholder="Сообщение"></textarea>
         </div>
     </div>

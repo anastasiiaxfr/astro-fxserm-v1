@@ -53,7 +53,13 @@
 	&:hover
 		transform: scale(0.9)
 
+\:root
+	--bdc: var(--color-black-2)
+	[data-bs-theme="light"] 
+		--bdc: var(--color-white-2)
+
 .form
+	overflow: hidden
 	textarea, input:not([type=checkbox]), input:not([type=radio])
 		width: 100%
 		padding: 0.75em 1em
@@ -70,18 +76,12 @@
 		margin-top: $gap3
 	label
 		flex: 1 0 auto
+		width: 100%
 		+flex(flex, center, center, nowrap)
 		gap: $gap1
 		padding: 1em
-		border: 1px solid rgba($white, 0.2)
-		border-width: 0 2px 0 0
-		[data-bs-theme="light"] &
-			border-color: darken($light, 5%)
-		&:last-child
-			border: none
 		svg
 			opacity: $op
-
 	&__title
 		padding: 1em
 		@extend .h4
@@ -89,33 +89,35 @@
 		margin-bottom: 0
 	&__body
 		border-radius: $brs
-		border: 2px solid rgba($white, 0.2)
-		[data-bs-theme="light"] &
-			border-color: darken($light, 5%)
+		border: 2px solid var(--bdc)
+		& label
+			border-style: solid
+			border-color: var(--bdc)
+			border: 2px solid var(--bdc)
+			border-width: 2px 2px 2px 0
+			&:last-child
+				border-right: 0
 	&__row
 		display: grid
-		gap: $gap1
-		&--inline
-			+flex(flex, center, start, wrap)
-			border: 2px solid rgba($white, 0.2)
-			border-width: 2px 0
-			[data-bs-theme="light"] &
-				border-color: darken($light, 5%)
+		gap: 0
+		grid-template-columns: repeat(auto-fit, minmax(200px, 1fr))
+			
 	&__note
 		margin: $gap3 0
 
 	+maw($sm)
-		&__row--inline
+		&__row
 			grid-template-columns: 1fr
 			gap: 0
+			flex-wrap: wrap
 			label
-				border: 2px solid rgba($white, 0.2)
-				border-width: 2px 0
-				width: 100%
-				[data-bs-theme="light"] &
-					border-color: darken($light, 5%)
-				&:first-child
-					border-top: 0
+				border: 0
+				&:nth-child(odd)
+					border: 2px solid var(--bdc)
+					border-width: 2px 0
+				&:last-child
+					border-bottom: 2px solid var(--bdc)
+				
 	+maw($xs)
 		label
 			font-size: 0.9em
@@ -160,9 +162,7 @@
 		+flex(flex, center, center, wrap)
 		gap: $gap2
 		overflow-x: auto
-		padding-bottom: 10px
-		// @extend %scroll
-		// &::-webkit-scrollbar-track
+		scrollbar-width: none
 		// 	background-color: transparent
 
 		// &::-webkit-scrollbar-thumb
@@ -190,6 +190,9 @@
 			+ps(absolute, (r, 0), (t, 0), (b, 0))
 			margin: auto
 			background: linear-gradient(90deg, transparent, $dark_1)
+			[data-bs-theme="light"] &
+				background: linear-gradient(90deg, transparent, $dark)
+			
 		&__inner
 			flex-wrap: nowrap
 			justify-content: start
@@ -265,15 +268,16 @@
 			gap: $gap1
 			+sz(50px, 50px)
 			min-width: 50px
+			overflow: hidden
 			+theme(dark2)
 			color: rgba($white, $op)
 			border-radius: 50%
+			transform-origin: center
 			[data-bs-theme="light"] &
 				background: $grad
 				color: $white
-			
 			&:hover, &:active, &:focus
 				background: $grad
 				color: $white
 				transform: rotate(-15deg)
-				transform-origin: center
+				
