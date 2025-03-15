@@ -13,7 +13,7 @@ export async function getStaticPaths() {
 }
 
 const { job } = Astro.props;
-const { Content, frontmatter } = job;
+const { frontmatter } = job;
 const {
     job_category: category,
     job_title: title,

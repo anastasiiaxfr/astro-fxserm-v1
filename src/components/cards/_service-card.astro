@@ -1,5 +1,5 @@
 ---
-const { data } = Astro.props
+const { data } = Astro.props;
 ---
 
 <article class="service">
@@ -37,25 +37,25 @@ const { data } = Astro.props
 <script is:inline data-astro-rerun>
     document.addEventListener('astro:page-load', () => {
         document.querySelectorAll('.service').forEach((service, index) => {
-            const header = service.querySelector('.service__header')
-            const body = service.querySelector('.service__body')
+            const header = service.querySelector('.service__header');
+            const body = service.querySelector('.service__body');
             if (index === 0) {
-                header.style.display = 'none'
-                body.style.display = 'block'
+                header.style.display = 'none';
+                body.style.display = 'block';
             } else {
-                header.style.display = 'block'
-                body.style.display = 'none' 
+                header.style.display = 'block';
+                body.style.display = 'none';
             }
 
             header.addEventListener('click', () => {
-                header.style.display = 'none'
-                body.style.display = 'block'
-            })
+                header.style.display = 'none';
+                body.style.display = 'block';
+            });
 
             body.addEventListener('click', () => {
-                header.style.display = 'block'
-                body.style.display = 'none'
-            })
-        })
-    })
+                header.style.display = 'block';
+                body.style.display = 'none';
+            });
+        });
+    });
 </script>

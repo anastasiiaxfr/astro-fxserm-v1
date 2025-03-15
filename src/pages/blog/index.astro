@@ -37,7 +37,9 @@ const title = 'Блог';
                         {
                             otherPosts
                                 .slice(0, 6)
-                                .map((i) => <Card data={i.frontmatter} />)
+                                .map((i, ind) => (
+                                    <Card data={i.frontmatter} key={ind} />
+                                ))
                         }
                     </div>
 

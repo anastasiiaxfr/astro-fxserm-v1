@@ -60,13 +60,16 @@ const servicesByCategory = allServices.reduce((acc, service) => {
                                         </div>
                                         <div>
                                             <div class="services">
-                                                {services.map((service) => (
-                                                    <Card
-                                                        data={
-                                                            service.frontmatter
-                                                        }
-                                                    />
-                                                ))}
+                                                {services.map(
+                                                    (service, ind) => (
+                                                        <Card
+                                                            data={
+                                                                service.frontmatter
+                                                            }
+                                                            key={ind}
+                                                        />
+                                                    )
+                                                )}
                                             </div>
                                         </div>
                                     </section>
