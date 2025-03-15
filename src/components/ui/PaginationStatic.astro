@@ -1,0 +1,24 @@
+---
+const { slug, data, count } = Astro.props;
+---
+
+{
+    Math.ceil(data.length / count) >= 2 && (
+        <div
+            class="pagination animate__animated animate__fadeInUp"
+            style={`animation-delay: ${1}s`}
+        >
+            <span class="active">1</span>
+
+            <a href={`/${slug}/2`}>2</a>
+
+            {Math.ceil(data.length / count) >= 3 && (
+                <a href={`/${slug}/3`}>3</a>
+            )}
+
+            <a href={`/${slug}/2`}>Next</a>
+
+            <a href={`/${slug}/${Math.ceil(data.length / count)}`}>Last</a>
+        </div>
+    )
+}

@@ -1,5 +1,6 @@
 ---
-import { render } from 'astro:content';
+import { formatPubDate } from '../../assets/js/utils';
+
 import Layout from '../../layouts/Layout.astro';
 import PostMeta from '../../components/cards/_post-meta.astro';
 import Author from '../../components/cards/Author.astro';
@@ -28,6 +29,17 @@ const {
 
 const bgImg = poster;
 const bgFill = 'contain';
+
+const meta = [
+    {
+        title: formatPubDate(pubdate),
+        icon: 'date'
+    },
+    {
+        title: read || '5 min',
+        icon: 'time'
+    }
+];
 ---
 
 <Layout bg={{ bgImg: bgImg, bgFill: bgFill }}>
@@ -35,7 +47,7 @@ const bgFill = 'contain';
         <div class="container">
             <button class="chip">{category}</button>
             <h1 class="mt-2">{title}</h1>
-            <PostMeta pubdate={pubdate} read={read} />
+            <PostMeta data={meta} />
             <div class="mt-4">
                 <Author data={authors} />
             </div>

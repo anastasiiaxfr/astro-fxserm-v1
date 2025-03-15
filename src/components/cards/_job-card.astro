@@ -1,0 +1,31 @@
+---
+const { data, key, uri = 'job' } = Astro.props;
+const { job_title: title, job_type: type, job_status: status, slug } = data;
+---
+
+<article
+    class="job animate__animated animate__slideInUp"
+    style={`animation-delay: ${key / 10}s`}
+>
+    <div>
+        <div class="job__title">Вакансия</div>
+        <div class="job__desc">{title}</div>
+    </div>
+    <div>
+        <div class="job__title">Тип</div>
+        <div class="job__desc">
+            {type}
+        </div>
+    </div>
+    <div>
+        <div class="job__title">Статус</div>
+        <div class="job__desc">{status}</div>
+    </div>
+    <div>
+        <a class="job__btn" href={`/${uri}/${slug}`}>
+            <svg class="icon" width="48" height="48">
+                <use xlink:href="#arr-t-r"></use>
+            </svg>
+        </a>
+    </div>
+</article>

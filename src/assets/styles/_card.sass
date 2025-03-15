@@ -4,27 +4,28 @@
 	gap: $gap3
 	grid-template-columns: repeat(auto-fill, minmax(350px, 1fr))
 	margin-top: $gap4
-	.card
-		padding: $gap4
-		border-radius: $brs1
-		border: 2px solid transparent
-		transition: $trs
-		[data-bs-theme="dark"] &
-			+theme(dark2)
-		[data-bs-theme="light"] &
-			+theme(white)
-			border-color: transparent
-			box-shadow: $bxsd
-		&:hover
-			border: $bd
-			box-shadow: none
-		&__icon
-			margin-bottom: $gap2
-		&__title
-			@extend .h4
-			margin-bottom: $gap2
-		&__desc
-			opacity: $op
-			line-height: 1.4
 	+maw($xs)
 		grid-template-columns: 1fr
+
+.card
+	padding: $gap4
+	border-radius: $brs1
+	border: 2px solid transparent
+	transition: $trs
+	[data-bs-theme="dark"] &
+		+theme(dark2)
+	[data-bs-theme="light"] &
+		+theme(white)
+		border-color: transparent
+		box-shadow: $bxsd
+	&:hover
+		border: $bd
+		box-shadow: none
+	&__icon
+		margin-bottom: $gap2
+	&__title
+		@extend .h4
+		margin-bottom: $gap2
+	&__desc
+		opacity: $op
+		line-height: 1.4

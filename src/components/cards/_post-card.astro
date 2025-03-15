@@ -7,6 +7,16 @@ const thumbnailType = ['default', 'banner'];
 
 const { data, type = thumbnailType[0] } = Astro.props;
 const { thumbnail, title, pubdate, read, category, slug } = data;
+const meta = [
+    {
+        title: formatPubDate(pubdate),
+        icon: 'date'
+    },
+    {
+        title: read || '5 min',
+        icon: 'time'
+    }
+];
 ---
 
 <article class="post">
@@ -23,7 +33,7 @@ const { thumbnail, title, pubdate, read, category, slug } = data;
     </a>
     <div class="post__body">
         <div class="post__meta">
-            <PostMeta pubdate={pubdate} read={read} />
+            <PostMeta data={meta} />
             <button class="chip">{category}</button>
         </div>
 

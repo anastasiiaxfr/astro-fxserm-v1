@@ -1,0 +1,113 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Meta from '../../components/cards/_post-meta.astro';
+import Author from '../../components/cards/Author.astro';
+import Form from '../../components/ui/Forms/Job.astro';
+import { sortedJobs } from './constant.js';
+
+export async function getStaticPaths() {
+    return sortedJobs.map((job) => ({
+        params: { slug: job.frontmatter.slug },
+        props: { job }
+    }));
+}
+
+const { job } = Astro.props;
+const { Content, frontmatter } = job;
+const {
+    job_category: category,
+    job_title: title,
+    job_type: type,
+    job_status: status,
+    job_requirments: requirements,
+    job_responsibilities: responsibilities,
+    job_upperrequirements: upperrequirements,
+    job_benefits: benefits,
+    hr,
+    poster = '/assets/img/bg/b0.jpg'
+} = frontmatter;
+
+const bgImg = poster;
+const bgFill = 'contain';
+
+const meta = [
+    {
+        title: type,
+        icon: 'map'
+    },
+    {
+        title: status,
+        icon: 'check-1'
+    }
+];
+
+const content = [
+    {
+        title: 'Требования',
+        data: requirements
+    },
+    {
+        title: 'Обязанности',
+        data: responsibilities
+    },
+    {
+        title: 'Будет плюс',
+        data: upperrequirements
+    },
+    {
+        title: 'Наши преимущества для вас',
+        data: benefits
+    }
+];
+---
+
+<Layout bg={{ bgImg: bgImg, bgFill: bgFill }}>
+    <section class="section hero hero-post">
+        <div class="container">
+            <button class="chip">{category}</button>
+            <h1 class="mt-2">{title}</h1>
+            <Meta data={meta} />
+            <div class="mt-4">
+                <Author data={hr} />
+            </div>
+        </div>
+    </section>
+    <article class="section page-container">
+        <div class="container">
+            <div class="page-post">
+                {
+                    content.map((item) => (
+                        <section class="">
+                            <div class="page-content">
+                                <div>
+                                    <h2>{item.title}</h2>
+                                </div>
+                                <div>
+                                    <ul class="list">
+                                        {item.data.map((i) => (
+                                            <li>
+                                                <span>{i}</span>
+                                            </li>
+                                        ))}
+                                    </ul>
+                                </div>
+                            </div>
+                        </section>
+                    ))
+                }
+            </div>
+        </div>
+    </article>
+    <section class="section">
+        <div class="container">
+            <div class="row_1">
+                <div>
+                    <h2>Заинтересовало? Присылай резюме</h2>
+                </div>
+                <div>
+                    <Form />
+                </div>
+            </div>
+        </div>
+    </section>
+</Layout>

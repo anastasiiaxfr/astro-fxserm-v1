@@ -1,0 +1,29 @@
+.job
+    display: grid
+    grid-template-columns: 2fr 1fr 1fr auto
+    align-items: center
+    gap: $gap2
+    width: 100%
+    padding-top: $gap3
+    padding-bottom: $gap3
+    border-bottom: $bd1
+    overflow: hidden
+    &>div
+        &:last-child
+            text-align: right
+            margin-left: auto
+    +maw($sm)
+        &>div
+            &:first-child
+                grid-column: 1/-1
+
+    &__title
+        opacity: $op
+        margin-bottom: $gap1
+    &__desc
+        font-size: 120%
+    &__btn
+        @extend %circle-btn
+        position: relative
+        +sz(4em, 4em)
+        margin: auto

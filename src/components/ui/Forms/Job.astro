@@ -2,7 +2,7 @@
 const title = 'Заполни форму';
 ---
 
-<form action="/" class="form" novalidate>
+<form action="/" class="form" novalidate method="POST">
     <div class="form__body">
         {title && <p class="form__title">{title}</p>}
         <div class="form__row">
@@ -39,11 +39,19 @@ const title = 'Заполни форму';
             >
         </label>
     </div>
-    <div>
+    <div class="btns">
         <button class="btn">
             Отправить <svg class="icon" width="24" height="24">
                 <use xlink:href="#arr-t-r"></use>
             </svg></button
         >
+        <button class="btn-file">
+            <svg class="icon" width="24" height="24">
+                <use xlink:href="#share"></use>
+            </svg>
+            <input type="file" id="file" /><label for="file"
+                >Прикрепить резюме</label
+            >
+        </button>
     </div>
 </form>

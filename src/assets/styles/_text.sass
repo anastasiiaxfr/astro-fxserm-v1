@@ -75,3 +75,25 @@ p, li
             box-shadow: 0 2px 0 0 $main
     &--lg
         font-size: 110%
+
+.list
+    padding: 0
+    display: grid
+    gap: $gap2
+    li
+        position: relative
+        list-style-type: none
+        +flex(flex, center, start, nowrap)
+        gap: $gap2
+        span
+            &::first-letter
+                text-transform: uppercase
+        &::before
+            content: ''
+            display: block
+            +sz(8px, 8px)
+            min-width: 8px
+            border-radius: 50%
+            background: $grad
+
+            
