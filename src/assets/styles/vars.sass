@@ -4,11 +4,15 @@
 	--color-black-0: #04030C
 	--color-black-1: #08071B
 	--color-black-2: #252433
+	--color-white-0: #fff
 	--color-white-1: #f5f5f5
 	--color-white-2: #d8d8d8
 	--bdc: #252433
 	[data-bs-theme="light"] 
 		--bdc: #c8c8c8
+	--cornerFill: var(--color-black-1)
+	[data-bs-theme="light"] 
+		--cornerFill: var(--color-white-0)
 	
 $black: #000
 $white: #fff
@@ -81,7 +85,7 @@ $gap6: 48px
 
 =theme($theme)
 	@if $theme == white
-		background-color: $white
+		background-color: var(--color-white-0)
 		color: $black
 	@if $theme == light
 		background-color: $light

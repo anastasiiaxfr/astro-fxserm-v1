@@ -10,7 +10,7 @@ const nav = [
         //     { title: 'services-5', url: '#', hasChild: false },
         // ],
     },
-    { title: 'Кейсы', url: '#' },
+    { title: 'Кейсы', url: '/cases' },
     { title: 'О нас', url: '/about' },
     { title: 'Наша команда', url: '#' },
     { title: 'Карьера', url: '/job' },

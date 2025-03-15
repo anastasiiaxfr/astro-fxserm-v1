@@ -1,0 +1,59 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Tags from '../../components/ui/Tags.astro';
+import Card from '../../components/cards/_case-card.astro';
+
+import { allTags, casesByCategory } from './constant';
+
+const bgImg = '/assets/img/bg/cases.jpg';
+const bgFill = 'contain';
+const title = 'Кейсы';
+---
+
+<Layout bg={{ bgImg: bgImg, bgFill: bgFill }}>
+    <section class="section hero">
+        <div class="container text-center">
+            <h1>{title}</h1>
+            <a href="#" class="btn">
+                Оставить заявку
+                <svg class="icon" width="24" height="24">
+                    <use xlink:href="#arr-t-r"></use>
+                </svg>
+            </a>
+
+            <Tags
+                data={[{ title: 'All', slug: 'all' }, ...allTags]}
+                uri="/cases/"
+            />
+        </div>
+    </section>
+    <article class="page-container">
+        <div class="container cases-wrap">
+            {
+                Object.entries(casesByCategory).map(
+                    ([categorySlug, { title, cases }]) => (
+                        <section
+                            class="cases__block"
+                            data-category={categorySlug}
+                            key={categorySlug}
+                        >
+                            <div>
+                                <h2 class="my-0">{title}</h2>
+                            </div>
+                            <div>
+                                <div class="cases">
+                                    {cases.slice(0, 1).map((item, ind) => (
+                                        <Card
+                                            data={item.frontmatter}
+                                            key={ind}
+                                        />
+                                    ))}
+                                </div>
+                            </div>
+                        </section>
+                    )
+                )
+            }
+        </div>
+    </article>
+</Layout>

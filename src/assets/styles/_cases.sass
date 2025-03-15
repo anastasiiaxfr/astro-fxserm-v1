@@ -1,0 +1,80 @@
+.cases
+    display: grid
+    gap: $gap3
+    &-wrap
+        display: grid
+        gap: $gap4
+        &-invert
+            display: grid
+            gap: $gap4
+            .case
+                &:nth-child(even)
+                    grid-template-columns: 1fr 2fr
+                    .case__img
+                        order: 2
+                    .case__body
+                        order: 1
+                    +maw($lg)
+                        grid-template-columns: 1fr 1fr
+                    +maw($sm)
+                        grid-template-columns: 1fr
+                        .case__img
+                            order: 1
+                        .case__bosy
+                            order: 2
+                
+                   
+
+.case
+    display: grid
+    grid-template-columns: 2fr 1fr
+    gap: $gap3
+    &__img
+        position: relative
+        padding-bottom: 50%
+        border-radius: $brs2
+        overflow: hidden
+        +theme(dark2)
+        & > *
+            position: absolute
+            inset: 0
+            +sz(100%, 100%)
+            object-fit: cover
+    &__body
+        position: relative
+        +theme(dark2)
+        border-radius: $brs2
+        padding: $gap4
+        overflow: hidden
+        [data-bs-theme="light"] &
+            +theme(light)
+    &__cta
+        +ps(absolute, (b, -2px), (r, -2px))
+        +sz(10em, 10em)
+        button
+            +sz(7em, 7em)
+            bottom: 2px
+            right: 2px
+    &__desc
+        opacity: $op
+    &__result
+        display: grid
+        gap: $gap2
+        grid-template-columns: repeat(auto-fit, minmax(100px, auto))
+        margin-right: 10em
+        &-val
+            font-size: 3em
+        &-title
+            opacity: $op
+            font-size: 90%
+    +maw($lg)
+        grid-template-columns: 1fr 1fr
+    +maw($sm)
+        grid-template-columns: 1fr
+    +maw($xsm)
+        &__result
+            grid-template-columns: 1fr
+        &__cta
+            +sz(8em, 8em)
+            button
+                +sz(6em, 6em)

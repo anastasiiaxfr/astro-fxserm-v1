@@ -1,0 +1,19 @@
+---
+const { data, uri } = Astro.props;
+---
+
+<div class="tags">
+    <nav class="tags__inner">
+        {
+            data.map(({ slug, title }) => (
+                <a
+                    class="tag"
+                    data-category={slug}
+                    href={slug === 'all' ? uri : `${uri}${slug}`}
+                >
+                    {title}
+                </a>
+            ))
+        }
+    </nav>
+</div>

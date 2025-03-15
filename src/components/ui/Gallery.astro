@@ -1,0 +1,22 @@
+---
+const { items, title } = Astro.props;
+---
+
+<section class="gallery-wrap">
+    <div class="container">
+        <h2>{title}</h2>
+        <div class="gallery">
+            {
+                items.map((item, index) => (
+                    <div class="gallery__item" key={index}>
+                        <img src={item.imgSrc} alt={item.title} />
+                        <div class="gallery__body">
+                            <div class="gallery__title">{item.title}</div>
+                            <div class="gallery__desc">{item.description}</div>
+                        </div>
+                    </div>
+                ))
+            }
+        </div>
+    </div>
+</section>

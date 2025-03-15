@@ -4,13 +4,14 @@ import Card from '../components/cards/_service-card.astro';
 import Tags from '../components/ui/Tag.astro';
 import Search from '../components/ui/Search.astro';
 
-const allServices = Object.values(
-    import.meta.glob('../md/services/*.md', { eager: true })
-);
 const bgImg = '/assets/img/bg/services.jpg';
 const bgFill = 'contain';
 
 const title = 'Услуги';
+
+const allServices = Object.values(
+    import.meta.glob('../md/services/*.md', { eager: true })
+);
 
 // Collect all unique categories
 const allTags = Array.from(

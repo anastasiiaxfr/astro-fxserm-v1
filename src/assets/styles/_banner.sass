@@ -19,10 +19,7 @@
 		// will-change: transform
 		svg
 			height: 100%
-			fill: $dark_1
-			[data-bs-theme="light"] &
-				fill: $light_1
-
+			fill: var(--cornerFill)
 	&__clip
 		+ps(absolute, (l, auto), (b, 0), (r, 0))
 		+sz(100%, 100%)

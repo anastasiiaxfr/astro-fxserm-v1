@@ -1,0 +1,31 @@
+---
+import Corner from './_corner.astro';
+const { data } = Astro.props;
+const { thumbnail, title, desc, goal, result, slug } = data;
+---
+
+<article class="case">
+    <div class="case__img">
+        <img src={thumbnail} alt={title} />
+    </div>
+    <div class="case__body">
+        <div class="case__cta">
+            <Corner />
+        </div>
+        <h3 class="case__title">{title}</h3>
+        <div class="case__desc">{desc}</div>
+        <p><b>Цель </b></p>
+        <div class="case__desc">{goal}</div>
+        <p><b>Результат </b></p>
+        <div class="case__result">
+            {
+                result.map(({ val, title }) => (
+                    <div>
+                        <div class="case__result-val">{val}</div>
+                        <div class="case__result-title">{title}</div>
+                    </div>
+                ))
+            }
+        </div>
+    </div>
+</article>
