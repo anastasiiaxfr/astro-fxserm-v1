@@ -1,18 +1,20 @@
 ---
-const { items, title } = Astro.props;
+const { data, title } = Astro.props;
 ---
 
-<section class="gallery-wrap">
-    <div class="container">
+<section class="section section_gallery">
+    <div class="container text-center">
         <h2>{title}</h2>
         <div class="gallery">
             {
-                items.map((item, index) => (
+                data?.map(({ img, title, description }, index) => (
                     <div class="gallery__item" key={index}>
-                        <img src={item.imgSrc} alt={item.title} />
+                        <div class="gallery__img">
+                            <img src={img} alt={title} />
+                        </div>
                         <div class="gallery__body">
-                            <div class="gallery__title">{item.title}</div>
-                            <div class="gallery__desc">{item.description}</div>
+                            <h3 class="gallery__title">{title}</h3>
+                            <div class="gallery__desc">{description}</div>
                         </div>
                     </div>
                 ))

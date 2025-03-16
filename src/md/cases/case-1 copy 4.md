@@ -4,7 +4,7 @@ slug: 'case-1'
 category:
     title: 'Форекс'
     slug: 'forex'
-poster: '/assets/img/bg/job-single.jpg'
+poster: '/assets/img/bg/case-single.jpg'
 thumbnail: '/assets/img/cases/case-1.jpg'
 title: 'Увелечение конверсии в продукте финтех'
 desc: 'Наша команда байеров из сферы арбитража крипто-трафика генерирует лиды для криптобирж и блокчейн-проектов из поисковой выдачи.'
@@ -23,50 +23,31 @@ tags:
     - 'Ср. позиция: 3,5'
     - 'Тематика: форекс'
     - 'Срок: 7 мес.'
+
+gallery:
+    title: Результаты продвижения
+    items:
+        - title: 'Количество посетителей в месяц'
+          description: 'Динамика роста органического трафика Google с 312 до 2054 посетителей в месяц'
+          img: '/assets/img/cases/c-1-img-1.jpg'
+        - title: 'Средняя позиция'
+          description: 'Рост средней позиции по КС, которые продвигались (на конец SEO – сер. позиция 3,5)'
+          img: '/assets/img/cases/c-1-img-2.jpg'
+        - title: 'Количество просмотров и кликов'
+          description: 'Динамика роста кликов и просмотров - Google Search Console'
+          img: '/assets/img/cases/c-1-img-3.jpg'
+        - title: 'Рост кликабельности CTR'
+          description: 'Рост % кликабельности по поисковым снипетам с 2% до 3,9%'
+          img: '/assets/img/cases/c-1-img-4.jpg'
+
+stat:
+    - title: '82,1%'
+      val: 'Новых посетителей'
+    - title: '78,4%'
+      val: 'Посетителей из Европы'
+    - title: '24,8%'
+      val: 'Доля переходов из поисковых систем'
 ---
-
-<script>
-import Gallery from '../../components/ui/Gallery.astro'
-import Stat from '../../components/ui/Stat.atro'
-
-const galleryItems = [
-    {
-        title: "Количество посетителей в месяц",
-        description: "Динамика роста органического трафика Google с 312 до 2054 посетителей в месяц",
-        imgSrc: "path-to-image"
-    },
-    {
-        title: "Средняя позиция",
-        description: "Рост средней позиции по КС, которые продвигались (на конец SEO – сер. позиция 3,5)",
-        imgSrc: "path-to-image"
-    },
-    {
-        title: "Количество просмотров и кликов",
-        description: "Динамика роста кликов и просмотров - Google Search Console",
-        imgSrc: "path-to-image"
-    },
-    {
-        title: "Рост кликабельности CTR",
-        description: "Рост % кликабельности по поисковым снипетам с 2% до 3,9%",
-        imgSrc: "path-to-image"
-    }
-];
-
-const stat = [
-    {
-        title: "82,1%",
-        val: "Новых посетителей"
-    },
-    {
-        title: "78,4%",
-        val: "Посетителей из Европы"
-    },
-    {
-        title: "24,8%",
-        val: "Доля переходов из поисковых систем"
-    }
-];
-</script>
 
 ## О клиенте
 

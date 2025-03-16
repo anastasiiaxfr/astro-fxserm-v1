@@ -197,6 +197,10 @@
 	position: relative
 	overflow: hidden
 	width: 100%
+	&-block
+		+flex(flex, center, start, wrap)
+		gap: $gap2
+		max-width: 800px
 	&__inner
 		+flex(flex, center, center, wrap)
 		gap: $gap2
@@ -206,22 +210,7 @@
 
 		// &::-webkit-scrollbar-thumb
 		// 	background: $dark_2
-	.tag
-		+flex(flex, center, center, nowrap)
-		min-height: 3.25em
-		padding: 0.5em 2em
-		border: 1px solid transparent
-		border-radius: 16pc
-		user-select: none
-		+ft(13, 13, 500)
-		letter-spacing: 0.04em
-		+theme(dark2)
-		opacity: $op
-		transition: $trs
-		cursor: pointer
-		&:hover, &:active, &:focus
-			opacity: 1
-			border-color: $main
+	
 	+maw($xs)
 		&::after
 			content: ''
@@ -231,11 +220,37 @@
 			background: linear-gradient(90deg, transparent, $dark_1)
 			[data-bs-theme="light"] &
 				background: linear-gradient(90deg, transparent, $dark)
-			
 		&__inner
 			flex-wrap: nowrap
 			justify-content: start
 			padding-left: 2px
+
+.tag
+	+flex(flex, center, center, nowrap)
+	min-height: 3.25em
+	padding: 0.5em 2em
+	border: 1px solid transparent
+	border-radius: 16pc
+	user-select: none
+	+ft(13, 13, 500)
+	letter-spacing: 0.04em
+	+theme(dark2)
+	opacity: $op
+	transition: $trs
+	cursor: pointer
+	&:hover, &:active, &:focus
+		opacity: 1
+		border-color: $main
+	&-default
+		@extend .tag
+		opacity: 1
+		+theme(white)
+		cursor: pointer
+		transition: background 0.3s ease-in-out
+		&:hover, &:active, &:focus
+			background: $grad
+			color: $white
+	+maw($xs)
 		.tag
 			font-size: 0.8em
 
@@ -269,6 +284,7 @@
 	color: $white
 	+ft(13, 13, 500)
 	transition: $trs
+
 	&:hover, &:active, &:focus
 		background: $grad2
 
@@ -323,6 +339,6 @@
 .corner
 	& > svg
 		fill: var(--cornerFill)
-	button
+	button, a
 		+ps(absolute, (b, 0), (r, 0))
 		@extend %circle-btn

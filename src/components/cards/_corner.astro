@@ -1,3 +1,7 @@
+---
+const { url } = Astro.props;
+---
+
 <div class="corner">
     <svg viewBox="0 0 160.6 160">
         <g>
@@ -8,9 +12,19 @@
         </g>
     </svg>
 
-    <button class="">
-        <svg class="icon" width="48" height="48">
-            <use xlink:href="#arr-t-r"></use>
-        </svg>
-    </button>
+    {
+        url ? (
+            <a class="" href={url}>
+                <svg class="icon" width="48" height="48">
+                    <use xlink:href="#arr-t-r" />
+                </svg>
+            </a>
+        ) : (
+            <button class="">
+                <svg class="icon" width="48" height="48">
+                    <use xlink:href="#arr-t-r" />
+                </svg>
+            </button>
+        )
+    }
 </div>

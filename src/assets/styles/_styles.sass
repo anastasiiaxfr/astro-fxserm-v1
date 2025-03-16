@@ -13,7 +13,7 @@ a
 
 .section
 	margin: var(--gapSection) 0
-	&_benefits
+	&_benefits, &_gallery
 		padding: var(--gapSection) 0
 		[data-bs-theme="dark"] &
 			+theme(dark)
@@ -28,6 +28,8 @@ a
 	&-container
 		margin-top: 0
 		margin-bottom: var(--gapSection)
+		display: grid
+		gap: $gap3
 	&-content
 		display: grid
 		grid-template-columns: 1fr 2fr
@@ -48,10 +50,27 @@ a
 			border-radius: $brs1
 		strong, b
 			font-weight: 500
-		strong
+		strong, b
 			color: $white
 			[data-bs-theme="light"] &
 				color: $black
+		table
+			width: 100%
+			border-collapse: collapse
+			border-radius: $brs2
+			overflow: hidden
+			+theme(dark2)
+			[data-bs-theme="light"] &
+				+theme(light)
+			tr:nth-child(even)
+				background: rgba($black, 0.2)
+				[data-bs-theme="light"] &
+					background: rgba($black, 0.1)
+			
+			td, th
+				padding: 10px $gap2
+				opacity: $op
+				font-weight: 500
 		a
 			color: $main
 		&-base
@@ -81,3 +100,76 @@ a
 	[data-bs-theme="light"] &
 		+theme(dark)
 
+.gallery
+	display: grid
+	gap: $gap4
+	grid-template-columns: repeat(auto-fill, minmax(500px, 1fr))
+	&__item
+		text-align: left
+	&__desc
+		opacity: $op
+	&__title
+		@extend .h4
+		margin-bottom: $gap1
+	&__img
+		position: relative
+		overflow: hidden
+		padding-top: 50%
+		margin-bottom: $gap2
+		border-radius: $brs2
+		+theme(dark2)
+		& > *
+			position: absolute
+			inset: 0
+			+sz(100%, 100%)
+			object-fit: cover
+	+maw($xsm)
+		grid-template-columns: 1fr
+
+.stat
+	+flex(flex, center, start, wrap)
+	grid-template-columns: repeat(auto-fill, minmax(12em, auto))
+	gap: $gap2
+	margin: $gap4 auto
+	&__item
+		+flex(flex, center, center, nowrap)
+		flex-direction: column
+		+sz(12em, 12em)
+		padding: 1vmax
+		border: $bd
+		border-radius: 50%
+		text-align: center
+	&__title
+		font-size: 300%
+	&__val
+		opacity: $op
+		font-size: 80%
+	+maw($sm)
+		&__item
+			+sz(8em, 8em)
+		&__title
+			font-size: 150%
+
+.roi
+	padding: 2em
+	border-radius: $brs2
+	+theme(dark2)
+	[data-bs-theme="light"] &
+		+theme(light)
+	&__container
+		display: grid
+		grid-template-columns: 1fr 2fr
+		gap: $gap2
+		align-items: center
+	&__val
+		font-size: 250%
+	&__body
+		opacity: $op
+		font-size: 130%
+		line-height: 1.4
+	+maw($xsm)
+		&__container
+			grid-template-columns: auto 1fr
+	+maw($xs)
+		&__container
+			grid-template-columns: 1fr 

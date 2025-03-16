@@ -5,12 +5,12 @@ const { thumbnail, title, desc, goal, result, slug } = data;
 ---
 
 <article class="case">
-    <div class="case__img">
+    <a class="case__img" href={`/cases/${slug}`}>
         <img src={thumbnail} alt={title} />
-    </div>
+    </a>
     <div class="case__body">
         <div class="case__cta">
-            <Corner />
+            <Corner url={`/cases/${slug}`} />
         </div>
         <h3 class="case__title">{title}</h3>
         <div class="case__desc">{desc}</div>
