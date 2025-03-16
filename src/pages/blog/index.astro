@@ -4,7 +4,14 @@ import Search from '../../components/ui/Search.astro';
 import Tag from '../../components/ui/Tag.astro';
 import Card from '../../components/cards/_post-card.astro';
 import TopPosts from './_top-posts.astro';
-import { countTopPost, allTags, sortedPosts } from './constant.js';
+import PaginationStatic from '../../components/ui/PaginationStatic.astro';
+import {
+    countTopPost,
+    allTags,
+    sortedPosts,
+    uri,
+    postPerPage
+} from './constant.js';
 
 const otherPosts = sortedPosts.slice(countTopPost);
 
@@ -36,34 +43,17 @@ const title = 'Блог';
                     <div class="posts">
                         {
                             otherPosts
-                                .slice(0, 6)
+                                .slice(0, postPerPage)
                                 .map((i, ind) => (
                                     <Card data={i.frontmatter} key={ind} />
                                 ))
                         }
                     </div>
-
-                    {
-                        Math.ceil(otherPosts.length / 6) >= 2 && (
-                            <div class="pagination">
-                                <span class="active">1</span>
-
-                                <a href={'/blog/2'}>2</a>
-
-                                {Math.ceil(otherPosts.length / 6) >= 3 && (
-                                    <a href="/blog/3">3</a>
-                                )}
-
-                                <a href="/blog/2">Next</a>
-
-                                <a
-                                    href={`/blog/${Math.ceil(otherPosts.length / 6)}`}
-                                >
-                                    Last
-                                </a>
-                            </div>
-                        )
-                    }
+                    <PaginationStatic
+                        slug={uri}
+                        data={otherPosts}
+                        count={postPerPage}
+                    />
                 </section>
             </div>
         </div>
