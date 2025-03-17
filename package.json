@@ -12,6 +12,7 @@
     "animate.css": "^4.1.1",
     "astro": "^5.4.2",
     "bootstrap": "^5.3.3",
+    "marked": "^15.0.7",
     "swiper": "^11.2.5"
   },
   "devDependencies": {

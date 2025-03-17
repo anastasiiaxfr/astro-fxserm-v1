@@ -1,0 +1,71 @@
+---
+import { marked } from 'marked';
+
+const { title, data } = Astro.props;
+---
+
+<section>
+    <div class="container">
+        <h2>{title}</h2>
+
+        <nav class="tabs">
+            <!-- Tab Headers -->
+            <div class="tab">
+                {
+                    data.map((item, index) => (
+                       
+                            <button
+                                key={index}
+                                class={`tab__header ${index === 0 ? 'active' : ''}`}
+                                aria-selected={index === 0}
+                                data-index={index}
+                            >
+                                <h3>{item.tab.title}</h3>
+                            </button>
+                            <div
+                                key={index}
+                                class={`tab__content ${index === 0 ? 'active' : ''}`}
+                                set:html={marked.parse(item.tab.content)} style={`grid-row: 1/${data.length + 1}`}/>
+                            
+                           
+                       
+                    ))
+                }
+            </div>
+        </nav>
+    </div>
+</section>
+
+<script is:inline>
+    function setActiveTab(index) {
+        document
+            .querySelectorAll('.tab__content')
+            .forEach((tabContent, idx) => {
+                if (idx === index) {
+                    tabContent.classList.add('active');
+                } else {
+                    tabContent.classList.remove('active');
+                }
+            });
+
+        document.querySelectorAll('.tab__header').forEach((button, idx) => {
+            button.setAttribute('aria-selected', idx === index);
+            if (idx === index) {
+                    button.classList.add('active');
+                } else {
+                    button.classList.remove('active');
+                }
+        });
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+        document.querySelectorAll('.tab__header').forEach((button) => {
+            button.addEventListener('click', () => {
+                const index = parseInt(button.getAttribute('data-index'), 10);
+                setActiveTab(index);
+            });
+        });
+
+        setActiveTab(0);
+    });
+</script>

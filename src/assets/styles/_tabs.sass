@@ -1,0 +1,38 @@
+.tabs
+	margin-top: $gap4
+
+.tab
+	display: grid
+	gap: $gap3
+	position: relative
+	&__header
+		padding: 2em
+		+theme(dark2)
+		border: none
+		border-radius: $brs1
+		opacity: $op
+		text-align: left
+		cursor: pointer
+		transition: $trs
+		[data-bs-theme="light"] &
+			+theme(light)
+		&:hover, &.active
+			opacity: 1
+		h3
+			@extend .h4
+			margin: 0
+	&__content
+		padding: 2em
+		+theme(dark2)
+		border-radius: $brs1
+		opacity: $op
+		grid-column: 2
+		display: none
+		[data-bs-theme="light"] &
+			+theme(light)
+		&.active
+			display: block
+	+maw($md)
+		&__content
+			grid-column: 1
+			grid-row: initial !important

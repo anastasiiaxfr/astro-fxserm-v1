@@ -2,7 +2,6 @@ $fontSrc: '../fonts'
 
 // $fntName: (Montserrat-Black, 900), (Montserrat-Bold, 700), (Montserrat-Medium, 500), (Montserrat-Regular, 400), (Montserrat-Light, 300)
 
-	
 // @each $fnt, $fntw in $fntName
 // 	@font-face 
 // 		$fntFldr: 'Montserrat'
@@ -12,18 +11,13 @@ $fontSrc: '../fonts'
 // 		font-display: swap
 // 		src: local('Montserrat'), local('Montserrat'), url($fontSrc + '/' + $fntFldr + '/' +'#{$fnt}.woff') format('woff'), url($fontSrc + '/' + $fntFldr + '/' +'#{$fnt}.woff2') format('woff2'), url($fontSrc + '/' + $fntFldr + '/' +'#{$fnt}.ttf') format('ttf')
 
-
-
-
 $fontFamily1: 'ClashDisplay'
-
 
 $fntName1: (ClashDisplay-Bold, 700), (ClashDisplay-Semibold, 600), (ClashDisplay-Medium, 500), (ClashDisplay-Regular, 400), (ClashDisplay-Light, 300)
 
-
-=font($fntName, $fntSrc, $fontFamily)	
+=font($fntName, $fntSrc, $fontFamily)
 	@each $fnt, $fntw in $fntName
-		@font-face 
+		@font-face
 			$fntFldr: $fontFamily
 			font-family: $fontFamily
 			font-style: normal
@@ -31,7 +25,4 @@ $fntName1: (ClashDisplay-Bold, 700), (ClashDisplay-Semibold, 600), (ClashDisplay
 			font-display: swap
 			src: local($fontFamily), local($fontFamily), url($fontSrc + '/' + $fntFldr + '/' +'#{$fnt}.woff') format('woff'), url($fontSrc + '/' + $fntFldr + '/' +'#{$fnt}.woff2') format('woff2'), url($fontSrc + '/' + $fntFldr + '/' +'#{$fnt}.ttf') format('ttf')
 
-
 //+font($fntName1, $fontSrc, $fontFamily1)
-
-	

@@ -2,6 +2,7 @@
 import Layout from '../../layouts/Layout.astro';
 import Banner from '../../components/ui/Banner.astro';
 import TopBlogs from '../../pages/blog/_related-posts.astro';
+import Tabs from '../../components/ui/Tabs.astro';
 const bannerBgImg = '/assets/img/banner/banner_2.png';
 const heroBg = '/assets/img/bg/services-single.jpg';
 
@@ -23,7 +24,7 @@ export async function getStaticPaths() {
 
 const { service } = Astro.props;
 const { frontmatter, Content } = service;
-const { title, excerpt, thumbnail } = frontmatter;
+const { title, excerpt, thumbnail, tabs } = frontmatter;
 ---
 
 <Layout>
@@ -55,10 +56,10 @@ const { title, excerpt, thumbnail } = frontmatter;
                     </div>
                 </div>
             </section>
-
+            <Tabs title={tabs.title} data={tabs.items} />
             <TopBlogs title="Блог" />
 
             <Banner title={banner.title} desc={banner.desc} bg={bannerBgImg} />
         </div>
-    </section></Layout
->
+    </section>
+</Layout>
