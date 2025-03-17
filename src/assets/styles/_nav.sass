@@ -210,3 +210,41 @@
 			opacity: $op
 			margin-top: 0
 			margin-bottom: $gap2
+
+
+.hero-base
+	padding: 4em
+	+theme(dark2)
+	background-repeat: no-repeat
+	background-size: cover
+	background-position: top right
+	border-radius: $brs2
+	overflow: hidden
+	&__body
+		display: grid
+		grid-template-columns: 1fr 1fr
+		align-items: center
+		gap: $gap4 $gap2
+		p
+			opacity: $op
+			margin-bottom: $gap4
+			font-size: 120%
+		img
+			display: block
+			transform: scale(1.1)
+			margin-left: auto
+			margin-right: auto
+			z-index: -1
+		+maw($md)
+			grid-template-columns: 1fr
+			justify-content: center
+			text-align: center
+	+maw($xs)
+		padding: 1em
+		&__body
+			p
+				font-size: 100%
+			img
+				transform: none
+			
+	

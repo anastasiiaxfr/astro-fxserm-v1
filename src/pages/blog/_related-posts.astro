@@ -1,8 +1,8 @@
 ---
+const { title = 'Вам также будет интересно' } = Astro.props;
 import Card from '../../components/cards/_post-card.astro';
 import { sortedPosts } from './constant.js';
 
-const title = 'Вам также будет интересно';
 const countRelatedPosts = 3;
 ---
 
