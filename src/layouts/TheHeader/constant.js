@@ -12,7 +12,7 @@ const nav = [
     },
     { title: 'Кейсы', url: '/cases' },
     { title: 'О нас', url: '/about' },
-    { title: 'Наша команда', url: '#' },
+    { title: 'Наша команда', url: '/team' },
     { title: 'Карьера', url: '/job' },
     { title: 'Контакты', url: '/contacts' },
     { title: 'Блог', url: '/blog' }

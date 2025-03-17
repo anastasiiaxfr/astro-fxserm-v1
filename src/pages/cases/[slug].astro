@@ -3,6 +3,8 @@ import Layout from '../../layouts/Layout.astro';
 import PostMeta from '../../components/cards/_post-meta.astro';
 import Gallery from '../../components/ui/Gallery.astro';
 import Stat from '../../components/ui/Stat.astro';
+import Banner from '../../components/ui/Banner.astro';
+
 import { formatPubDate } from '../../assets/js/utils';
 import { allCases } from './constant.js';
 
@@ -27,6 +29,7 @@ const {
 
 const bgImg = poster;
 const bgFill = 'contain';
+const bannerBgImg = '/assets/img/banner/banner_2.png';
 
 const meta = [
     {
@@ -38,6 +41,11 @@ const meta = [
         icon: 'time'
     }
 ];
+
+const banner = {
+    title: 'Эффективный маркетинг в криптовалюте',
+    desc: 'Мы организуем полноценный крипто маркетинг для криптовалютных бирж, платежных сервисов и других проектов из сферы финтех.'
+};
 ---
 
 <Layout bg={{ bgImg: bgImg, bgFill: bgFill }}>
@@ -296,4 +304,5 @@ const meta = [
             </div>
         </section>
     </article>
+    <Banner title={banner.title} desc={banner.desc} bg={bannerBgImg} />
 </Layout>

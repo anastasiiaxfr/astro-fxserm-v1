@@ -1,12 +1,15 @@
 .cases
     display: grid
     gap: $gap3
+    margin-top: $gap4
     &-wrap
         display: grid
-        gap: $gap4
+        gap: $gap6
         &-invert
             display: grid
             gap: $gap4
+            margin-top: $gap4
+            margin-bottom: $gap4
             .case
                 &:nth-child(even)
                     grid-template-columns: 1fr 2fr

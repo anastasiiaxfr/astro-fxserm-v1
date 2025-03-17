@@ -59,3 +59,4 @@ Feel free to check [our documentation](https://docs.astro.build) or jump into ou
 -   https://astro-ex-1.vercel.app/job/job-3
 -   https://astro-ex-1.vercel.app/cases/
 -   https://astro-ex-1.vercel.app/cases/case-1
+-   https://astro-ex-1.vercel.app/team

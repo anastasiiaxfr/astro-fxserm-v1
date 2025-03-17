@@ -2,8 +2,16 @@
 	display: grid
 	gap: $gap3
 	grid-template-columns: repeat(auto-fit, minmax(350px, 1fr))
+	+maw($lg)
+		grid-template-columns: repeat(3, 1fr)
+	+maw($md)
+		grid-template-columns: repeat(2, 1fr)
+	+maw($lsm)
+		grid-template-columns: 1fr
+
 .team
 	&__footer
+		position: relative
 		+flex(flex, center, center, nowrap)
 		gap: $gap1
 		//transform: translateY(-50%)
@@ -17,7 +25,7 @@
 	&__body
 		flex: 1
 		padding: 2em
-		background: url('../img/corner/shape_1.svg') no-repeat 50%/cover
+		background:  url('../img/corner/shape_1.svg') no-repeat 50%/cover
 		backdrop-filter: blur(25px)
 		border-radius: $brs2
 		[data-bs-theme="light"] &
@@ -32,9 +40,20 @@
 	button
 		@extend %circle-btn
 		position: relative
-		+sz(4em, 4em)
+		+sz(5em, 5em)
 		box-shadow: none
-		+maw($xs)
-				&__title
-					+ft(17, 17*1.4, 500)
+	+maw(1400)
+		&__body
+			background: lighten($black, 10%)
+			background-image: none
+			padding-right: calc(5em + $gap4)
+			[data-bs-theme="light"] &
+				background: rgba($black, 0.05)
+		button
+			+ps(absolute, (b, 0), (t, 0), (r, $gap4))
+			margin: auto
+	+maw($xs)
+		&__title
+			+ft(17, 17*1.4, 500)
+		
 			

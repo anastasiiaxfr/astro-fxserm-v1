@@ -13,7 +13,7 @@ a
 
 .section
 	margin: var(--gapSection) 0
-	&_benefits, &_gallery
+	&_benefits, &_gallery, &_team
 		padding: var(--gapSection) 0
 		[data-bs-theme="dark"] &
 			+theme(dark)
@@ -30,16 +30,12 @@ a
 		margin-bottom: var(--gapSection)
 		display: grid
 		gap: $gap3
-	&-content
-		display: grid
-		grid-template-columns: 1fr 2fr
-		gap: $gap3
+
 		h1, h2, h3, h4, h5, h6
 			margin-top: $gap3
 			margin-bottom: $gap2
 		h2
 			margin-top: 0
-			margin-bottom: 0
 			
 		p, li
 			color: rgba($white, $op)
@@ -71,23 +67,32 @@ a
 				padding: 10px $gap2
 				opacity: $op
 				font-weight: 500
-		a
+		p > a
 			color: $main
+
+	&-content
+		display: grid
+		grid-template-columns: 1fr 2fr
+		gap: $gap3
 		&-base
-			@extend .page-content
-			grid-template-columns: 1fr
 			h2
-				grid-columns: 1/-1
+				margin-bottom: $gap4
 				& + div
 					max-width: 800px
 					margin-left: auto
 					margin-right: auto
+			
+		h2
+			margin-bottom: 0
+		
+		
 	&-post
 		display: grid
 		gap: $gap3
 		max-width: 1100px
 		margin-left: auto
 		margin-right: auto
+
 	+maw($md)
 		&-content
 			grid-template-columns: 1fr
