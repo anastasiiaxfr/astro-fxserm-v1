@@ -56,8 +56,8 @@ const { title, excerpt, thumbnail, tabs } = frontmatter;
                     </div>
                 </div>
             </section>
-            <Tabs title={tabs.title} data={tabs.items} />
-            <TopBlogs title="Блог" />
+            {tabs &&<Tabs title={tabs.title} data={tabs.items} />
+            <TopBlogs title="Блог" />}
 
             <Banner title={banner.title} desc={banner.desc} bg={bannerBgImg} />
         </div>
