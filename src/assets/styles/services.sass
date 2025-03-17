@@ -29,12 +29,15 @@
 		@extend %circle-btn
 		+sz(6em, 6em)
 		top: 0
-	&__corner
-		+ps(absolute, (t, -1px), (r, -1px))
-		+sz(10em, 10em)
+	.corner
+		+ps(absolute, (t, -2px), (r, -2px))
+		+sz(9em, 9em)
 		transform: rotate(270deg)
-		svg
-			fill: var(--cornerFill)
+		button, a
+			+sz(5em, 5em)
+			right: 3px
+			bottom: 3px
+			transform: rotate(90deg)
 	&__title
 		@extend .h4
 		margin-top: 0
@@ -53,8 +56,6 @@
 		&__block
 			grid-template-columns: 1fr
 	+maw($xs)
-		&__corner
-			+sz(6em, 6em)
 		&__cta
 			+sz(3.5em, 3.5em)
 		&__desc

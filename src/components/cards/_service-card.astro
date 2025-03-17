@@ -1,61 +1,48 @@
 ---
+import Corner from './_corner.astro';
 const { data } = Astro.props;
 ---
 
 <article class="service">
-    <h3 class="service__header">
-        {data.title}
-    </h3>
-    <div class="service__body">
-        <button class="service__cta">
-            <svg class="icon" width="48" height="48">
-                <use xlink:href="#arr-t-r"></use>
-            </svg>
-        </button>
-        <div class="service__corner">
-            <svg viewBox="0 0 160.6 160">
-                <g>
-                    <path
-                        d="M161.1,1.1C161,43,143.8,39.4,116,43c-31,4-44,11-56,24c-12.8,13.9-14.1,30.9-16,55c-0.7,8.9-6,38-44,38
-		l0.1,0.1l0,0L161,160"
-                    ></path>
-                </g>
-            </svg>
-        </div>
-        <div class="service__icon">
-            <img src={data.icon} alt={data.title} width="40" height="40" />
-        </div>
-        <h3 class="service__title">
-            {data.title}
-        </h3>
-        <div class="service__desc">
-            {data.desc}
-        </div>
-    </div>
+	<h3 class="service__header">
+		{data.title}
+	</h3>
+	<div class="service__body">
+		<Corner url={`/services/${data.slug}`} />
+		<div class="service__icon">
+			<img src={data.icon} alt={data.title} width="40" height="40" />
+		</div>
+		<h3 class="service__title">
+			{data.title}
+		</h3>
+		<div class="service__desc">
+			{data.desc}
+		</div>
+	</div>
 </article>
 
 <script is:inline data-astro-rerun>
-    document.addEventListener('astro:page-load', () => {
-        document.querySelectorAll('.service').forEach((service, index) => {
-            const header = service.querySelector('.service__header');
-            const body = service.querySelector('.service__body');
-            if (index === 0) {
-                header.style.display = 'none';
-                body.style.display = 'block';
-            } else {
-                header.style.display = 'block';
-                body.style.display = 'none';
-            }
+	document.addEventListener('astro:page-load', () => {
+		document.querySelectorAll('.service').forEach((service, index) => {
+			const header = service.querySelector('.service__header');
+			const body = service.querySelector('.service__body');
+			if (index === 0) {
+				header.style.display = 'none';
+				body.style.display = 'block';
+			} else {
+				header.style.display = 'block';
+				body.style.display = 'none';
+			}
 
-            header.addEventListener('click', () => {
-                header.style.display = 'none';
-                body.style.display = 'block';
-            });
+			header.addEventListener('click', () => {
+				header.style.display = 'none';
+				body.style.display = 'block';
+			});
 
-            body.addEventListener('click', () => {
-                header.style.display = 'block';
-                body.style.display = 'none';
-            });
-        });
-    });
+			body.addEventListener('click', () => {
+				header.style.display = 'block';
+				body.style.display = 'none';
+			});
+		});
+	});
 </script>

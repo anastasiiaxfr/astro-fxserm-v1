@@ -7,19 +7,19 @@ const bannerBgImg = '/assets/img/banner/banner_2.png';
 const heroBg = '/assets/img/bg/services-single.jpg';
 
 const banner = {
-    title: 'Эффективный маркетинг в криптовалюте',
-    desc: 'Мы организуем полноценный крипто маркетинг для криптовалютных бирж, платежных сервисов и других проектов из сферы финтех.'
+	title: 'Эффективный маркетинг в криптовалюте',
+	desc: 'Мы организуем полноценный крипто маркетинг для криптовалютных бирж, платежных сервисов и других проектов из сферы финтех.'
 };
 
 export const allServices = Object.values(
-    import.meta.glob('../../md/services/*.md', { eager: true })
+	import.meta.glob('../../md/services/*.md', { eager: true })
 );
 
 export async function getStaticPaths() {
-    return allServices.map((service) => ({
-        params: { slug: service.frontmatter.slug },
-        props: { service }
-    }));
+	return allServices.map((service) => ({
+		params: { slug: service.frontmatter.slug },
+		props: { service }
+	}));
 }
 
 const { service } = Astro.props;
@@ -28,38 +28,38 @@ const { title, excerpt, thumbnail, tabs } = frontmatter;
 ---
 
 <Layout>
-    <section class="section">
-        <div class="container">
-            <div class="hero-base" style={`background-image: url(${heroBg})`}>
-                <div class="hero-base__body">
-                    <div class="hero-base__hgroup">
-                        <h1>{title}</h1>
-                        <p>
-                            {excerpt}
-                        </p>
-                        <a href="#" class="btn">
-                            Напишите нам
-                            <svg class="icon" width="24" height="24">
-                                <use xlink:href="#arr-t-r"></use>
-                            </svg>
-                        </a>
-                    </div>
-                    <div>
-                        <img src={thumbnail} alt={title} />
-                    </div>
-                </div>
-            </div>
-            <section class="section">
-                <div class="container page-container">
-                    <div class="page-content-base">
-                        <Content />
-                    </div>
-                </div>
-            </section>
-            {tabs &&<Tabs title={tabs.title} data={tabs.items} />
-            <TopBlogs title="Блог" />}
+	<section class="section">
+		<div class="container">
+			<div class="hero-base" style={`background-image: url(${heroBg})`}>
+				<div class="hero-base__body">
+					<div class="hero-base__hgroup">
+						<h1>{title}</h1>
+						<p>
+							{excerpt}
+						</p>
+						<a href="#" class="btn">
+							Напишите нам
+							<svg class="icon" width="24" height="24">
+								<use xlink:href="#arr-t-r"></use>
+							</svg>
+						</a>
+					</div>
+					<div>
+						<img src={thumbnail} alt={title} />
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<section class="section">
+		<div class="container page-container">
+			<div class="page-content-base">
+				<Content />
+			</div>
+		</div>
+	</section>
+	{tabs && <Tabs title={tabs.title} data={tabs.items} />}
+	<TopBlogs title="Блог" />
 
-            <Banner title={banner.title} desc={banner.desc} bg={bannerBgImg} />
-        </div>
-    </section>
+	<Banner title={banner.title} desc={banner.desc} bg={bannerBgImg} />
 </Layout>

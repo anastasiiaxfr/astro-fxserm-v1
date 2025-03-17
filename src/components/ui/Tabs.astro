@@ -58,7 +58,8 @@ const { title, data } = Astro.props;
         });
     }
 
-    document.addEventListener('DOMContentLoaded', () => {
+    document.addEventListener('astro:page-load', () => {
+
         document.querySelectorAll('.tab__header').forEach((button) => {
             button.addEventListener('click', () => {
                 const index = parseInt(button.getAttribute('data-index'), 10);
