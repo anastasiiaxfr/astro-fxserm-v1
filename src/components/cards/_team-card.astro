@@ -1,20 +1,20 @@
 ---
-const { data } = Astro.props
+const { data } = Astro.props;
 ---
 
 <article class="team">
-    <div class="team__ava">
-        <img src={data.ava} alt={data.name} />
-    </div>
-    <div class="team__footer">
-        <div class="team__body">
-            <div class="team__title">{data.name}</div>
-            <p>{data.job}</p>
-        </div>
-        <button>
-            <svg class="icon" width="24" height="24">
-                <use xlink:href="#arr-t-r"></use>
-            </svg>
-        </button>
-    </div>
+	<div class="team__ava">
+		<img src={data.frontmatter?.ava} alt={data.frontmatter?.name} />
+	</div>
+	<div class="team__footer">
+		<div class="team__body">
+			<div class="team__title">{data.frontmatter?.name}</div>
+			<p>{data.frontmatter?.job}</p>
+		</div>
+		<button>
+			<svg class="icon" width="24" height="24">
+				<use xlink:href="#arr-t-r"></use>
+			</svg>
+		</button>
+	</div>
 </article>

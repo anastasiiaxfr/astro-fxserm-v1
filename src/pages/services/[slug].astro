@@ -3,6 +3,9 @@ import Layout from '../../layouts/Layout.astro';
 import Banner from '../../components/ui/Banner.astro';
 import TopBlogs from '../../pages/blog/_related-posts.astro';
 import Tabs from '../../components/ui/Tabs.astro';
+import Slide from '../../components/cards/_service-slider.astro';
+import Slider from '../../components/ui/Swiper.astro';
+
 const bannerBgImg = '/assets/img/banner/banner_2.png';
 const heroBg = '/assets/img/bg/services-single.jpg';
 
@@ -24,7 +27,7 @@ export async function getStaticPaths() {
 
 const { service } = Astro.props;
 const { frontmatter, Content } = service;
-const { title, excerpt, thumbnail, tabs } = frontmatter;
+const { title, excerpt, thumbnail, tabs, slider } = frontmatter;
 ---
 
 <Layout>
@@ -58,6 +61,23 @@ const { title, excerpt, thumbnail, tabs } = frontmatter;
 			</div>
 		</div>
 	</section>
+	{
+		slider && (
+			<section class="section section_slider">
+				<div class="container">
+					<h2>{slider.title}</h2>
+					<div class="slider">
+						<Slider
+							data={slider.slides}
+							CardComponent={Slide}
+							count={{ lg: 1, md: 1, sm: 1 }}
+						/>
+					</div>
+				</div>
+			</section>
+		)
+	}
+
 	{tabs && <Tabs title={tabs.title} data={tabs.items} />}
 	<TopBlogs title="Блог" />
 

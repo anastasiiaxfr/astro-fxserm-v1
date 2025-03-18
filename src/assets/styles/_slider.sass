@@ -1,0 +1,34 @@
+
+.slider
+    margin-top: $gap4
+    border-radius: $brs2
+    overflow: hidden
+    
+.slide
+    padding: 3em
+    height: 100%
+    +theme(dark2)
+    border-radius: $brs2
+    [data-bs-theme="light"] &
+        +theme(white)
+    ul
+        @extend .list
+    &__content
+        color: rgba($white, $op)
+        [data-bs-theme="light"] &
+            color: rgba($black, $op)
+    &__inner
+        display: grid
+        grid-template-columns: 1fr 1.5fr
+        gap: $gap2 $gap3
+        align-items: center
+    &__title
+        h2
+            @extend .h3
+            margin: 0 
+    +maw($md)
+        &__inner
+            grid-template-columns: 1fr
+    +maw($xs)
+        padding: 2em
+    

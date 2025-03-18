@@ -1,0 +1,27 @@
+---
+import { marked } from 'marked';
+
+const {data} = Astro.props
+
+
+---
+
+<article class="slide">
+    <div class="slide__inner">
+        <div class="">
+            <div
+                class="slide__title"
+                set:html={marked.parse(
+                    data.slide.col_l
+                )}
+            />
+        </div>
+        <div class="slide__content">
+            <div
+                set:html={marked.parse(
+                    data.slide.col_r
+                )}
+            />
+        </div>
+    </div>
+</article>

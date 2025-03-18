@@ -1,52 +1,62 @@
 ---
-import 'swiper/css'
-import 'swiper/css/pagination'
-import 'swiper/css/navigation'
+import 'swiper/css';
+import 'swiper/css/pagination';
+import 'swiper/css/navigation';
+import 'swiper/css/effect-fade';
 
-const { data, CardComponent } = Astro.props
+const { data, CardComponent, count = { lg: 3, md: 2, sm: 1 } } = Astro.props;
 ---
 
-<div class="swiper my-swiper">
-    <div class="swiper-wrapper">
-        {
-            data.map((item, index) => (
-                <div class="swiper-slide" key={index}>
-                    <CardComponent data={item.frontmatter} />
-                </div>
-            ))
-        }
-    </div>
+<div class="swiper my-swiper" data-count={JSON.stringify(count)}>
+	<div class="swiper-wrapper">
+		{
+			data.map((item, index) => (
+				<div class="swiper-slide" key={index}>
+					<CardComponent data={item} />
+				</div>
+			))
+		}
+	</div>
 
-    <!-- Navigation buttons -->
-    <!-- <div class="swiper-button-prev"></div>
+	<!-- Navigation buttons -->
+	<!-- <div class="swiper-button-prev"></div>
     <div class="swiper-button-next"></div> -->
 
-    <!-- Pagination -->
-    <div class="swiper-pagination"></div>
+	<!-- Pagination -->
+	<div class="swiper-pagination"></div>
 </div>
 
 <script>
-    import Swiper from '../../../node_modules/swiper'
-    import { Navigation, Pagination, Autoplay } from '../../../node_modules/swiper/modules'
+	import Swiper from '../../../node_modules/swiper';
+	import {
+		Navigation,
+		Pagination,
+		Autoplay,
+		EffectFade
+	} from '../../../node_modules/swiper/modules';
 
-    document.addEventListener('astro:page-load', () => {
-       
-        
-            new Swiper('.my-swiper', {
-                modules: [Navigation, Pagination, Autoplay],
-                spaceBetween: 30,
-                slidesPerView: 1,
-                // navigation: { 
-                //     nextEl: '.swiper-button-next', 
-                //     prevEl: '.swiper-button-prev' 
-                // },
-                pagination: { el: '.swiper-pagination', clickable: true },
-                //autoplay: { delay: 3000, disableOnInteraction: false },
-                breakpoints: {
-                    1000: { slidesPerView: 3 },
-                    640: { slidesPerView: 2 },
-                },
-            })
-       
-    })
+	document.addEventListener('astro:page-load', () => {
+		const swiperElement = document.querySelector('.my-swiper');
+		const count = JSON.parse(swiperElement.getAttribute('data-count'));
+		new Swiper('.my-swiper', {
+			modules: [Navigation, Pagination, Autoplay],
+			spaceBetween: 24,
+			slidesPerView: 1,
+			// navigation: {
+			//     nextEl: '.swiper-button-next',
+			//     prevEl: '.swiper-button-prev'
+			// },
+			pagination: { el: '.swiper-pagination', clickable: true },
+			//autoplay: { delay: 3000, disableOnInteraction: false },
+			breakpoints: {
+				1000: { slidesPerView: count.lg },
+				640: { slidesPerView: count.md },
+				0: { slidesPerView: count.sm }
+			},
+			effect: 'fade',
+			fadeEffect: {
+				crossFade: true
+			}
+		});
+	});
 </script>
