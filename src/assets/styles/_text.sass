@@ -124,3 +124,27 @@ p, li
     +maw($md)
         &__item
             grid-template-columns: 1fr
+
+
+.list-number
+    padding: 0
+    display: grid
+    grid-template-columns: repeat(auto-fill, minmax(400px, 1fr))
+    gap: $gap3
+    margin-top: $gap4
+    li
+        list-style-type: none
+        display: grid
+        grid-template-columns: auto 1fr
+        gap: $gap2
+        align-items: center
+    span
+        opacity: $op
+    &__num
+        color: $main
+        font-weight: 700
+        font-size: 300%
+        min-width: 1.25em
+        @extend %text-grad
+    +maw($xs)
+        grid-template-columns: 1fr
