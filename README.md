@@ -63,3 +63,8 @@ Feel free to check [our documentation](https://docs.astro.build) or jump into ou
 -   https://astro-ex-1.vercel.app/services/seo
 -   https://astro-ex-1.vercel.app/services/orm
 -   https://astro-ex-1.vercel.app/services/serm
+-   https://astro-ex-1.vercel.app/services/pbn
+-   https://astro-ex-1.vercel.app/services/reputation-marketing
+-   https://astro-ex-1.vercel.app/services/serm-department
+-   https://astro-ex-1.vercel.app/services/comunity-menegment
+-   https://astro-ex-1.vercel.app/services/delete-negotiv
