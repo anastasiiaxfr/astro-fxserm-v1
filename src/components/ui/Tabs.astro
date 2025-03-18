@@ -23,7 +23,7 @@ const { title, data } = Astro.props;
 								<h3>{item.tab.title}</h3>
 							</button>
 
-                                <div
+              <div
 								key={index}
 								class={`tab__content ${index === 0 ? 'active' : ''}`}
 								set:html={marked.parse(item.tab.content)}
@@ -32,38 +32,36 @@ const { title, data } = Astro.props;
                            
 						))
 					}
-				
-				
 			</div>
 
-            <div class="tab" data-tab="set2">
-                <div class="tab__toogls">
-                    {
-                        data.map((item, ind) => (
-                            <button
-                                key={ind}
-                                class={`tab__header ${ind === 0 ? 'active' : ''}`}
-                                aria-selected={ind === 0}
-                                data-index={ind}
-                            >
-                                <h3>{item.tab.title}</h3>
-                            </button>
-                        ))
-                    }
-                </div>
-                <div class="tab__body">
-                    {
-                        data.map((item, ind) => (
-                        <div
-                            key={ind}
-                            class={`tab__content ${ind === 0 ? 'active' : ''}`}
-                            set:html={marked.parse(item.tab.content)}
-                        />
-                        ))
-                    }
-                </div>
-            
-        </div>
+      <div class="tab" data-tab="set2">
+          <div class="tab__toogls">
+              {
+                  data.map((item, ind) => (
+                      <button
+                          key={ind}
+                          class={`tab__header ${ind === 0 ? 'active' : ''}`}
+                          aria-selected={ind === 0}
+                          data-index={ind}
+                      >
+                          <h3>{item.tab.title}</h3>
+                      </button>
+                  ))
+              }
+          </div>
+          <div class="tab__body">
+              {
+                  data.map((item, ind) => (
+                  <div
+                      key={ind}
+                      class={`tab__content ${ind === 0 ? 'active' : ''}`}
+                      set:html={marked.parse(item.tab.content)}
+                  />
+                  ))
+              }
+          </div>
+      </div>
+       
 		</nav>
 	</div>
 </section>
@@ -91,7 +89,6 @@ const { title, data } = Astro.props;
   }
 
   document.addEventListener('astro:page-load', () => {
-    // For each tab group, add event listeners to the tab headers
     document.querySelectorAll('.tab').forEach(tab => {
       const tabGroup = tab.getAttribute('data-tab');
       tab.querySelectorAll('.tab__header').forEach((button) => {
@@ -100,7 +97,7 @@ const { title, data } = Astro.props;
           setActiveTab(index, tabGroup);
         });
       });
-      setActiveTab(0, tabGroup); // Set the first tab as active by default
+      setActiveTab(0, tabGroup); 
     });
   });
 </script>
