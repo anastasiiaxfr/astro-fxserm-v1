@@ -9,41 +9,41 @@ const bgFill = 'contain';
 const bannerBgImg = '/assets/img/banner/banner_2.png';
 
 const banner = {
-    title: 'Эффективный маркетинг в криптовалюте',
-    desc: 'Мы организуем полноценный крипто маркетинг для криптовалютных бирж, платежных сервисов и других проектов из сферы финтех.'
+	title: 'Эффективный маркетинг в криптовалюте',
+	desc: 'Мы организуем полноценный крипто маркетинг для криптовалютных бирж, платежных сервисов и других проектов из сферы финтех.'
 };
 
 const title = 'Наша команда';
 
 const teams = Object.values(
-    import.meta.glob('../md/team/*.md', { eager: true })
+	import.meta.glob('../md/team/*.md', { eager: true })
 );
 ---
 
 <Layout bg={{ bgImg: bgImg, bgFill: bgFill }}>
-    <section class="section hero">
-        <div class="container hero__content">
-            <h1>{title}</h1>
-        </div>
-    </section>
-    <section class="section page-container">
-        <div class="container">
-            <div class="teams">
-                {teams.map((team) => <Card data={team.frontmatter} />)}
-            </div>
-        </div>
-    </section>
-    <section class="section section_team">
-        <div class="container">
-            <div class="row_1">
-                <div>
-                    <h2>Присоединяйся к нашей команде</h2>
-                </div>
-                <div>
-                    <Form />
-                </div>
-            </div>
-        </div>
-    </section>
-    <Banner title={banner.title} desc={banner.desc} bg={bannerBgImg} />
+	<section class="section hero">
+		<div class="container hero__content">
+			<h1>{title}</h1>
+		</div>
+	</section>
+	<section class="section page-container">
+		<div class="container">
+			<div class="teams">
+				{teams.map((team) => <Card data={team} />)}
+			</div>
+		</div>
+	</section>
+	<section class="section section_team">
+		<div class="container">
+			<div class="row_1">
+				<div>
+					<h2>Присоединяйся к нашей команде</h2>
+				</div>
+				<div>
+					<Form />
+				</div>
+			</div>
+		</div>
+	</section>
+	<Banner title={banner.title} desc={banner.desc} bg={bannerBgImg} />
 </Layout>
