@@ -68,3 +68,5 @@ Feel free to check [our documentation](https://docs.astro.build) or jump into ou
 -   https://astro-ex-1.vercel.app/services/serm-department
 -   https://astro-ex-1.vercel.app/services/comunity-menegment
 -   https://astro-ex-1.vercel.app/services/delete-negotiv
+-   https://astro-ex-1.vercel.app/services/automatization-rpa
+-   https://astro-ex-1.vercel.app/services/gmb-optimization
