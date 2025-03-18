@@ -29,7 +29,7 @@ export async function getStaticPaths() {
 
 const { service } = Astro.props;
 const { frontmatter, Content } = service;
-const { title, excerpt, thumbnail, tabs, slider, features, str } = frontmatter;
+const { title, excerpt, thumbnail, tabs, slider, features, str, str2 } = frontmatter;
 ---
 
 <Layout>
@@ -119,6 +119,31 @@ const { title, excerpt, thumbnail, tabs, slider, features, str } = frontmatter;
 								<li>
 									<b class="list-number__num">{i.num}</b>
 									<span>{i.desc}</span>
+								</li>
+							))}
+						</ul>
+					)}
+				</div>
+			</section>
+		)
+	}
+	{
+		str2&& (
+			<section class="section">
+				<div class="container">
+					<h2>{str2.title}</h2>
+
+					{str2.items && (
+						<ul class="list-number-base">
+							{str2.items.map((i) => (
+								<li>
+									<b class="list-number-base__num">{i.num}</b>
+									<div>
+										<h3 class="h4">{i.title}</h3>
+										<p>
+											{i.desc}
+										</p>
+									</div>
 								</li>
 							))}
 						</ul>

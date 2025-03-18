@@ -148,3 +148,33 @@ p, li
         @extend %text-grad
     +maw($xs)
         grid-template-columns: 1fr
+
+.list-number-base
+    padding: 0
+    margin-top: $gap4
+    display: grid
+    grid-template-columns: 1fr 1fr
+    gap: $gap2 0
+    &__num
+        color: $main
+        font-weight: 700
+        font-size: 200%
+        min-width: 1.25em
+        @extend %text-grad
+    li
+        list-style-type: none
+        display: grid
+        grid-template-columns: auto 1fr
+        gap: $gap2
+        border-bottom: 1px solid var(--bdc)
+        padding-bottom: $gap2
+        margin-bottom: $gap2
+        &:nth-child(odd):last-child
+           border-bottom: 0
+            
+    h3
+        margin: 0
+    p
+        opacity: $op
+    +maw($md)
+        grid-template-columns: 1fr

@@ -72,3 +72,4 @@ Feel free to check [our documentation](https://docs.astro.build) or jump into ou
 -   https://astro-ex-1.vercel.app/services/gmb-optimization
 -   https://astro-ex-1.vercel.app/services/linkbilding
 -   https://astro-ex-1.vercel.app/services/ux
+-   https://astro-ex-1.vercel.app/services/aso
