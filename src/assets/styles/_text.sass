@@ -80,12 +80,13 @@ p, li
 .list
     padding: 0
     display: grid
-    gap: $gap2
+    gap: 0
     li
         position: relative
         list-style-type: none
         +flex(flex, center, start, nowrap)
         gap: $gap2
+        margin: $gap1 0
         span
             &::first-letter
                 text-transform: uppercase
