@@ -1,10 +1,17 @@
 .tabs
 	margin-top: $gap4
+	display: grid
+	gap: $gap4
 
 .tab
 	display: grid
+	grid-template-columns: 1.5fr 2fr
 	gap: $gap3
 	position: relative
+	align-items: start
+	&__toogls
+		display: grid
+		gap: $gap3
 	&__header
 		padding: 2em
 		+theme(dark2)
@@ -25,14 +32,31 @@
 		padding: 2em
 		+theme(dark2)
 		border-radius: $brs1
-		opacity: $op
 		grid-column: 2
 		display: none
+		color: rgba($white, $op)
 		[data-bs-theme="light"] &
 			+theme(light)
+			color: rgba($black, $op)
 		&.active
 			display: block
+			
+		li
+			margin: $gap1 0
+		b, strong
+			color: $white
+			[data-bs-theme="light"] &
+				color: $black
+		
 	+maw($md)
+		grid-template-columns: 1fr
+		display: none
+		&.tab-sm
+			display: grid
 		&__content
 			grid-column: 1
 			grid-row: initial !important
+		
+	+miw($md)
+		&.tab-sm
+			display: none

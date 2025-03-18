@@ -11,12 +11,22 @@
     border-radius: $brs2
     [data-bs-theme="light"] &
         +theme(white)
+    h2
+        strong
+            display: block
+            color: $main
+            font-size: 200%
     ul
         @extend .list
+ 
     &__content
         color: rgba($white, $op)
+        b, strong
+            color: $white
         [data-bs-theme="light"] &
             color: rgba($black, $op)
+            b, strong
+                color: $black
     &__inner
         display: grid
         grid-template-columns: 1fr 1.5fr

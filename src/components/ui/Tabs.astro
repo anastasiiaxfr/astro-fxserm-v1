@@ -5,68 +5,102 @@ const { title, data } = Astro.props;
 ---
 
 <section>
-    <div class="container">
-        <h2>{title}</h2>
+	<div class="container">
+		<h2>{title}</h2>
 
-        <nav class="tabs">
-            <!-- Tab Headers -->
-            <div class="tab">
-                {
-                    data.map((item, index) => (
-                       
+		<nav class="tabs">
+			<!-- Tab Headers -->
+			<div class="tab tab-sm" data-tab="set1">
+				
+					{
+						data.map((item, index) => (
+							<button
+								key={index}
+								class={`tab__header ${index === 0 ? 'active' : ''}`}
+								aria-selected={index === 0}
+								data-index={index}
+							>
+								<h3>{item.tab.title}</h3>
+							</button>
+
+                                <div
+								key={index}
+								class={`tab__content ${index === 0 ? 'active' : ''}`}
+								set:html={marked.parse(item.tab.content)}
+								style={`grid-row: 1/${data.length + 1}`}
+							/>
+                           
+						))
+					}
+				
+				
+			</div>
+
+            <div class="tab" data-tab="set2">
+                <div class="tab__toogls">
+                    {
+                        data.map((item, ind) => (
                             <button
-                                key={index}
-                                class={`tab__header ${index === 0 ? 'active' : ''}`}
-                                aria-selected={index === 0}
-                                data-index={index}
+                                key={ind}
+                                class={`tab__header ${ind === 0 ? 'active' : ''}`}
+                                aria-selected={ind === 0}
+                                data-index={ind}
                             >
                                 <h3>{item.tab.title}</h3>
                             </button>
-                            <div
-                                key={index}
-                                class={`tab__content ${index === 0 ? 'active' : ''}`}
-                                set:html={marked.parse(item.tab.content)} style={`grid-row: 1/${data.length + 1}`}/>
-                            
-                           
-                       
-                    ))
-                }
-            </div>
-        </nav>
-    </div>
+                        ))
+                    }
+                </div>
+                <div class="tab__body">
+                    {
+                        data.map((item, ind) => (
+                        <div
+                            key={ind}
+                            class={`tab__content ${ind === 0 ? 'active' : ''}`}
+                            set:html={marked.parse(item.tab.content)}
+                        />
+                        ))
+                    }
+                </div>
+            
+        </div>
+		</nav>
+	</div>
 </section>
 
 <script is:inline>
-    function setActiveTab(index) {
-        document
-            .querySelectorAll('.tab__content')
-            .forEach((tabContent, idx) => {
-                if (idx === index) {
-                    tabContent.classList.add('active');
-                } else {
-                    tabContent.classList.remove('active');
-                }
-            });
+	function setActiveTab(index, tabGroup) {
+    document
+      .querySelectorAll(`.tab[data-tab="${tabGroup}"] .tab__content`)
+      .forEach((tabContent, idx) => {
+        if (idx === index) {
+          tabContent.classList.add('active');
+        } else {
+          tabContent.classList.remove('active');
+        }
+      });
 
-        document.querySelectorAll('.tab__header').forEach((button, idx) => {
-            button.setAttribute('aria-selected', idx === index);
-            if (idx === index) {
-                    button.classList.add('active');
-                } else {
-                    button.classList.remove('active');
-                }
-        });
-    }
-
-    document.addEventListener('astro:page-load', () => {
-
-        document.querySelectorAll('.tab__header').forEach((button) => {
-            button.addEventListener('click', () => {
-                const index = parseInt(button.getAttribute('data-index'), 10);
-                setActiveTab(index);
-            });
-        });
-
-        setActiveTab(0);
+    document.querySelectorAll(`.tab[data-tab="${tabGroup}"] .tab__header`).forEach((button, idx) => {
+      button.setAttribute('aria-selected', idx === index);
+      if (idx === index) {
+        button.classList.add('active');
+      } else {
+        button.classList.remove('active');
+      }
     });
+  }
+
+  document.addEventListener('astro:page-load', () => {
+    // For each tab group, add event listeners to the tab headers
+    document.querySelectorAll('.tab').forEach(tab => {
+      const tabGroup = tab.getAttribute('data-tab');
+      tab.querySelectorAll('.tab__header').forEach((button) => {
+        button.addEventListener('click', () => {
+          const index = parseInt(button.getAttribute('data-index'), 10);
+          setActiveTab(index, tabGroup);
+        });
+      });
+      setActiveTab(0, tabGroup); // Set the first tab as active by default
+    });
+  });
 </script>
