@@ -12,7 +12,7 @@ const { data, CardComponent, count = { lg: 3, md: 2, sm: 1 } } = Astro.props;
 		{
 			data.map((item, index) => (
 				<div class="swiper-slide" key={index}>
-					<CardComponent data={item} />
+					<CardComponent data={item} count={count} />
 				</div>
 			))
 		}

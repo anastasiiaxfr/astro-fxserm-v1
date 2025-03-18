@@ -1,4 +1,6 @@
 ---
+import { marked } from 'marked';
+
 import Layout from '../../layouts/Layout.astro';
 import Banner from '../../components/ui/Banner.astro';
 import TopBlogs from '../../pages/blog/_related-posts.astro';
@@ -27,7 +29,7 @@ export async function getStaticPaths() {
 
 const { service } = Astro.props;
 const { frontmatter, Content } = service;
-const { title, excerpt, thumbnail, tabs, slider } = frontmatter;
+const { title, excerpt, thumbnail, tabs, slider, features } = frontmatter;
 ---
 
 <Layout>
@@ -61,16 +63,44 @@ const { title, excerpt, thumbnail, tabs, slider } = frontmatter;
 			</div>
 		</div>
 	</section>
+
+	{
+		features && (
+			<section class="section section_features">
+				<div class="container">
+					<h2>{features.title}</h2>
+
+					<div class="list-table">
+						{features.items.map((i) => (
+							<div class="list-table__item">
+								<div>
+									<div
+										class="list-table__title"
+										set:html={marked.parse(i.title)}
+									/>
+								</div>
+								<div
+									class="list-table__desc"
+									set:html={marked.parse(i.desc)}
+								/>
+							</div>
+						))}
+					</div>
+				</div>
+			</section>
+		)
+	}
+
 	{
 		slider && (
-			<section class="section section_slider">
+			<section class={features ? 'section' : 'section section_slider'}>
 				<div class="container">
 					<h2>{slider.title}</h2>
 					<div class="slider">
 						<Slider
 							data={slider.slides}
 							CardComponent={Slide}
-							count={{ lg: 1, md: 1, sm: 1 }}
+							count={slider?.count || { lg: 1, md: 1, sm: 1 }}
 						/>
 					</div>
 				</div>

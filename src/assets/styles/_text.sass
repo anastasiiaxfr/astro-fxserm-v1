@@ -97,4 +97,30 @@ p, li
             border-radius: 50%
             background: $grad
 
-            
+.list-table
+    margin-top: $gap4
+    &__item
+        display: grid
+        grid-template-columns: 1fr 1.5fr
+        gap: $gap2
+        padding-top: $gap2
+        padding-bottom: $gap2
+        margin-bottom: $gap2
+        border-bottom: 1px solid var(--bdc)
+        &:last-child
+            border: 0
+    &__title
+        & > *
+            @extend .h4
+            margin: 0
+            strong
+                color: $main
+                margin-right: 1em
+    &__desc
+        opacity: $op
+        p
+            &:first-child
+                margin-top: 0
+    +maw($md)
+        &__item
+            grid-template-columns: 1fr
