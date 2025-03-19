@@ -9,23 +9,13 @@
 	background-repeat: no-repeat
 	border-radius: $brs2
 	overflow: hidden
-	padding-right: 15em
-	&__cta
-		@extend %circle-btn
-	&__corner
-		+ps(absolute, (l, auto), (b, 0), (r, 0))
-		+sz(15em, 15em)
+	.corner
+		+ps(absolute, (l, auto), (b, -2px), (r, 0))
+		+sz(11em, 11em)
 		// clip-path: url(#menu)
 		// will-change: transform
-		svg
-			height: 100%
-			fill: var(--cornerFill)
-	&__clip
-		+ps(absolute, (l, auto), (b, 0), (r, 0))
-		+sz(100%, 100%)
-		clip-path: url(#menu)
-		will-change: transform
-		background: yellow
+		button, a
+			bottom: 2px
 	&__content
 		max-width: 650px
 	&__title
@@ -34,24 +24,16 @@
 		margin-bottom: $gap2
 	&__desc
 		+ft(18, 18*1.4, 400)
+		padding-right: 0
 	+maw($md)
 		background: $grad !important
-		&__cta, &__corner
-			box-shadow: none
-	+maw(640)
-		padding: $gap6
-		&__corner
-			+sz(10em, 10em)
-			display: none
-		&__cta
-			+sz(3em, 3em)
-			right: 1em
-			top: 1em
-			svg
-				+sz(1.5em, 1.5em)
+		&__desc
+			padding-right: 5em
 	+maw($xs)
-		padding: 2em
 		&__desc
 			font-size: 1em
-		&__cta
-			display: none
+			padding-right: 0
+		.corner
+			+sz(7em, 7em)
+			button, a
+				+sz(60%, 60%)

@@ -13,10 +13,10 @@ a
 
 .section
 	margin: var(--gapSection) 0
-	&_benefits, &_gallery, &_team, &_slider, &_features
+	&_benefits, &_gallery, &_slider, &_features
 		padding: var(--gapSection) 0
 		[data-bs-theme="dark"] &
-			+theme(dark)
+		+theme(dark)
 		[data-bs-theme="light"] &
 			+theme(light)
 	&_address
@@ -36,7 +36,7 @@ a
 			margin-bottom: $gap2
 		h2
 			margin-top: 0
-			
+
 		p, li
 			color: rgba($white, $op)
 			[data-bs-theme="light"] &
@@ -64,13 +64,13 @@ a
 				background: rgba($black, 0.2)
 				[data-bs-theme="light"] &
 					background: rgba($black, 0.1)
-			
+
 			td, th
 				padding: 10px $gap2
 				opacity: $op
 				font-weight: 500
 		p > a
-			color: $main
+				color: $main
 
 	&-content
 		display: grid
@@ -83,10 +83,10 @@ a
 					max-width: 800px
 					margin-left: auto
 					margin-right: auto
-			
+
 		h2
 			margin-bottom: 0
-		
+
 	&-post
 		display: grid
 		gap: $gap3
@@ -179,4 +179,4 @@ a
 			grid-template-columns: auto 1fr
 	+maw($xs)
 		&__container
-			grid-template-columns: 1fr 
+			grid-template-columns: 1fr
