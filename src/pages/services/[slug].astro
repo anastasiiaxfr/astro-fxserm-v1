@@ -113,7 +113,13 @@ const {
 
 	{
 		slider && (
-			<section class={features ? 'section' : 'section section_slider'}>
+			<section
+				class={
+					slider.theme === 'light'
+						? 'section'
+						: 'section section_slider'
+				}
+			>
 				<div class="container">
 					<h2>{slider.title}</h2>
 					<div class="slider">
