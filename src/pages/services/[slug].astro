@@ -8,6 +8,7 @@ import Tabs from '../../components/ui/Tabs.astro';
 import Slide from '../../components/cards/_service-slider.astro';
 import Slider from '../../components/ui/Swiper.astro';
 import Button from '../../components/ui/Forms/Button.astro';
+import Card from '../../components/cards/_benefits-card.astro';
 
 const bannerBgImg = '/assets/img/banner/banner_2.png';
 const heroBg = '/assets/img/bg/services-single.jpg';
@@ -30,7 +31,17 @@ export async function getStaticPaths() {
 
 const { service } = Astro.props;
 const { frontmatter, Content } = service;
-const { title, excerpt, thumbnail, tabs, slider, features, str, str2 } = frontmatter;
+const {
+	title,
+	excerpt,
+	thumbnail,
+	tabs,
+	slider,
+	features,
+	str,
+	str2,
+	services
+} = frontmatter;
 ---
 
 <Layout>
@@ -43,7 +54,7 @@ const { title, excerpt, thumbnail, tabs, slider, features, str, str2 } = frontma
 						<p>
 							{excerpt}
 						</p>
-						<Button url="#"/>
+						<Button />
 					</div>
 					<div>
 						<img src={thumbnail} alt={title} />
@@ -59,7 +70,20 @@ const { title, excerpt, thumbnail, tabs, slider, features, str, str2 } = frontma
 			</div>
 		</div>
 	</section>
-
+	{
+		services && (
+			<section class="section section_benefits">
+				<div class="container">
+					<h2>{services.title}</h2>
+					<div class="cards">
+						{services.items.map((feature) => (
+							<Card data={feature} />
+						))}
+					</div>
+				</div>
+			</section>
+		)
+	}
 	{
 		features && (
 			<section class="section section_features">
@@ -124,7 +148,7 @@ const { title, excerpt, thumbnail, tabs, slider, features, str, str2 } = frontma
 		)
 	}
 	{
-		str2&& (
+		str2 && (
 			<section class="section">
 				<div class="container">
 					<h2>{str2.title}</h2>
@@ -136,9 +160,7 @@ const { title, excerpt, thumbnail, tabs, slider, features, str, str2 } = frontma
 									<b class="list-number-base__num">{i.num}</b>
 									<div>
 										<h3 class="h4">{i.title}</h3>
-										<p>
-											{i.desc}
-										</p>
+										<p>{i.desc}</p>
 									</div>
 								</li>
 							))}
