@@ -1,0 +1,36 @@
+---
+
+---
+
+<a href="#" class="btn-top" role="button">
+	<svg class="icon" width="24" height="24">
+		<use xlink:href="#arr-t"></use>
+	</svg>
+</a>
+
+<script is:inline>
+	const initScrollToTop = () => {
+		const btnTop = document.querySelector('.btn-top');
+
+		window.addEventListener('scroll', () => {
+			if (window.scrollY > 300) {
+				btnTop.classList.add('show');
+			} else {
+				btnTop.classList.remove('show');
+			}
+		});
+
+		btnTop.addEventListener('click', (e) => {
+			e.preventDefault();
+			window.scrollTo({ top: 0, behavior: 'smooth' });
+		});
+	};
+
+	document.addEventListener('astro:page-load', () => {
+		initScrollToTop();
+	});
+
+	document.addEventListener('astro:page-transition', () => {
+		initScrollToTop();
+	});
+</script>

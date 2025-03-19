@@ -21,7 +21,7 @@
 	&s
 		+flex(flex, center, start, nowrap)
 		gap: $gap2
-	&-sqwire
+	&-squire
 		@extend .btn
 		max-width: 50px
 		padding: 4px
@@ -65,6 +65,12 @@
 		@extend .btn
 		background: $dark
 		color: $white
+	&-top
+		@extend .btn-squire
+		opacity: 0
+		+ps(fixed, (r, 10px), (b, 10px))
+		&.show
+			opacity: 1
 
 %circle-btn
 	+ps(absolute, (b, 0), (r, 0))

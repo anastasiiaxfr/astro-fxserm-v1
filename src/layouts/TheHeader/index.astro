@@ -4,165 +4,165 @@ import ThemeSwitcher from '../../components/ui/ThemeSwitcher.astro';
 import { nav } from './constant';
 
 const anim = {
-    old: {
-        name: 'fadeIn',
-        duration: '0.5s',
-        easing: 'ease-in',
-        direction: 'reverse'
-    },
-    new: {
-        name: 'fadeIn',
-        duration: '0.5s',
-        easing: 'ease-in-out'
-    }
+	old: {
+		name: 'fadeIn',
+		duration: '0.5s',
+		easing: 'ease-in',
+		direction: 'reverse'
+	},
+	new: {
+		name: 'fadeIn',
+		duration: '0.5s',
+		easing: 'ease-in-out'
+	}
 };
 
 const customTransition = {
-    forwards: anim,
-    backwards: anim
+	forwards: anim,
+	backwards: anim
 };
 ---
 
 <header class="header sticky-top t-0" transition:animate={customTransition}>
-    <div class="container">
-        <Logo />
+	<div class="container">
+		<Logo />
 
-        <nav class="header__menu">
-            {
-                nav.map((item) =>
-                    item.child ? (
-                        <div class="dropdown">
-                            <a
-                                class="dropdown-toggle"
-                                href={item.url}
-                                role="button"
-                                data-bs-toggle="dropdown"
-                                aria-expanded="false"
-                            >
-                                {item.title}
-                                <svg class="icon" width="16" height="16">
-                                    <use xlink:href="#arr-top" />
-                                </svg>
-                            </a>
+		<nav class="header__menu">
+			{
+				nav.map((item) =>
+					item.child ? (
+						<div class="dropdown">
+							<a
+								class="dropdown-toggle"
+								href={item.url}
+								role="button"
+								data-bs-toggle="dropdown"
+								aria-expanded="false"
+							>
+								{item.title}
+								<svg class="icon" width="16" height="16">
+									<use xlink:href="#arr-top" />
+								</svg>
+							</a>
 
-                            <ul class="dropdown-menu">
-                                {item.child.map((child) => (
-                                    <li>
-                                        <a
-                                            class="dropdown-item"
-                                            href={child.url}
-                                        >
-                                            {child.title}
-                                        </a>
-                                    </li>
-                                ))}
-                            </ul>
-                        </div>
-                    ) : (
-                        <a href={item.url} class="menu-item">
-                            {item.title}
-                        </a>
-                    )
-                )
-            }
-        </nav>
+							<ul class="dropdown-menu">
+								{item.child.map((child) => (
+									<li>
+										<a
+											class="dropdown-item"
+											href={child.url}
+										>
+											{child.title}
+										</a>
+									</li>
+								))}
+							</ul>
+						</div>
+					) : (
+						<a href={item.url} class="menu-item">
+							{item.title}
+						</a>
+					)
+				)
+			}
+		</nav>
 
-        <div class="btns">
-            <a href="#" class="btn-secondary">Напишите нам</a>
-            <a href="#" class="btn btn-sqwire">
-                <svg class="icon" width="24" height="24">
-                    <use xlink:href="#tm"></use>
-                </svg>
-            </a>
-            <ThemeSwitcher />
-            <button class="drawer__toggle">
-                <svg class="icon" width="24" height="24">
-                    <use xlink:href="#menu"></use>
-                </svg>
-            </button>
-        </div>
-    </div>
+		<div class="btns">
+			<a href="#" class="btn-secondary">Напишите нам</a>
+			<a href="#" class="btn btn-squire">
+				<svg class="icon" width="24" height="24">
+					<use xlink:href="#tm"></use>
+				</svg>
+			</a>
+			<ThemeSwitcher />
+			<button class="drawer__toggle">
+				<svg class="icon" width="24" height="24">
+					<use xlink:href="#menu"></use>
+				</svg>
+			</button>
+		</div>
+	</div>
 </header>
 
 <div class="drawer" transition:animate="fade">
-    <div class="drawer__header">
-        <Logo height="25" />
-        <button class="drawer__toggle">
-            <svg class="icon" width="24" height="24">
-                <use xlink:href="#close"></use>
-            </svg>
-        </button>
-    </div>
-    <div class="drawer__menu">
-        {
-            nav.map((item, ind) =>
-                item.child ? (
-                    <div class="accordion">
-                        <div class="accordion-item">
-                            <div class="accordion-header">
-                                <button
-                                    class="accordion-button"
-                                    type="button"
-                                    data-bs-toggle="collapse"
-                                    data-bs-target={`#collapse-${ind}`}
-                                    aria-expanded="false"
-                                >
-                                    {item.title}
-                                    <svg class="icon" width="16" height="16">
-                                        <use xlink:href="#arr-top" />
-                                    </svg>
-                                </button>
-                            </div>
-                            <div
-                                id={`collapse-${ind}`}
-                                class="accordion-collapse collapse"
-                            >
-                                <div class="accordion-body">
-                                    <nav>
-                                        {item.child.map((i) => (
-                                            <a href={i.url}>{i.title}</a>
-                                        ))}
-                                    </nav>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                ) : (
-                    <a href={item.url} class="menu-item">
-                        {item.title}
-                    </a>
-                )
-            )
-        }
-    </div>
+	<div class="drawer__header">
+		<Logo height="25" />
+		<button class="drawer__toggle">
+			<svg class="icon" width="24" height="24">
+				<use xlink:href="#close"></use>
+			</svg>
+		</button>
+	</div>
+	<div class="drawer__menu">
+		{
+			nav.map((item, ind) =>
+				item.child ? (
+					<div class="accordion">
+						<div class="accordion-item">
+							<div class="accordion-header">
+								<button
+									class="accordion-button"
+									type="button"
+									data-bs-toggle="collapse"
+									data-bs-target={`#collapse-${ind}`}
+									aria-expanded="false"
+								>
+									{item.title}
+									<svg class="icon" width="16" height="16">
+										<use xlink:href="#arr-top" />
+									</svg>
+								</button>
+							</div>
+							<div
+								id={`collapse-${ind}`}
+								class="accordion-collapse collapse"
+							>
+								<div class="accordion-body">
+									<nav>
+										{item.child.map((i) => (
+											<a href={i.url}>{i.title}</a>
+										))}
+									</nav>
+								</div>
+							</div>
+						</div>
+					</div>
+				) : (
+					<a href={item.url} class="menu-item">
+						{item.title}
+					</a>
+				)
+			)
+		}
+	</div>
 </div>
 
 <script is:client>
-    document.addEventListener('astro:page-load', () => {
-        const drawerToggleBtns = document.querySelectorAll('.drawer__toggle');
-        const drawer = document.querySelector('.drawer');
-        const drawerMenu = document.querySelector('.drawer__menu');
+	document.addEventListener('astro:page-load', () => {
+		const drawerToggleBtns = document.querySelectorAll('.drawer__toggle');
+		const drawer = document.querySelector('.drawer');
+		const drawerMenu = document.querySelector('.drawer__menu');
 
-        drawerToggleBtns.forEach((button) => {
-            button.addEventListener('click', () => {
-                drawer.classList.toggle('show');
-            });
-        });
+		drawerToggleBtns.forEach((button) => {
+			button.addEventListener('click', () => {
+				drawer.classList.toggle('show');
+			});
+		});
 
-        const drawerLinks = drawerMenu.querySelectorAll('a');
-        drawerLinks.forEach((link) => {
-            link.addEventListener('click', () => {
-                drawer.classList.remove('show');
-            });
-        });
+		const drawerLinks = drawerMenu.querySelectorAll('a');
+		drawerLinks.forEach((link) => {
+			link.addEventListener('click', () => {
+				drawer.classList.remove('show');
+			});
+		});
 
-        document.addEventListener('click', (e) => {
-            if (
-                !drawer.contains(e.target) &&
-                !e.target.closest('.drawer__toggle')
-            ) {
-                drawer.classList.remove('show');
-            }
-        });
-    });
+		document.addEventListener('click', (e) => {
+			if (
+				!drawer.contains(e.target) &&
+				!e.target.closest('.drawer__toggle')
+			) {
+				drawer.classList.remove('show');
+			}
+		});
+	});
 </script>
