@@ -5,6 +5,7 @@ import SEO from '../components/SEO.astro';
 import Header from './TheHeader/index.astro';
 import Footer from './TheFooter/index.astro';
 import BtnToTop from '../components/ui/BtnToTop.astro';
+import Preloader from '../components/ui/Preloader.astro';
 import SVG from '../components/_svg.astro';
 
 const { bg } = Astro.props;
@@ -43,6 +44,7 @@ const customTransition = {
 		<SEO />
 		<ClientRouter />
 	</head>
+
 	<body
 		class="page__body"
 		data-bs-theme="dark"
@@ -50,6 +52,7 @@ const customTransition = {
 			? { backgroundImage: `url(${bgImg})`, backgroundSize: bgFill }
 			: {}}
 	>
+		<Preloader />
 		<div class="page__wrapper">
 			<Header />
 			<main transition:animate={customTransition}>
