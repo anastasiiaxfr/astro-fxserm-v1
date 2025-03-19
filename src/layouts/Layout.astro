@@ -6,10 +6,11 @@ import Header from './TheHeader/index.astro';
 import Footer from './TheFooter/index.astro';
 import BtnToTop from '../components/ui/BtnToTop.astro';
 import Preloader from '../components/ui/Preloader.astro';
+import Bg from '../components/ui/HeroBg.astro';
 import SVG from '../components/_svg.astro';
 
 const { bg, seo } = Astro.props;
-const { bgImg, bgFill } = bg || {};
+const { bgImg } = bg || {};
 
 import { ClientRouter } from 'astro:transitions';
 
@@ -45,13 +46,8 @@ const customTransition = {
 		<ClientRouter />
 	</head>
 
-	<body
-		class="page__body"
-		data-bs-theme="dark"
-		style={bgImg
-			? { backgroundImage: `url(${bgImg})`, backgroundSize: bgFill }
-			: {}}
-	>
+	<body class="page__body" data-bs-theme="dark">
+		<Bg bg={{ bgImg: bgImg }} />
 		<Preloader />
 		<div class="page__wrapper">
 			<Header />

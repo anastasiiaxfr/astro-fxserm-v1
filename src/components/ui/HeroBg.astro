@@ -1,0 +1,14 @@
+---
+const { bg } = Astro.props;
+const { bgImg } = bg;
+---
+
+{
+	bgImg && (
+		<section class="page__bg">
+			<div class="page__bg-img-wrap">
+				<img src={bgImg} alt="Hero BG" />
+			</div>
+		</section>
+	)
+}
