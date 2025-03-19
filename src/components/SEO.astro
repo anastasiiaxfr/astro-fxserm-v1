@@ -1,18 +1,18 @@
 ---
 const {
-    title = 'Home Page',
-    desc = '',
-    img = '/seo/og.jpg',
-    url = new URL(Astro.url.pathname || '/', Astro.site)
+	title = 'Home Page',
+	desc = '',
+	img = '/seo/og.jpg',
+	url = new URL(Astro.url.pathname || '/', Astro.site)
 } = Astro.props;
 
 const seo = {
-    title: `FxSerm | ${title}`,
-    description: desc,
-    url: url,
-    img: img,
-    author: 'Anastasiia Berest',
-    site_name: 'FxSerm'
+	title: `FxSerm | ${title}`,
+	description: desc,
+	url: url,
+	img: img,
+	author: 'FxSerm',
+	site_name: 'FxSerm'
 };
 ---
 
@@ -59,42 +59,42 @@ const seo = {
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link
-    href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
-    rel="stylesheet"
+	href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
+	rel="stylesheet"
 />
 
 <script async type="application/ld+json">
-    {
-        "@context": "http://schema.org/",
-        "@type": "Organization",
-        "name": "FxSerm",
-        "brand": "FxSerm",
-        "alternateName": "FxSerm",
-        "url": "",
-        "logo": "/logo.svg",
-        "address": {
-            "@type": "PostalAddress",
-            "streetAddress": "Lordou Vironos 71, Nicosia 1080,",
-            "addressLocality": "Lordou Vironos",
-            "addressCountry": "Кипр"
-        },
-        "contactPoint": [
-            {
-                "@type": "ContactPoint",
-                "telephone": "xxxxxxxxxxxx",
-                "email": "mail@fx-serm.com",
-                "contactType": "customer support",
-                "areaServed": "UA",
-                "availableLanguage": ["Ukrain"]
-            }
-        ],
-        "sameAs": [
-            "https://www.facebook.com/",
-            "https://www.instagram.com/",
-            "https://www.tiktok.com/",
-            "https://twitter.com/",
-            "https://www.youtube.com/channel/",
-            "https://t.me/Fx-serm"
-        ]
-    }
+	{
+		"@context": "http://schema.org/",
+		"@type": "Organization",
+		"name": "FxSerm",
+		"brand": "FxSerm",
+		"alternateName": "FxSerm",
+		"url": "",
+		"logo": "/logo.svg",
+		"address": {
+			"@type": "PostalAddress",
+			"streetAddress": "Lordou Vironos 71, Nicosia 1080,",
+			"addressLocality": "Lordou Vironos",
+			"addressCountry": "Кипр"
+		},
+		"contactPoint": [
+			{
+				"@type": "ContactPoint",
+				"telephone": "xxxxxxxxxxxx",
+				"email": "mail@fx-serm.com",
+				"contactType": "customer support",
+				"areaServed": "UA",
+				"availableLanguage": ["Ukrain"]
+			}
+		],
+		"sameAs": [
+			"https://www.facebook.com/",
+			"https://www.instagram.com/",
+			"https://www.tiktok.com/",
+			"https://twitter.com/",
+			"https://www.youtube.com/channel/",
+			"https://t.me/Fx-serm"
+		]
+	}
 </script>

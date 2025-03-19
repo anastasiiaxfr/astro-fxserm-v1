@@ -1,0 +1,64 @@
+@import fonts
+@import vars
+
+*
+	box-sizing: border-box
+
+html, body
+	+theme(black)
+	font-family: var(--ffHeading), var(--ffBack)
+	display: flex
+	flex-direction: column
+	min-height: 100vh
+	overflow: hidden
+	margin: 0
+	padding: 0
+
+main
+	display: flex
+	flex: 1
+	align-items: center
+	justify-content: center
+	flex-direction: column
+
+.container
+	max-width: 600px
+	margin: 32px auto
+	padding: 0 1.5em
+	text-align: center
+
+.btn
+	display: inline-flex
+	align-items: center
+	justify-content: center
+	padding: 1.2em 1em
+	min-width: 200px
+	border-radius: 8px
+	color: $white
+	background-color: var(--color-main)
+	background-image: $grad
+	text-decoration: none
+	letter-spacing: 0.05em
+	font-weight: 700
+	cursor: pointer
+	user-select: none
+	transition: $trs
+	&:hover, &:active, &:focus
+		transform: scale(1.05)
+h1
+	font-size: 10em
+	line-height: 0.8
+	margin: 32px 0 0
+	color: var(--color-main)
+	@extend %text-grad
+	+maw($xs)
+		font-size: 8em
+
+p
+	margin-bottom: 32px
+	font-size: 1.3em
+	line-height: 1.3
+	text-transform: uppercase
+	letter-spacing: 0.05em
+	+maw($xs)
+		font-size: 1em

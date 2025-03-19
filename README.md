@@ -77,3 +77,5 @@ Feel free to check [our documentation](https://docs.astro.build) or jump into ou
 -   https://astro-ex-1.vercel.app/services/site-dev
 -   https://astro-ex-1.vercel.app/services/youtube
 -   https://astro-ex-1.vercel.app/services/leadgeneration
+-   https://astro-ex-1.vercel.app/404
+-   https://astro-ex-1.vercel.app/500

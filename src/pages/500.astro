@@ -1,0 +1,57 @@
+---
+import '../assets/styles/404.sass';
+import SEO from '../components/SEO.astro';
+import Logo from '../components/Logo.astro';
+
+interface Props {
+	error: unknown;
+}
+
+const { error } = Astro.props;
+
+import { ClientRouter } from 'astro:transitions';
+
+import 'animate.css';
+
+const anim = {
+	old: {
+		name: 'fadeIn',
+		duration: '0.5s',
+		easing: 'ease-in',
+		direction: 'reverse'
+	},
+	new: {
+		name: 'fadeIn',
+		duration: '0.5s',
+		easing: 'ease-in-out'
+	}
+};
+
+const customTransition = {
+	forwards: anim,
+	backwards: anim
+};
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width" />
+		<meta name="generator" content={Astro.generator} />
+		<SEO />
+		<ClientRouter />
+	</head>
+	<body>
+		<main transition:animate={customTransition}>
+			<div class="container">
+				<Logo />
+				<h1>500</h1>
+				<p>
+					{error instanceof Error ? error.message : 'Unknown error'}
+				</p>
+				<a href="/" class="btn">GO TO HOME</a>
+			</div>
+		</main>
+	</body>
+</html>
