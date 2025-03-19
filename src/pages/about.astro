@@ -1,42 +1,38 @@
 ---
-import Layout from '../layouts/Layout.astro'
-import Banner from '../components/ui/Banner.astro'
-import Benfits from '../components/sections/_benefits/index.astro'
-import Team from '../components/sections/_team.astro'
-import { Content, frontmatter } from '../md/about.md'
+import Layout from '../layouts/Layout.astro';
+import Banner from '../components/ui/Banner.astro';
+import Benfits from '../components/sections/_benefits/index.astro';
+import Team from '../components/sections/_team.astro';
+import Button from '../components/ui/Forms/Button.astro';
+import { Content, frontmatter } from '../md/about.md';
 
-const bgImg = '/assets/img/bg/about.jpg'
-const bgFill = 'contain'
-const bannerBgImg = '/assets/img/banner/banner_2.png'
+const bgImg = '/assets/img/bg/about.jpg';
+const bgFill = 'contain';
+const bannerBgImg = '/assets/img/banner/banner_2.png';
 
 const banner = {
-    title: 'Эффективный маркетинг в криптовалюте',
-    desc: 'Мы организуем полноценный крипто маркетинг для криптовалютных бирж, платежных сервисов и других проектов из сферы финтех.',
-}
+	title: 'Эффективный маркетинг в криптовалюте',
+	desc: 'Мы организуем полноценный крипто маркетинг для криптовалютных бирж, платежных сервисов и других проектов из сферы финтех.'
+};
 ---
 
 <Layout bg={{ bgImg: bgImg, bgFill: bgFill }}>
-    <section class="section hero">
-        <div class="container hero__content">
-            <h1>{frontmatter.title}</h1>
-            <p class="text--lg">{frontmatter.desc}</p>
-            <a href={frontmatter.btn.url} class="btn">
-                {frontmatter.btn.label}
-                <svg class="icon" width="24" height="24">
-                    <use xlink:href="#arr-t-r"></use>
-                </svg>
-            </a>
-        </div>
-    </section>
-    <section class="section page-container">
-        <div class="container">
-            <div class="page-content-base">
-                <Content />
-            </div>
-        </div>
-    </section>
-    <Benfits />
-    <Team />
+	<section class="section hero">
+		<div class="container hero__content">
+			<h1>{frontmatter.title}</h1>
+			<p class="text--lg">{frontmatter.desc}</p>
+			<Button url="#" />
+		</div>
+	</section>
+	<section class="section page-container">
+		<div class="container">
+			<div class="page-content-base">
+				<Content />
+			</div>
+		</div>
+	</section>
+	<Benfits />
+	<Team />
 
-    <Banner title={banner.title} desc={banner.desc} bg={bannerBgImg} />
+	<Banner title={banner.title} desc={banner.desc} bg={bannerBgImg} />
 </Layout>

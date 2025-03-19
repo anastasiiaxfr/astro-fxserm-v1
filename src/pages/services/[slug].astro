@@ -7,6 +7,7 @@ import TopBlogs from '../../pages/blog/_related-posts.astro';
 import Tabs from '../../components/ui/Tabs.astro';
 import Slide from '../../components/cards/_service-slider.astro';
 import Slider from '../../components/ui/Swiper.astro';
+import Button from '../../components/ui/Forms/Button.astro';
 
 const bannerBgImg = '/assets/img/banner/banner_2.png';
 const heroBg = '/assets/img/bg/services-single.jpg';
@@ -42,12 +43,7 @@ const { title, excerpt, thumbnail, tabs, slider, features, str, str2 } = frontma
 						<p>
 							{excerpt}
 						</p>
-						<a href="#" class="btn">
-							Напишите нам
-							<svg class="icon" width="24" height="24">
-								<use xlink:href="#arr-t-r"></use>
-							</svg>
-						</a>
+						<Button url="#"/>
 					</div>
 					<div>
 						<img src={thumbnail} alt={title} />

@@ -1,0 +1,10 @@
+---
+const { title = 'Напишите нам', url = '#' } = Astro.props;
+---
+
+<a href={url} class="btn">
+	{title}
+	<svg class="icon" width="24" height="24">
+		<use xlink:href="#arr-t-r"></use>
+	</svg>
+</a>

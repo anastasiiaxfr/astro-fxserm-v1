@@ -4,20 +4,22 @@ import { allTags, allCases, postsPerPage, uri } from '../constant';
 import Layout from '../../../layouts/Layout.astro';
 import Tags from '../../../components/ui/Tags.astro';
 import Card from '../../../components/cards/_case-card.astro';
+import Button from '../../../components/ui/Forms/Button.astro';
+
 import PaginationStatic from '../../../components/ui/PaginationStatic.astro';
 import { formDataToObject } from 'astro:actions';
 const { category } = Astro.params;
 
 export async function getStaticPaths() {
-    return allTags.flatMap((cat) => {
-        const filteredPosts = allCases.filter(
-            (post) => post.frontmatter.category.slug === cat.slug
-        );
-        return {
-            params: { category: cat.slug },
-            props: { posts: filteredPosts }
-        };
-    });
+	return allTags.flatMap((cat) => {
+		const filteredPosts = allCases.filter(
+			(post) => post.frontmatter.category.slug === cat.slug
+		);
+		return {
+			params: { category: cat.slug },
+			props: { posts: filteredPosts }
+		};
+	});
 }
 
 const { posts } = Astro.props;
@@ -27,43 +29,38 @@ const title = 'Кейсы';
 
 const currentCategory = allTags.find((cat) => cat.slug === category);
 const categoryTitle = currentCategory
-    ? currentCategory.title
-    : 'Category Not Found';
+	? currentCategory.title
+	: 'Category Not Found';
 ---
 
 <Layout bg={{ bgImg: bgImg, bgFill: bgFill }}>
-    <section class="section hero">
-        <div class="container text-center">
-            <h1>{title}</h1>
-            <a href="#" class="btn">
-                Оставить заявку
-                <svg class="icon" width="24" height="24">
-                    <use xlink:href="#arr-t-r"></use>
-                </svg>
-            </a>
-            <Tags
-                data={[{ title: 'All', slug: 'all' }, ...allTags]}
-                uri={`/${uri}/`}
-            />
-        </div>
-    </section>
-    <section class="page-container">
-        <div class="container">
-            <h2>{categoryTitle}</h2>
-            <div class="cases-wrap-invert">
-                {
-                    posts
-                        .slice(0, postsPerPage)
-                        .map((post, ind) => (
-                            <Card data={post.frontmatter} key={ind} />
-                        ))
-                }
-            </div>
-            <PaginationStatic
-                count={postsPerPage}
-                data={posts}
-                slug={`${uri}/${category}`}
-            />
-        </div>
-    </section>
+	<section class="section hero">
+		<div class="container text-center">
+			<h1>{title}</h1>
+			<Button title=" Оставить заявку" url="#" />
+			<Tags
+				data={[{ title: 'All', slug: 'all' }, ...allTags]}
+				uri={`/${uri}/`}
+			/>
+		</div>
+	</section>
+	<section class="page-container">
+		<div class="container">
+			<h2>{categoryTitle}</h2>
+			<div class="cases-wrap-invert">
+				{
+					posts
+						.slice(0, postsPerPage)
+						.map((post, ind) => (
+							<Card data={post.frontmatter} key={ind} />
+						))
+				}
+			</div>
+			<PaginationStatic
+				count={postsPerPage}
+				data={posts}
+				slug={`${uri}/${category}`}
+			/>
+		</div>
+	</section>
 </Layout>
