@@ -32,6 +32,7 @@ export async function getStaticPaths() {
 const { service } = Astro.props;
 const { frontmatter, Content } = service;
 const {
+	slug,
 	title,
 	excerpt,
 	thumbnail,
@@ -43,9 +44,16 @@ const {
 	services,
 	reviews
 } = frontmatter;
+
+const seo = {
+	title: `Services ${title}`,
+	description: excerpt,
+	url: `services/${slug}`,
+	img: thumbnail
+};
 ---
 
-<Layout>
+<Layout seo={seo}>
 	<section class="section">
 		<div class="container">
 			<div class="hero-base" style={`background-image: url(${heroBg})`}>

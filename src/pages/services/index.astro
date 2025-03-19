@@ -10,148 +10,154 @@ const bgFill = 'contain';
 const title = 'Услуги';
 
 const allServices = Object.values(
-    import.meta.glob('../../md/services/*.md', { eager: true })
+	import.meta.glob('../../md/services/*.md', { eager: true })
 );
 
 // Collect all unique categories
 const allTags = Array.from(
-    new Set(
-        allServices
-            .flatMap((service) => service.frontmatter.category || [])
-            .map((category) => category.trim())
-    )
+	new Set(
+		allServices
+			.flatMap((service) => service.frontmatter.category || [])
+			.map((category) => category.trim())
+	)
 );
 
 const servicesByCategory = allServices.reduce((acc, service) => {
-    const { category } = service.frontmatter;
-    if (category) {
-        if (!acc[category]) {
-            acc[category] = [];
-        }
-        acc[category].push(service);
-    }
-    return acc;
+	const { category } = service.frontmatter;
+	if (category) {
+		if (!acc[category]) {
+			acc[category] = [];
+		}
+		acc[category].push(service);
+	}
+	return acc;
 }, {});
+
+const seo = {
+	title: 'Services',
+	description: 'SEO services desc',
+	url: 'services'
+};
 ---
 
-<Layout bg={{ bgImg: bgImg, bgFill: bgFill }}>
-    <section class="section hero">
-        <div class="container text-center">
-            <h1>{title}</h1>
-            <Search />
-            <Tags data={['All', ...allTags]} onclick="filterCategory(event)" />
-        </div>
-    </section>
+<Layout bg={{ bgImg: bgImg, bgFill: bgFill }} seo={seo}>
+	<section class="section hero">
+		<div class="container text-center">
+			<h1>{title}</h1>
+			<Search />
+			<Tags data={['All', ...allTags]} onclick="filterCategory(event)" />
+		</div>
+	</section>
 
-    <section class="section page-container">
-        <div class="container">
-            <div class="">
-                <div class="service-sections">
-                    <div id="services-container">
-                        {
-                            Object.entries(servicesByCategory).map(
-                                ([category, services]) => (
-                                    <section
-                                        class="service__block"
-                                        key={category}
-                                        data-category={category}
-                                    >
-                                        <div>
-                                            <h2 class="my-0">{category}</h2>
-                                        </div>
-                                        <div>
-                                            <div class="services">
-                                                {services.map(
-                                                    (service, ind) => (
-                                                        <Card
-                                                            data={
-                                                                service.frontmatter
-                                                            }
-                                                            key={ind}
-                                                        />
-                                                    )
-                                                )}
-                                            </div>
-                                        </div>
-                                    </section>
-                                )
-                            )
-                        }
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+	<section class="section page-container">
+		<div class="container">
+			<div class="">
+				<div class="service-sections">
+					<div id="services-container">
+						{
+							Object.entries(servicesByCategory).map(
+								([category, services]) => (
+									<section
+										class="service__block"
+										key={category}
+										data-category={category}
+									>
+										<div>
+											<h2 class="my-0">{category}</h2>
+										</div>
+										<div>
+											<div class="services">
+												{services.map(
+													(service, ind) => (
+														<Card
+															data={
+																service.frontmatter
+															}
+															key={ind}
+														/>
+													)
+												)}
+											</div>
+										</div>
+									</section>
+								)
+							)
+						}
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
 </Layout>
 
 <script is:inline data-astro-rerun>
-    function filterCategory(event) {
-        const selectedCategory = event.target.dataset.category;
-        const serviceSections = document.querySelectorAll('.service__block');
-        const serviceCards = document.querySelectorAll('.service');
+	function filterCategory(event) {
+		const selectedCategory = event.target.dataset.category;
+		const serviceSections = document.querySelectorAll('.service__block');
+		const serviceCards = document.querySelectorAll('.service');
 
-        serviceCards.forEach((card) => {
-            card.style.display = 'grid';
-        });
+		serviceCards.forEach((card) => {
+			card.style.display = 'grid';
+		});
 
-        serviceSections.forEach((section) => {
-            section.style.display = 'none';
-        });
+		serviceSections.forEach((section) => {
+			section.style.display = 'none';
+		});
 
-        if (selectedCategory === 'All') {
-            serviceSections.forEach((section) => {
-                section.style.display = 'grid';
-            });
-        } else {
-            const selectedSections = document.querySelectorAll(
-                `[data-category="${selectedCategory}"]`
-            );
-            selectedSections.forEach((section) => {
-                section.style.display = 'grid';
-            });
-        }
-    }
+		if (selectedCategory === 'All') {
+			serviceSections.forEach((section) => {
+				section.style.display = 'grid';
+			});
+		} else {
+			const selectedSections = document.querySelectorAll(
+				`[data-category="${selectedCategory}"]`
+			);
+			selectedSections.forEach((section) => {
+				section.style.display = 'grid';
+			});
+		}
+	}
 
-    document.addEventListener('astro:page-load', () => {
-        const searchInput = document.querySelector('input[type="search"]');
-        const serviceSections = document.querySelectorAll('.service__block');
+	document.addEventListener('astro:page-load', () => {
+		const searchInput = document.querySelector('input[type="search"]');
+		const serviceSections = document.querySelectorAll('.service__block');
 
-        searchInput &&
-            searchInput.addEventListener('input', (event) => {
-                const searchTerm = event.target.value.toLowerCase();
+		searchInput &&
+			searchInput.addEventListener('input', (event) => {
+				const searchTerm = event.target.value.toLowerCase();
 
-                serviceSections.forEach((section) => {
-                    const serviceCards = section.querySelectorAll('.service');
-                    let hasVisibleCards = false;
+				serviceSections.forEach((section) => {
+					const serviceCards = section.querySelectorAll('.service');
+					let hasVisibleCards = false;
 
-                    serviceCards.forEach((card) => {
-                        const title =
-                            card
-                                .querySelector('h3')
-                                ?.textContent.toLowerCase() || '';
+					serviceCards.forEach((card) => {
+						const title =
+							card
+								.querySelector('h3')
+								?.textContent.toLowerCase() || '';
 
-                        if (title.includes(searchTerm)) {
-                            card.style.display = 'block';
-                            hasVisibleCards = true;
-                        } else {
-                            card.style.display = 'none';
-                        }
-                    });
+						if (title.includes(searchTerm)) {
+							card.style.display = 'block';
+							hasVisibleCards = true;
+						} else {
+							card.style.display = 'none';
+						}
+					});
 
-                    if (hasVisibleCards) {
-                        section.style.display = 'grid';
-                    } else {
-                        section.style.display = 'none';
-                    }
-                });
-            });
+					if (hasVisibleCards) {
+						section.style.display = 'grid';
+					} else {
+						section.style.display = 'none';
+					}
+				});
+			});
 
-        const categoryButtons = document.querySelectorAll('.tag');
-        categoryButtons.forEach((button) => {
-            button.addEventListener('click', function () {
-                searchInput.value = '';
-                filterCategory;
-            });
-        });
-    });
+		const categoryButtons = document.querySelectorAll('.tag');
+		categoryButtons.forEach((button) => {
+			button.addEventListener('click', function () {
+				searchInput.value = '';
+				filterCategory;
+			});
+		});
+	});
 </script>

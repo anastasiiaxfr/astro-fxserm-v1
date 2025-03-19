@@ -31,6 +31,12 @@ const customTransition = {
 	forwards: anim,
 	backwards: anim
 };
+
+const seo = {
+	title: '500',
+	description: 'SEO 500 desc',
+	url: '500'
+};
 ---
 
 <!doctype html>
@@ -39,7 +45,7 @@ const customTransition = {
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width" />
 		<meta name="generator" content={Astro.generator} />
-		<SEO />
+		<SEO seo={seo} />
 		<ClientRouter />
 	</head>
 	<body>

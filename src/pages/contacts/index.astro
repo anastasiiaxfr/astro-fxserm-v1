@@ -7,106 +7,112 @@ const bgFill = 'contain';
 
 const title = 'Контакты';
 const title2 = 'Пишите мы всегда на связи!';
+
+const seo = {
+	title: 'Contacts',
+	description: 'SEO Contacts Desc',
+	url: 'contacts'
+};
 ---
 
-<Layout bg={{ bgImg: bgImg, bgFill: bgFill }}>
-    <section class="section hero">
-        <div class="container hero__content">
-            <h1>{title}</h1>
-        </div>
-    </section>
-    <section class="section page-container">
-        <div class="container">
-            <div class="box">
-                <div class="contacts">
-                    {
-                        contacts.map((contact) => (
-                            <div class="contact">
-                                <svg class="icon" width="64" height="64">
-                                    <use xlink:href={`#${contact.icon}`} />
-                                </svg>
-                                <p class="contact__label">
-                                    <small>{contact.label}</small>
-                                </p>
-                                {contact.url && (
-                                    <div class="contact__link">
-                                        <a
-                                            class="text--note"
-                                            href={contact.url}
-                                            target="_blank"
-                                        >
-                                            {contact.title}
-                                        </a>
-                                    </div>
-                                )}
-                                {contact.soc && (
-                                    <div class="btns gap-1">
-                                        {contact.soc?.map((i) => (
-                                            <a href={i.url}>
-                                                <svg
-                                                    class="icon"
-                                                    width="40"
-                                                    height="40"
-                                                >
-                                                    <use
-                                                        xlink:href={`#${i.icon}`}
-                                                    />
-                                                </svg>
-                                            </a>
-                                        ))}
-                                    </div>
-                                )}
-                            </div>
-                        ))
-                    }
-                </div>
-            </div>
-        </div>
-    </section>
-    <section class="section section_address mb-0">
-        <div class="container">
-            <div class="row_1">
-                <div>
-                    <h2>{title2}</h2>
+<Layout bg={{ bgImg: bgImg, bgFill: bgFill }} seo={seo}>
+	<section class="section hero">
+		<div class="container hero__content">
+			<h1>{title}</h1>
+		</div>
+	</section>
+	<section class="section page-container">
+		<div class="container">
+			<div class="box">
+				<div class="contacts">
+					{
+						contacts.map((contact) => (
+							<div class="contact">
+								<svg class="icon" width="64" height="64">
+									<use xlink:href={`#${contact.icon}`} />
+								</svg>
+								<p class="contact__label">
+									<small>{contact.label}</small>
+								</p>
+								{contact.url && (
+									<div class="contact__link">
+										<a
+											class="text--note"
+											href={contact.url}
+											target="_blank"
+										>
+											{contact.title}
+										</a>
+									</div>
+								)}
+								{contact.soc && (
+									<div class="btns gap-1">
+										{contact.soc?.map((i) => (
+											<a href={i.url}>
+												<svg
+													class="icon"
+													width="40"
+													height="40"
+												>
+													<use
+														xlink:href={`#${i.icon}`}
+													/>
+												</svg>
+											</a>
+										))}
+									</div>
+								)}
+							</div>
+						))
+					}
+				</div>
+			</div>
+		</div>
+	</section>
+	<section class="section section_address mb-0">
+		<div class="container">
+			<div class="row_1">
+				<div>
+					<h2>{title2}</h2>
 
-                    <nav class="address">
-                        {
-                            address.map((i) =>
-                                i.url ? (
-                                    <a
-                                        class="address__item"
-                                        href={i.url}
-                                        target="_blank"
-                                    >
-                                        <svg
-                                            class="icon"
-                                            width="24"
-                                            height="24"
-                                        >
-                                            <use xlink:href={`#${i.icon}`} />
-                                        </svg>
-                                        {i.title}
-                                    </a>
-                                ) : (
-                                    <div class="address__item">
-                                        <svg
-                                            class="icon"
-                                            width="24"
-                                            height="24"
-                                        >
-                                            <use xlink:href={`#${i.icon}`} />
-                                        </svg>
-                                        <span set:html={i.title} />
-                                    </div>
-                                )
-                            )
-                        }
-                    </nav>
-                </div>
-                <div>
-                    <Form />
-                </div>
-            </div>
-        </div>
-    </section>
+					<nav class="address">
+						{
+							address.map((i) =>
+								i.url ? (
+									<a
+										class="address__item"
+										href={i.url}
+										target="_blank"
+									>
+										<svg
+											class="icon"
+											width="24"
+											height="24"
+										>
+											<use xlink:href={`#${i.icon}`} />
+										</svg>
+										{i.title}
+									</a>
+								) : (
+									<div class="address__item">
+										<svg
+											class="icon"
+											width="24"
+											height="24"
+										>
+											<use xlink:href={`#${i.icon}`} />
+										</svg>
+										<span set:html={i.title} />
+									</div>
+								)
+							)
+						}
+					</nav>
+				</div>
+				<div>
+					<Form />
+				</div>
+			</div>
+		</div>
+	</section>
 </Layout>

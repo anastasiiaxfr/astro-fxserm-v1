@@ -9,9 +9,15 @@ import { allTags, casesByCategory } from './constant';
 const bgImg = '/assets/img/bg/cases.jpg';
 const bgFill = 'contain';
 const title = 'Кейсы';
+
+const seo = {
+	title: 'Cases',
+	description: 'SEO Cases Desc',
+	url: 'cases'
+};
 ---
 
-<Layout bg={{ bgImg: bgImg, bgFill: bgFill }}>
+<Layout bg={{ bgImg: bgImg, bgFill: bgFill }} seo={seo}>
 	<section class="section hero">
 		<div class="container text-center">
 			<h1>{title}</h1>

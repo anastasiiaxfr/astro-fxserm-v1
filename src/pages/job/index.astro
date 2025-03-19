@@ -7,37 +7,43 @@ import Card from '../../components/cards/_job-card.astro';
 const bgImg = '/assets/img/bg/job.jpg';
 const bgFill = 'contain';
 const title = 'Карьера';
+
+const seo = {
+	title: 'Job',
+	description: 'SEO Job Desc',
+	url: `job`
+};
 ---
 
-<Layout bg={{ bgImg: bgImg, bgFill: bgFill }}>
-    <section class="section hero">
-        <div class="container text-center">
-            <h1>{title}</h1>
-        </div>
-    </section>
-    <section class="section page-container">
-        <div class="container">
-            <div class="">
-                <div class="jobs">
-                    {
-                        sortedJobs
-                            .slice(0, countTopItems)
-                            .map((i, ind) => (
-                                <Card
-                                    data={i.frontmatter}
-                                    key={ind}
-                                    uri={uri}
-                                    transition:animate="slide"
-                                />
-                            ))
-                    }
-                </div>
-                <PaginationStatic
-                    count={countTopItems}
-                    data={sortedJobs}
-                    slug={uri}
-                />
-            </div>
-        </div>
-    </section>
+<Layout bg={{ bgImg: bgImg, bgFill: bgFill }} seo={seo}>
+	<section class="section hero">
+		<div class="container text-center">
+			<h1>{title}</h1>
+		</div>
+	</section>
+	<section class="section page-container">
+		<div class="container">
+			<div class="">
+				<div class="jobs">
+					{
+						sortedJobs
+							.slice(0, countTopItems)
+							.map((i, ind) => (
+								<Card
+									data={i.frontmatter}
+									key={ind}
+									uri={uri}
+									transition:animate="slide"
+								/>
+							))
+					}
+				</div>
+				<PaginationStatic
+					count={countTopItems}
+					data={sortedJobs}
+					slug={uri}
+				/>
+			</div>
+		</div>
+	</section>
 </Layout>

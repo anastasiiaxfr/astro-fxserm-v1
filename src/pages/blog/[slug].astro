@@ -10,68 +10,78 @@ import Shared from '../../components/ui/Shared.astro';
 import { sortedPosts } from './constant.js';
 
 export async function getStaticPaths() {
-    return sortedPosts.map((post) => ({
-        params: { slug: post.frontmatter.slug },
-        props: { post }
-    }));
+	return sortedPosts.map((post) => ({
+		params: { slug: post.frontmatter.slug },
+		props: { post }
+	}));
 }
 
 const { post } = Astro.props;
 const { Content, frontmatter } = post;
 const {
-    category,
-    title,
-    pubdate,
-    read,
-    authors,
-    poster = '/assets/img/bg/b0.jpg'
+	category,
+	title,
+	pubdate,
+	read,
+	authors,
+	poster = '/assets/img/bg/b0.jpg',
+	slug,
+	thumbnail,
+	excerpt
 } = frontmatter;
+
+const seo = {
+	title: title,
+	description: excerpt,
+	img: thumbnail,
+	url: `blog/${slug}`
+};
 
 const bgImg = poster;
 const bgFill = 'contain';
 
 const meta = [
-    {
-        title: formatPubDate(pubdate),
-        icon: 'date'
-    },
-    {
-        title: read || '5 min',
-        icon: 'time'
-    }
+	{
+		title: formatPubDate(pubdate),
+		icon: 'date'
+	},
+	{
+		title: read || '5 min',
+		icon: 'time'
+	}
 ];
 ---
 
-<Layout bg={{ bgImg: bgImg, bgFill: bgFill }}>
-    <section class="section hero hero-post">
-        <div class="container">
-            <button class="chip">{category}</button>
-            <h1 class="mt-2">{title}</h1>
-            <PostMeta data={meta} />
-            <div class="mt-4">
-                <Author data={authors} />
-            </div>
-        </div>
-    </section>
-    <article class="section page-container">
-        <div class="container">
-            <div class="page-content page-post">
-                <Content />
-            </div>
-        </div>
-    </article>
-    <section class="section">
-        <div class="container">
-            <div class="row_1">
-                <div>
-                    <h2>Обсудим статью вместе?</h2>
-                    <Shared />
-                </div>
-                <div>
-                    <Form />
-                </div>
-            </div>
-        </div>
-    </section>
-    <RelatedPosts />
+<Layout bg={{ bgImg: bgImg, bgFill: bgFill }} seo={seo}>
+	<section class="section hero hero-post">
+		<div class="container">
+			<button class="chip">{category}</button>
+			<h1 class="mt-2">{title}</h1>
+			<PostMeta data={meta} />
+			<div class="mt-4">
+				<Author data={authors} />
+			</div>
+		</div>
+	</section>
+	<article class="section page-container">
+		<div class="container">
+			<div class="page-content page-post">
+				<Content />
+			</div>
+		</div>
+	</article>
+	<section class="section">
+		<div class="container">
+			<div class="row_1">
+				<div>
+					<h2>Обсудим статью вместе?</h2>
+					<Shared />
+				</div>
+				<div>
+					<Form />
+				</div>
+			</div>
+		</div>
+	</section>
+	<RelatedPosts />
 </Layout>

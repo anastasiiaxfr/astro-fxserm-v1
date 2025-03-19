@@ -31,9 +31,15 @@ const currentCategory = allTags.find((cat) => cat.slug === category);
 const categoryTitle = currentCategory
 	? currentCategory.title
 	: 'Category Not Found';
+
+const seo = {
+	title: title,
+	description: 'SEO CASES DESC',
+	url: `cases/${currentCategory}`
+};
 ---
 
-<Layout bg={{ bgImg: bgImg, bgFill: bgFill }}>
+<Layout bg={{ bgImg: bgImg, bgFill: bgFill }} seo={seo}>
 	<section class="section hero">
 		<div class="container text-center">
 			<h1>{title}</h1>

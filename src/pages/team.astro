@@ -18,9 +18,15 @@ const title = 'Наша команда';
 const teams = Object.values(
 	import.meta.glob('../md/team/*.md', { eager: true })
 );
+
+const seo = {
+	title: title,
+	description: 'SEO TEAM desc',
+	url: 'team'
+};
 ---
 
-<Layout bg={{ bgImg: bgImg, bgFill: bgFill }}>
+<Layout bg={{ bgImg: bgImg, bgFill: bgFill }} seo={seo}>
 	<section class="section hero">
 		<div class="container hero__content">
 			<h1>{title}</h1>

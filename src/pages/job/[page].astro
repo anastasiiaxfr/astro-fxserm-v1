@@ -5,40 +5,46 @@ import { sortedJobs, uri } from './constant.js';
 import Card from '../../components/cards/_job-card.astro';
 
 export async function getStaticPaths({ paginate }) {
-    return paginate(sortedJobs, { pageSize: 6 });
+	return paginate(sortedJobs, { pageSize: 6 });
 }
 const { page } = Astro.props;
 
 const bgImg = '/assets/img/bg/job.jpg';
 const bgFill = 'contain';
 const title = 'Карьера';
+
+const seo = {
+	title: 'Job',
+	description: 'SEO Job Desc',
+	url: `job`
+};
 ---
 
-<Layout bg={{ bgImg: bgImg, bgFill: bgFill }}>
-    <section class="section hero">
-        <div class="container text-center">
-            <h1>{title}</h1>
-        </div>
-    </section>
-    <section class="section page-container">
-        <div class="container">
-            <div class="">
-                <div class="jobs">
-                    {
-                        page.data.map((i, ind) => (
-                            <div>
-                                <Card
-                                    data={i.frontmatter}
-                                    uri={uri}
-                                    transition:animate="slide"
-                                    key={ind}
-                                />
-                            </div>
-                        ))
-                    }
-                </div>
-                <Pagination page={page} />
-            </div>
-        </div>
-    </section>
+<Layout bg={{ bgImg: bgImg, bgFill: bgFill }} seo={seo}>
+	<section class="section hero">
+		<div class="container text-center">
+			<h1>{title}</h1>
+		</div>
+	</section>
+	<section class="section page-container">
+		<div class="container">
+			<div class="">
+				<div class="jobs">
+					{
+						page.data.map((i, ind) => (
+							<div>
+								<Card
+									data={i.frontmatter}
+									uri={uri}
+									transition:animate="slide"
+									key={ind}
+								/>
+							</div>
+						))
+					}
+				</div>
+				<Pagination page={page} />
+			</div>
+		</div>
+	</section>
 </Layout>

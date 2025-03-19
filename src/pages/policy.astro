@@ -8,23 +8,29 @@ const bgFill = 'contain';
 const bannerBgImg = '/assets/img/banner/banner_1.png';
 
 const banner = {
-    title: 'Эффективный маркетинг в криптовалюте',
-    desc: 'Мы организуем полноценный крипто маркетинг для криптовалютных бирж, платежных сервисов и других проектов из сферы финтех.'
+	title: 'Эффективный маркетинг в криптовалюте',
+	desc: 'Мы организуем полноценный крипто маркетинг для криптовалютных бирж, платежных сервисов и других проектов из сферы финтех.'
+};
+
+const seo = {
+	title: 'Policy',
+	description: 'SEO Policy desc',
+	url: 'policy'
 };
 ---
 
-<Layout bg={{ bgImg: bgImg, bgFill: bgFill }}>
-    <section class="section hero">
-        <div class="container text-center">
-            <h1>{frontmatter.title}</h1>
-        </div>
-    </section>
-    <section class="section page-container">
-        <div class="container">
-            <div class="page-content">
-                <Content />
-            </div>
-        </div>
-    </section>
-    <Banner title={banner.title} desc={banner.desc} bg={bannerBgImg} />
+<Layout bg={{ bgImg: bgImg, bgFill: bgFill }} seo={seo}>
+	<section class="section hero">
+		<div class="container text-center">
+			<h1>{frontmatter.title}</h1>
+		</div>
+	</section>
+	<section class="section page-container">
+		<div class="container">
+			<div class="page-content">
+				<Content />
+			</div>
+		</div>
+	</section>
+	<Banner title={banner.title} desc={banner.desc} bg={bannerBgImg} />
 </Layout>

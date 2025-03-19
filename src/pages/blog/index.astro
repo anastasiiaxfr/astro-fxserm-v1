@@ -6,11 +6,11 @@ import Card from '../../components/cards/_post-card.astro';
 import TopPosts from './_top-posts.astro';
 import PaginationStatic from '../../components/ui/PaginationStatic.astro';
 import {
-    countTopPost,
-    allTags,
-    sortedPosts,
-    uri,
-    postPerPage
+	countTopPost,
+	allTags,
+	sortedPosts,
+	uri,
+	postPerPage
 } from './constant.js';
 
 const otherPosts = sortedPosts.slice(countTopPost);
@@ -19,43 +19,49 @@ const bgImg = '/assets/img/bg/blog.jpg';
 const bgFill = 'contain';
 
 const title = 'Блог';
+
+const seo = {
+	title: title,
+	description: 'SEO Blog DESC',
+	url: `blog`
+};
 ---
 
-<Layout bg={{ bgImg: bgImg, bgFill: bgFill }}>
-    <section class="section hero">
-        <div class="container text-center">
-            <h1>{title}</h1>
-            <Search />
-            <Tag data={['All', ...allTags]} />
-        </div>
-    </section>
-    <section class="section page-container">
-        <div class="container">
-            <div class="posts-wrap">
-                <section class="posts-block">
-                    <h2>Последнее</h2>
+<Layout bg={{ bgImg: bgImg, bgFill: bgFill }} seo={seo}>
+	<section class="section hero">
+		<div class="container text-center">
+			<h1>{title}</h1>
+			<Search />
+			<Tag data={['All', ...allTags]} />
+		</div>
+	</section>
+	<section class="section page-container">
+		<div class="container">
+			<div class="posts-wrap">
+				<section class="posts-block">
+					<h2>Последнее</h2>
 
-                    <TopPosts count={countTopPost} data={sortedPosts} />
-                </section>
-                <section class="posts-block">
-                    <h2>Все посты</h2>
+					<TopPosts count={countTopPost} data={sortedPosts} />
+				</section>
+				<section class="posts-block">
+					<h2>Все посты</h2>
 
-                    <div class="posts">
-                        {
-                            otherPosts
-                                .slice(0, postPerPage)
-                                .map((i, ind) => (
-                                    <Card data={i.frontmatter} key={ind} />
-                                ))
-                        }
-                    </div>
-                    <PaginationStatic
-                        slug={uri}
-                        data={otherPosts}
-                        count={postPerPage}
-                    />
-                </section>
-            </div>
-        </div>
-    </section>
+					<div class="posts">
+						{
+							otherPosts
+								.slice(0, postPerPage)
+								.map((i, ind) => (
+									<Card data={i.frontmatter} key={ind} />
+								))
+						}
+					</div>
+					<PaginationStatic
+						slug={uri}
+						data={otherPosts}
+						count={postPerPage}
+					/>
+				</section>
+			</div>
+		</div>
+	</section>
 </Layout>

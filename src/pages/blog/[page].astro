@@ -8,9 +8,9 @@ import TopPosts from './_top-posts.astro';
 import { countTopPost, allTags, sortedPosts } from './constant.js';
 
 export async function getStaticPaths({ paginate }) {
-    const otherPosts = sortedPosts.slice(countTopPost);
+	const otherPosts = sortedPosts.slice(countTopPost);
 
-    return paginate(otherPosts, { pageSize: 6 });
+	return paginate(otherPosts, { pageSize: 6 });
 }
 const { page } = Astro.props;
 
@@ -18,35 +18,41 @@ const bgImg = '/assets/img/bg/blog.jpg';
 const bgFill = 'contain';
 
 const title = 'Блог';
+
+const seo = {
+	title: title,
+	description: 'SEO Blog DESC',
+	url: `blog`
+};
 ---
 
-<Layout bg={{ bgImg: bgImg, bgFill: bgFill }}>
-    <section class="section hero">
-        <div class="container text-center">
-            <h1>{title}</h1>
-            <Search />
-            <Tag data={['All', ...allTags]} />
-        </div>
-    </section>
-    <section class="section page-container">
-        <div class="container">
-            <div class="posts-wrap">
-                <section class="">
-                    <h2>Последнее</h2>
-                    <TopPosts count={countTopPost} data={sortedPosts} />
-                </section>
-                <section class="">
-                    <h2>Все посты</h2>
-                    <div class="cards">
-                        {
-                            page.data.map((item) => (
-                                <Card data={item.frontmatter} url={item.url} />
-                            ))
-                        }
-                    </div>
-                    <Pagination page={page} />
-                </section>
-            </div>
-        </div>
-    </section>
+<Layout bg={{ bgImg: bgImg, bgFill: bgFill }} seo={seo}>
+	<section class="section hero">
+		<div class="container text-center">
+			<h1>{title}</h1>
+			<Search />
+			<Tag data={['All', ...allTags]} />
+		</div>
+	</section>
+	<section class="section page-container">
+		<div class="container">
+			<div class="posts-wrap">
+				<section class="">
+					<h2>Последнее</h2>
+					<TopPosts count={countTopPost} data={sortedPosts} />
+				</section>
+				<section class="">
+					<h2>Все посты</h2>
+					<div class="cards">
+						{
+							page.data.map((item) => (
+								<Card data={item.frontmatter} url={item.url} />
+							))
+						}
+					</div>
+					<Pagination page={page} />
+				</section>
+			</div>
+		</div>
+	</section>
 </Layout>

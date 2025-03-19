@@ -37,7 +37,9 @@ const { data, CardComponent, count = { lg: 3, md: 2, sm: 1 } } = Astro.props;
 
 	document.addEventListener('astro:page-load', () => {
 		const swiperElement = document.querySelector('.my-swiper');
-		const count = JSON.parse(swiperElement.getAttribute('data-count'));
+		const count = swiperElement
+			? JSON.parse(swiperElement.getAttribute('data-count'))
+			: { lg: 3, md: 2, sm: 1 };
 		new Swiper('.my-swiper', {
 			modules: [Navigation, Pagination, Autoplay],
 			spaceBetween: 24,

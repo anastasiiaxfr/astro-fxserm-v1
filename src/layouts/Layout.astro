@@ -8,7 +8,7 @@ import BtnToTop from '../components/ui/BtnToTop.astro';
 import Preloader from '../components/ui/Preloader.astro';
 import SVG from '../components/_svg.astro';
 
-const { bg } = Astro.props;
+const { bg, seo } = Astro.props;
 const { bgImg, bgFill } = bg || {};
 
 import { ClientRouter } from 'astro:transitions';
@@ -41,7 +41,7 @@ const customTransition = {
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width" />
 		<meta name="generator" content={Astro.generator} />
-		<SEO />
+		<SEO seo={seo} />
 		<ClientRouter />
 	</head>
 

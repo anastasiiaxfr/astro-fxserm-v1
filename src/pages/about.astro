@@ -14,9 +14,15 @@ const banner = {
 	title: 'Эффективный маркетинг в криптовалюте',
 	desc: 'Мы организуем полноценный крипто маркетинг для криптовалютных бирж, платежных сервисов и других проектов из сферы финтех.'
 };
+
+const seo = {
+	title: 'About',
+	description: 'SEO About desc',
+	url: 'about'
+};
 ---
 
-<Layout bg={{ bgImg: bgImg, bgFill: bgFill }}>
+<Layout bg={{ bgImg: bgImg, bgFill: bgFill }} seo={seo}>
 	<section class="section hero">
 		<div class="container hero__content">
 			<h1>{frontmatter.title}</h1>
