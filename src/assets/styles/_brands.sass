@@ -1,0 +1,50 @@
+.brands
+	position: relative
+	overflow: hidden
+	width: 100%
+	display: grid
+	gap: $gap3
+	margin-top: $gap4
+	&::after, &::before
+		content: ''
+		+ps(absolute, (r, 0), (b, 0))
+		z-index: 1
+		+sz(35%, 100%)
+		display: none
+	&::after
+		background: linear-gradient(90deg, transparent, var(--color-black-1))
+		[data-bs-theme="light"] &
+			background: linear-gradient(90deg, transparent, var(--color-white-0))
+	&::before
+		background: linear-gradient(-90deg, transparent, var(--color-black-1))
+		left: 0
+		top: 0
+		[data-bs-theme="light"] &
+			background: linear-gradient(-90deg, transparent, var(--color-white-0))
+	&__inner
+		+flex(inline-flex, center, start, nowrap)
+		gap: $gap3
+		width: 100vw
+		&:first-child
+			animation: brands 15s ease-in-out infinite
+		&:last-child
+			animation: brands 15s ease-in-out infinite reverse
+
+	&__item
+		+flex(inline-flex, center, start, nowrap)
+		padding: $gap2 $gap4
+		+theme(dark2)
+		border-radius: $brs1
+		height: 75px
+		[data-bs-theme="light"] &
+			+theme(dark)
+		& > *
+			min-width: 100px
+			width: auto
+
+@keyframes brands
+	0% 
+		transform: translateX(0)
+	100% 
+		transform: translateX(-100%)
+

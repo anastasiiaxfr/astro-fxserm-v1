@@ -40,7 +40,8 @@ const {
 	features,
 	str,
 	str2,
-	services
+	services,
+	reviews
 } = frontmatter;
 ---
 
@@ -70,6 +71,7 @@ const {
 			</div>
 		</div>
 	</section>
+
 	{
 		services && (
 			<section class="section section_benefits">
@@ -84,6 +86,7 @@ const {
 			</section>
 		)
 	}
+
 	{
 		features && (
 			<section class="section section_features">
@@ -128,6 +131,47 @@ const {
 							CardComponent={Slide}
 							count={slider?.count || { lg: 1, md: 1, sm: 1 }}
 						/>
+					</div>
+				</div>
+			</section>
+		)
+	}
+	{
+		reviews && (
+			<section class="section">
+				<div class="container">
+					<h2>{reviews.title}</h2>
+				</div>
+				<div class="brands">
+					<div class="brands__inner">
+						{reviews.brands.map((i) => (
+							<div class="brands__item">
+								<img src={i.img} alt="" />
+							</div>
+						))}
+						{reviews.brands.map((i) => (
+							<div class="brands__item">
+								<img src={i.img} alt="" />
+							</div>
+						))}
+					</div>
+					<div class="brands__inner">
+						{reviews.brands
+							.slice()
+							.reverse()
+							.map((i) => (
+								<div class="brands__item">
+									<img src={i.img} alt="" />
+								</div>
+							))}
+						{reviews.brands
+							.slice()
+							.reverse()
+							.map((i) => (
+								<div class="brands__item">
+									<img src={i.img} alt="" />
+								</div>
+							))}
 					</div>
 				</div>
 			</section>
