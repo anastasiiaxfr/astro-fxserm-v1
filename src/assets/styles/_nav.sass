@@ -1,6 +1,6 @@
 .logo
 	img
-		width: 100% 
+		width: auto 
 
 
 .header
@@ -204,6 +204,8 @@
 			inset: 0
 			z-index: 1
 			background: linear-gradient(180deg, transparent, $dark_1)
+		+maw($xs)
+			padding: 100px 0			
 	&.section
 		margin: 0
 	[data-bs-theme="light"] &
@@ -257,6 +259,7 @@
 				transform: translateY(20%) scale(1.4)
 	+maw($xs)
 		&__row
+			display: block
 			img
 				display: none
 

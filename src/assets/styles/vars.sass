@@ -81,11 +81,12 @@ $gap5: 40px
 $gap6: 48px
 
 
-=ft($fz, $lh: 16, $fw: 400, $ff: $ffText)
+=ft($fz, $lh: 16, $fw: 400)
 	$lh: $lh/$fz
 	$fz: $fz/16 + rem
-	$ff: $ff, $ffBack
-	font: $fw $fz/$lh $ff 
+	font-weight: $fw
+	line-height: $lh
+	font-size: $fz
 
 
 =theme($theme)
