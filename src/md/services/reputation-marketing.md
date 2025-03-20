@@ -7,7 +7,7 @@ category:
     slug: reputation-management
 slug: 'reputation-marketing'
 excerpt: 'Раскрутка сайта Форекс или крипто тематики с учетом особенностей поисковой оптимизации в нише финтех'
-thumbnail: '/assets/img/services/rep-marketing-thumb.png'
+thumbnail: '/assets/img/services/rep-marketing-thumb.avif'
 
 slider:
     title: Что мы делаем в рамках услуги обучение репутационному менеджменту

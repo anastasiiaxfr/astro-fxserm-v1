@@ -8,7 +8,7 @@ category:
     title: 'Финансы'
     slug: finance
 authors: ['XFR', 'John Galt']
-thumbnail: '/assets/img/blog/blog-3.png'
+thumbnail: '/assets/img/blog/blog-3.avif'
 poster: '/assets/img/blog/b0.avif'
 excerpt: 'A brief excerpt of your article...'
 pubdate: '2025-02-19T10:00:00Z'

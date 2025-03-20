@@ -7,7 +7,7 @@ category:
     title: Инвестиции
     slug: investment
 authors: ['XFR', 'John Galt']
-thumbnail: '/assets/img/blog/blog-2.png'
+thumbnail: '/assets/img/blog/blog-2.avif'
 poster: '/assets/img/blog/b0.avif'
 excerpt: 'A brief excerpt of your article...'
 pubdate: '2025-03-05T10:00:00Z'

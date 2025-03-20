@@ -8,7 +8,7 @@ category:
 slug: 'serm-department'
 
 excerpt: 'Раскрутка сайта Форекс или крипто тематики с учетом особенностей поисковой оптимизации в нише финтех'
-thumbnail: '/assets/img/services/serm-department-thumb.png'
+thumbnail: '/assets/img/services/serm-department-thumb.avif'
 
 features:
     title: Этапы построение SERM-отдела

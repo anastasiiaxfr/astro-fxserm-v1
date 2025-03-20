@@ -8,7 +8,7 @@ category:
 slug: 'youtube'
 
 excerpt: 'Раскрутка сайта Форекс или крипто тематики с учетом особенностей поисковой оптимизации в нише финтех'
-thumbnail: '/assets/img/services/youtube-thumb.png'
+thumbnail: '/assets/img/services/youtube-thumb.avif'
 
 services:
     theme: dark

@@ -1,26 +1,26 @@
 ---
-const { data } = Astro.props
-const job = 'SMO | SERM manager'
-const img = '/assets/img/authors/author-1.png'
+const { data } = Astro.props;
+const job = 'SMO | SERM manager';
+const img = '/assets/img/authors/author-1.avif';
 ---
 
 <div class="authors">
-    {
-        data.map((author) => (
-            <div class="author">
-                <span>Автор:</span>
-                <img
-                    src={img}
-                    alt={author}
-                    class="author__ava"
-                    width="50"
-                    height="50"
-                />
-                <div class="author__body">
-                    <div class="author__name">{author}</div>
-                    <div class="author__info">{job}</div>
-                </div>
-            </div>
-        ))
-    }
+	{
+		data.map((author) => (
+			<div class="author">
+				<span>Автор:</span>
+				<img
+					src={img}
+					alt={author}
+					class="author__ava"
+					width="50"
+					height="50"
+				/>
+				<div class="author__body">
+					<div class="author__name">{author}</div>
+					<div class="author__info">{job}</div>
+				</div>
+			</div>
+		))
+	}
 </div>

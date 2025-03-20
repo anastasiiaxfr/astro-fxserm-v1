@@ -7,7 +7,7 @@ category:
     title: Crypto
     slug: crypto
 authors: ['XFR', 'John Galt']
-thumbnail: '/assets/img/blog/blog-5.png'
+thumbnail: '/assets/img/blog/blog-5.avif'
 poster: '/assets/img/blog/b0.avif'
 excerpt: 'A brief excerpt of your article...'
 pubdate: '2025-03-08T10:00:00Z'

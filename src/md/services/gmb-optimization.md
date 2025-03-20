@@ -8,7 +8,7 @@ category:
 slug: 'gmb-optimization'
 
 excerpt: 'Раскрутка сайта Форекс или крипто тематики с учетом особенностей поисковой оптимизации в нише финтех'
-thumbnail: '/assets/img/services/grm-optimization-thumb.png'
+thumbnail: '/assets/img/services/grm-optimization-thumb.avif'
 
 slider:
     title: Откуда он появился?

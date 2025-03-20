@@ -7,7 +7,7 @@ category:
     slug: bust-clients
 slug: 'linkbilding'
 excerpt: 'Раскрутка сайта Форекс или крипто тематики с учетом особенностей поисковой оптимизации в нише финтех'
-thumbnail: '/assets/img/services/linkbilding-thumb.png'
+thumbnail: '/assets/img/services/linkbilding-thumb.avif'
 
 str:
     title: Что мы делаем в рамках линкбилдинга

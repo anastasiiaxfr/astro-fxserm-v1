@@ -7,7 +7,7 @@ category:
     title: 'Крипто валюта'
     slug: crypto-currency
 authors: ['XFR', 'John Galt']
-thumbnail: '/assets/img/blog/blog-1.png'
+thumbnail: '/assets/img/blog/blog-1.avif'
 poster: '/assets/img/blog/b0.avif'
 excerpt: 'A brief excerpt of your article...'
 pubdate: '2025-03-04T10:00:00Z'

@@ -8,7 +8,7 @@ category:
 slug: 'comunity-menegment'
 
 excerpt: 'Раскрутка сайта Форекс или крипто тематики с учетом особенностей поисковой оптимизации в нише финтех'
-thumbnail: '/assets/img/services/comunity-management-thumb.png'
+thumbnail: '/assets/img/services/comunity-management-thumb.avif'
 
 slider:
     title: Что мы делаем в рамках услуги комьюнити-менеджмент

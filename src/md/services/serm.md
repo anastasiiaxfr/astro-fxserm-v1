@@ -7,7 +7,7 @@ category:
     slug: reputation-management
 slug: 'serm'
 excerpt: 'Создание положительного имиджа бренда в сети и комплексное управление персональной репутацией в вертикалях Forex и Crypto'
-thumbnail: '/assets/img/services/serm-thumb.png'
+thumbnail: '/assets/img/services/serm-thumb.avif'
 
 slider:
     title: SERM-услуги от FX-serm

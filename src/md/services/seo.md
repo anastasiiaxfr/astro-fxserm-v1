@@ -7,7 +7,7 @@ category:
     slug: bust-clients
 slug: 'seo'
 excerpt: 'Раскрутка сайта Форекс или крипто тематики с учетом особенностей поисковой оптимизации в нише финтех'
-thumbnail: '/assets/img/services/seo-thumb.png'
+thumbnail: '/assets/img/services/seo-thumb.avif'
 
 slider:
     title: SEO услуги от FX-serm

@@ -7,7 +7,7 @@ category:
     slug: bust-clients
 slug: 'pbn'
 excerpt: 'Lorem Ipsum не только успешно пережил без заметных изменений пять веков, но и перешагнул в электронный дизайн. '
-thumbnail: '/assets/img/services/pbn-thumb.png'
+thumbnail: '/assets/img/services/pbn-thumb.avif'
 
 slider:
     title: Что мы делаем в рамках услуги комьюнити-менеджмент

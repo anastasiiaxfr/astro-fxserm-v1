@@ -8,19 +8,19 @@ category:
 slug: 'reviews'
 
 excerpt: 'Раскрутка сайта Форекс или крипто тематики с учетом особенностей поисковой оптимизации в нише финтех'
-thumbnail: '/assets/img/services/review-thumb.png'
+thumbnail: '/assets/img/services/review-thumb.avif'
 
 reviews:
     title: Отзовики с которыми мы работаем
     brands:
-        - img: '/assets/img/brands/b-1.png'
-        - img: '/assets/img/brands/b-2.png'
-        - img: '/assets/img/brands/b-3.png'
-        - img: '/assets/img/brands/b-4.png'
-        - img: '/assets/img/brands/b-5.png'
-        - img: '/assets/img/brands/b-6.png'
-        - img: '/assets/img/brands/b-7.png'
-        - img: '/assets/img/brands/b-8.png'
+        - img: '/assets/img/brands/b-1.avif'
+        - img: '/assets/img/brands/b-2.avif'
+        - img: '/assets/img/brands/b-3.avif'
+        - img: '/assets/img/brands/b-4.avif'
+        - img: '/assets/img/brands/b-5.avif'
+        - img: '/assets/img/brands/b-6.avif'
+        - img: '/assets/img/brands/b-7.avif'
+        - img: '/assets/img/brands/b-8.avif'
 
 slider:
     title: Что мы делаем в рамках услуги покупки отзывов

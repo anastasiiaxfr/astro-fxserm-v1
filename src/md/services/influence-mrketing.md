@@ -7,7 +7,7 @@ category:
     slug: brend-management
 slug: 'influence-merketing'
 excerpt: 'Раскрутка сайта Форекс или крипто тематики с учетом особенностей поисковой оптимизации в нише финтех'
-thumbnail: '/assets/img/services/influence-marketing-thumb.png'
+thumbnail: '/assets/img/services/influence-marketing-thumb.avif'
 
 str2:
     title: Что мы делаем в рамках инфлюенс маркетинга

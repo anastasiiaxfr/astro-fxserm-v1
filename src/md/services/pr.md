@@ -7,7 +7,7 @@ category:
     slug: brend-management
 slug: 'pr'
 excerpt: 'Раскрутка сайта Форекс или крипто тематики с учетом особенностей поисковой оптимизации в нише финтех'
-thumbnail: '/assets/img/services/pr-thumb.png'
+thumbnail: '/assets/img/services/pr-thumb.avif'
 
 str2:
     title: Как происходит финансовый PR

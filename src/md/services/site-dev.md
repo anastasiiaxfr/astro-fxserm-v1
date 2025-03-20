@@ -8,7 +8,7 @@ category:
 slug: 'site-dev'
 
 excerpt: 'Раскрутка сайта Форекс или крипто тематики с учетом особенностей поисковой оптимизации в нише финтех'
-thumbnail: '/assets/img/services/site-dev-thumb.png'
+thumbnail: '/assets/img/services/site-dev-thumb.avif'
 
 services:
     theme: dark

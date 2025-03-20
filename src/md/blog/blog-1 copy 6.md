@@ -7,7 +7,7 @@ category:
     title: 'Форекс'
     slug: forex
 authors: ['XFR', 'John Galt']
-thumbnail: '/assets/img/blog/blog-6.png'
+thumbnail: '/assets/img/blog/blog-6.avif'
 poster: '/assets/img/blog/b0.avif'
 excerpt: 'A brief excerpt of your article...'
 pubdate: '2025-03-02T10:00:00Z'

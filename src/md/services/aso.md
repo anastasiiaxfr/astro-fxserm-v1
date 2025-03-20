@@ -7,7 +7,7 @@ category:
     slug: reputation-management
 slug: 'aso'
 excerpt: 'Раскрутка сайта Форекс или крипто тематики с учетом особенностей поисковой оптимизации в нише финтех'
-thumbnail: '/assets/img/services/aso-thumb.png'
+thumbnail: '/assets/img/services/aso-thumb.avif'
 
 str2:
     title: Как заказать ASO-продвижение

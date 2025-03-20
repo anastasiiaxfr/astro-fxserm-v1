@@ -8,7 +8,7 @@ category:
 slug: 'leadgeneration'
 
 excerpt: 'Раскрутка сайта Форекс или крипто тематики с учетом особенностей поисковой оптимизации в нише финтех'
-thumbnail: '/assets/img/services/leadgeneration-thumb.png'
+thumbnail: '/assets/img/services/leadgeneration-thumb.avif'
 
 services:
     theme: dark

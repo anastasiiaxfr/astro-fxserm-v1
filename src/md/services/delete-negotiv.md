@@ -8,7 +8,7 @@ category:
 slug: 'delete-negotiv'
 
 excerpt: 'Раскрутка сайта Форекс или крипто тематики с учетом особенностей поисковой оптимизации в нише финтех'
-thumbnail: '/assets/img/services/delete-negotiv-thumb.png'
+thumbnail: '/assets/img/services/delete-negotiv-thumb.avif'
 
 slider:
     title: Что мы делаем в рамках услуги покупки отзывов

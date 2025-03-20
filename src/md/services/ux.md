@@ -8,7 +8,7 @@ category:
 slug: 'ux'
 
 excerpt: 'Раскрутка сайта Форекс или крипто тематики с учетом особенностей поисковой оптимизации в нише финтех'
-thumbnail: '/assets/img/services/ux-thumb.png'
+thumbnail: '/assets/img/services/ux-thumb.avif'
 
 str:
     title: Этапы разработки дизайна сайту

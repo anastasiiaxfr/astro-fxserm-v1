@@ -7,7 +7,7 @@ category:
     slug: reputation-management
 slug: 'orm'
 excerpt: 'Создание положительного имиджа бренда в сети и комплексное управление персональной репутацией в вертикалях Forex и Crypto'
-thumbnail: '/assets/img/services/orm-thumb.png'
+thumbnail: '/assets/img/services/orm-thumb.avif'
 
 features:
     title: Что мы делаем в рамках услуги ORM

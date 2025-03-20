@@ -6,7 +6,7 @@ const { thumbnail, title, desc, goal, result, slug } = data;
 
 <article class="case">
 	<a class="case__img" href={`/cases/${slug}`}>
-		<img src={thumbnail} alt={title} />
+		<img src={thumbnail} alt={title} width="600" height="300"/>
 	</a>
 	<div class="case__body">
 		<Corner url={`/cases/${slug}`} />
