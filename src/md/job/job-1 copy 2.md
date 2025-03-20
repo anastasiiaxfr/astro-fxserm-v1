@@ -6,7 +6,7 @@ job_type: 'Remote'
 job_status: 'Open'
 job_category: 'Development'
 hr: ['HR Иван Финман ']
-poster: '/assets/img/bg/job-single.jpg'
+poster: '/assets/img/bg/job-single.avif'
 job_requirments:
     - Опыт работы от 2-х лет;
     - Знание HTML и CSS;

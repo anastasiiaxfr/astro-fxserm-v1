@@ -1,6 +1,5 @@
 ---
 name: Александр Прашко
 job: Content Writer
-ava: '/assets/img/team/team-1.png'
+ava: '/assets/img/team/team-1.avif'
 ---
-

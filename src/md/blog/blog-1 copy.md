@@ -7,7 +7,7 @@ category:
     slug: crypto
 authors: ['XFR', 'John Galt']
 thumbnail: '/assets/img/blog/blog-1.png'
-poster: '/assets/img/blog/b0.jpg'
+poster: '/assets/img/blog/b0.avif'
 excerpt: 'A brief excerpt of your article...'
 pubdate: '2025-01-12T10:00:00Z'
 ---
@@ -40,7 +40,7 @@ pubdate: '2025-01-12T10:00:00Z'
 
 Как известно всем SEO-оптимизаторам, качественная ссылочная масса на релевантных тематических сайтах повышает количество упоминаний и авторитет требуемого ресурса, а, следовательно, и уровень выдачи в ТОП. Именно здесь и таятся подводные камни PBN линкбилдинга. Но сначала поговорим о преимуществах, которые даже с первого взгляда перевешивают недостатки и опасности.
 
-![Alt text](/assets/img/blog/b1.jpg)
+![Alt text](/assets/img/blog/b1.avif)
 
 </div>
 
@@ -62,6 +62,6 @@ pubdate: '2025-01-12T10:00:00Z'
 
 Однако если вы не знаете, как именно создать PBN с хорошим потенциалом, вы можете только впустую потратить свое время и деньги.
 
-![Alt text](/assets/img/blog/b2.jpg)
+![Alt text](/assets/img/blog/b2.avif)
 
 </div>

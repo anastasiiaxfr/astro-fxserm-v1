@@ -4,7 +4,7 @@ import Card from '../../../components/cards/_service-card.astro';
 import Tags from '../../../components/ui/Tags.astro';
 import Search from '../../../components/ui/Search.astro';
 import { allTags, allServices } from '../constant';
-const bgImg = '/assets/img/bg/services.jpg';
+const bgImg = '/assets/img/bg/services.avif';
 const bgFill = 'contain';
 
 const title = 'Услуги';
@@ -33,9 +33,7 @@ const { posts } = Astro.props;
 
 const { category } = Astro.params;
 const currentCategory = allTags.find((cat) => cat.slug === category);
-const categoryTitle = currentCategory
-	? currentCategory.title
-	: 'Unknown';
+const categoryTitle = currentCategory ? currentCategory.title : 'Unknown';
 ---
 
 <Layout bg={bgImg} seo={seo}>
@@ -55,33 +53,29 @@ const categoryTitle = currentCategory
 			<div class="">
 				<div class="service-sections">
 					<div id="services-container">
-						
-									<section
-										class="service__block"
-										key={category}
-										data-category={category}
-									>
-										<div>
-											<h2 class="my-0">
-												{categoryTitle}
-											</h2>
-										</div>
-										<div>
-											<div class="services">
-												{posts.map(
-													(service, ind) => (
-														<Card
-															data={
-																service.frontmatter
-															}
-															key={ind}
-														/>
-													)
-												)}
-											</div>
-										</div>
-									</section>
-							
+						<section
+							class="service__block"
+							key={category}
+							data-category={category}
+						>
+							<div>
+								<h2 class="my-0">
+									{categoryTitle}
+								</h2>
+							</div>
+							<div>
+								<div class="services">
+									{
+										posts.map((service, ind) => (
+											<Card
+												data={service.frontmatter}
+												key={ind}
+											/>
+										))
+									}
+								</div>
+							</div>
+						</section>
 					</div>
 				</div>
 			</div>
