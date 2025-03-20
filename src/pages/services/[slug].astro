@@ -9,6 +9,7 @@ import Slide from '../../components/cards/_service-slider.astro';
 import Slider from '../../components/ui/Swiper.astro';
 import Button from '../../components/ui/Forms/Button.astro';
 import Card from '../../components/cards/_benefits-card.astro';
+import Brands from '../../components/ui/Brands.astro';
 
 const bannerBgImg = '/assets/img/banner/banner_2.png';
 const heroBg = '/assets/img/bg/services-single.jpg';
@@ -56,7 +57,10 @@ const seo = {
 <Layout seo={seo}>
 	<section class="section">
 		<div class="container">
-			<div class="hero-base" style={`background-image: url(${heroBg})`}>
+			<div
+				class="hero-base"
+				style={`background-image: url(${heroBg}); background-blend-mode: color-dodge`}
+			>
 				<div class="hero-base__body">
 					<div class="hero-base__hgroup">
 						<h1>{title}</h1>
@@ -82,7 +86,7 @@ const seo = {
 
 	{
 		services && (
-			<section class="section section_benefits">
+			<section class="section section_dark">
 				<div class="container">
 					<h2>{services.title}</h2>
 					<div class="cards">
@@ -97,7 +101,7 @@ const seo = {
 
 	{
 		features && (
-			<section class="section section_features">
+			<section class="section section_dark">
 				<div class="container">
 					<h2>{features.title}</h2>
 
@@ -128,7 +132,7 @@ const seo = {
 				class={
 					slider.theme === 'light'
 						? 'section'
-						: 'section section_slider'
+						: 'section section_dark'
 				}
 			>
 				<div class="container">
@@ -150,38 +154,7 @@ const seo = {
 				<div class="container">
 					<h2>{reviews.title}</h2>
 				</div>
-				<div class="brands">
-					<div class="brands__inner">
-						{reviews.brands.map((i) => (
-							<div class="brands__item">
-								<img src={i.img} alt="" />
-							</div>
-						))}
-						{reviews.brands.map((i) => (
-							<div class="brands__item">
-								<img src={i.img} alt="" />
-							</div>
-						))}
-					</div>
-					<div class="brands__inner">
-						{reviews.brands
-							.slice()
-							.reverse()
-							.map((i) => (
-								<div class="brands__item">
-									<img src={i.img} alt="" />
-								</div>
-							))}
-						{reviews.brands
-							.slice()
-							.reverse()
-							.map((i) => (
-								<div class="brands__item">
-									<img src={i.img} alt="" />
-								</div>
-							))}
-					</div>
-				</div>
+				<Brands data={reviews.brands} />
 			</section>
 		)
 	}

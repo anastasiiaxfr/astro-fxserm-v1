@@ -3,7 +3,10 @@ title: 'EASY Web Scraping with Google Gemini 2.0'
 slug: 'post-0'
 
 read: 2 min
-category: 'Финансы'
+
+category:
+    title: 'Финансы'
+    slug: finance
 authors: ['XFR', 'John Galt']
 thumbnail: '/assets/img/blog/blog-7.jpg'
 poster: '/assets/img/blog/b0.jpg'

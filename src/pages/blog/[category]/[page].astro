@@ -1,0 +1,79 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import Search from '../../../components/ui/Search.astro';
+import Tag from '../../../components/ui/Tags.astro';
+import Card from '../../../components/cards/_post-card.astro';
+import Pagination from '../../../components/ui/Pagination.astro';
+import TopPosts from '../_top-posts.astro';
+import {
+	postPerPage,
+	countTopPost,
+	allTags,
+	sortedPosts
+} from '../constant.js';
+
+export function getStaticPaths({ paginate }) {
+	const otherPosts = sortedPosts.slice(countTopPost);
+	return allTags.flatMap((category) => {
+		const filteredPosts = otherPosts.filter(
+			(post) => post.frontmatter.category.slug === category.slug
+		);
+		return paginate(filteredPosts, {
+			params: { category: category.slug, cat: category.title },
+			pageSize: postPerPage
+		});
+	});
+}
+
+const { category } = Astro.params;
+const { page } = Astro.props;
+
+const currentCategory = allTags.find((cat) => cat.slug === category);
+const categoryTitle = currentCategory
+	? currentCategory.title
+	: 'Category Not Found';
+
+const bgImg = '/assets/img/bg/blog.jpg';
+
+const title = 'Блог';
+
+const seo = {
+	title: title,
+	description: 'SEO Blog DESC',
+	url: `blog`
+};
+---
+
+<Layout bg={bgImg} seo={seo}>
+	<section class="section hero">
+		<div class="container text-center">
+			<h1>{title}: <span class="text-main">{categoryTitle}</span></h1>
+			<Search />
+			<Tag
+				data={[{ title: 'All', slug: 'all' }, ...allTags]}
+				uri="/blog/"
+			/>
+		</div>
+	</section>
+	<section class="section page-container">
+		<div class="container">
+			<div class="posts-wrap">
+				<section class="">
+					<h2>Последнее</h2>
+					<TopPosts count={countTopPost} data={sortedPosts} />
+				</section>
+				<section class="">
+					<h2>Все посты</h2>
+					<div class="cards">
+						{
+							page.data.map((item) => (
+								<Card data={item.frontmatter} url={item.url} />
+							))
+						}
+					</div>
+					<Pagination page={page} />
+				</section>
+			</div>
+		</div>
+	</section>
+</Layout>

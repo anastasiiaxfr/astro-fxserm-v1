@@ -26,9 +26,9 @@
 		gap: $gap3
 		width: 100vw
 		&:first-child
-			animation: brands 15s ease-in-out infinite
+			animation: brands 30s ease-in-out infinite
 		&:last-child
-			animation: brands 15s ease-in-out infinite reverse
+			animation: brands 30s ease-in-out infinite reverse
 
 	&__item
 		+flex(inline-flex, center, start, nowrap)
@@ -36,11 +36,19 @@
 		+theme(dark2)
 		border-radius: $brs1
 		height: 75px
+		transition: $trs
+		text-align: center
+		font-size: 1.4em
+		cursor: pointer
 		[data-bs-theme="light"] &
 			+theme(dark)
+		&:hover
+			color: $main
 		& > *
 			min-width: 100px
 			width: auto
+			
+
 
 @keyframes brands
 	0% 

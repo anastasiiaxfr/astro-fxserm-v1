@@ -5,6 +5,8 @@ html, body
 	scroll-behavior: smooth
 	margin: 0
 	padding: 0
+	display: flex
+	flex-direction: column
 
 
 body
@@ -39,6 +41,28 @@ a
 img
 	user-select: none
 	max-width: 100%
+
+.img
+	position: relative
+	background: url('../img/bg/shadow-1.svg') no-repeat 50%/contain
+	overflow: hidden
+	&::after
+		content: ''
+		position: absolute
+		inset: 0
+		+sz(100%, 100%)
+		background: radial-gradient(circle at top center, transparent 15%, $dark_1 70%)
+		z-index: 1
+		transform: scale(1.2)
+		[data-bs-theme="light"]  &
+			background: radial-gradient(circle at top center, transparent 40%, var(--color-white-0) 75%)
+	& > *
+		display: block
+		margin-left: auto
+		margin-right: auto
+		z-index: -1
+		max-width: 100%
+		transform: scale(1)
 
 button, a, input 
 	transition: $trs

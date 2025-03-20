@@ -1,37 +1,32 @@
 ---
 import Layout from '../../layouts/Layout.astro';
 import Card from '../../components/cards/_service-card.astro';
-import Tags from '../../components/ui/Tag.astro';
+import Tags from '../../components/ui/Tags.astro';
 import Search from '../../components/ui/Search.astro';
-
+import { allTags, allServices } from './constant';
 const bgImg = '/assets/img/bg/services.jpg';
 const bgFill = 'contain';
 
 const title = 'Услуги';
 
-const allServices = Object.values(
-	import.meta.glob('../../md/services/*.md', { eager: true })
-);
-
 // Collect all unique categories
-const allTags = Array.from(
-	new Set(
-		allServices
-			.flatMap((service) => service.frontmatter.category || [])
-			.map((category) => category.trim())
-	)
-);
 
 const servicesByCategory = allServices.reduce((acc, service) => {
 	const { category } = service.frontmatter;
-	if (category) {
-		if (!acc[category]) {
-			acc[category] = [];
+	if (category.slug) {
+		if (!acc[category.slug]) {
+			acc[category.slug] = [];
 		}
-		acc[category].push(service);
+		acc[category.slug].push(service);
 	}
 	return acc;
 }, {});
+
+function getCatTitle(slug) {
+	const currentCategory = allTags.find((cat) => cat.slug === slug);
+	const categoryTitle = currentCategory ? currentCategory.title : 'Unknown';
+	return categoryTitle;
+}
 
 const seo = {
 	title: 'Services',
@@ -40,12 +35,15 @@ const seo = {
 };
 ---
 
-<Layout bg={{ bgImg: bgImg, bgFill: bgFill }} seo={seo}>
+<Layout bg={bgImg} seo={seo}>
 	<section class="section hero">
 		<div class="container text-center">
 			<h1>{title}</h1>
 			<Search />
-			<Tags data={['All', ...allTags]} onclick="filterCategory(event)" />
+			<Tags
+				data={[{ title: 'All', slug: 'all' }, ...allTags]}
+				uri="/services/"
+			/>
 		</div>
 	</section>
 
@@ -63,7 +61,9 @@ const seo = {
 										data-category={category}
 									>
 										<div>
-											<h2 class="my-0">{category}</h2>
+											<h2 class="my-0">
+												{getCatTitle(category)}
+											</h2>
 										</div>
 										<div>
 											<div class="services">
@@ -90,74 +90,4 @@ const seo = {
 	</section>
 </Layout>
 
-<script is:inline data-astro-rerun>
-	function filterCategory(event) {
-		const selectedCategory = event.target.dataset.category;
-		const serviceSections = document.querySelectorAll('.service__block');
-		const serviceCards = document.querySelectorAll('.service');
-
-		serviceCards.forEach((card) => {
-			card.style.display = 'grid';
-		});
-
-		serviceSections.forEach((section) => {
-			section.style.display = 'none';
-		});
-
-		if (selectedCategory === 'All') {
-			serviceSections.forEach((section) => {
-				section.style.display = 'grid';
-			});
-		} else {
-			const selectedSections = document.querySelectorAll(
-				`[data-category="${selectedCategory}"]`
-			);
-			selectedSections.forEach((section) => {
-				section.style.display = 'grid';
-			});
-		}
-	}
-
-	document.addEventListener('astro:page-load', () => {
-		const searchInput = document.querySelector('input[type="search"]');
-		const serviceSections = document.querySelectorAll('.service__block');
-
-		searchInput &&
-			searchInput.addEventListener('input', (event) => {
-				const searchTerm = event.target.value.toLowerCase();
-
-				serviceSections.forEach((section) => {
-					const serviceCards = section.querySelectorAll('.service');
-					let hasVisibleCards = false;
-
-					serviceCards.forEach((card) => {
-						const title =
-							card
-								.querySelector('h3')
-								?.textContent.toLowerCase() || '';
-
-						if (title.includes(searchTerm)) {
-							card.style.display = 'block';
-							hasVisibleCards = true;
-						} else {
-							card.style.display = 'none';
-						}
-					});
-
-					if (hasVisibleCards) {
-						section.style.display = 'grid';
-					} else {
-						section.style.display = 'none';
-					}
-				});
-			});
-
-		const categoryButtons = document.querySelectorAll('.tag');
-		categoryButtons.forEach((button) => {
-			button.addEventListener('click', function () {
-				searchInput.value = '';
-				filterCategory;
-			});
-		});
-	});
-</script>
+<script is:inline data-astro-rerun></script>

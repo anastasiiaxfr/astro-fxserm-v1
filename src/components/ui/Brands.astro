@@ -1,0 +1,44 @@
+---
+const { data } = Astro.props;
+---
+
+<div class="brands">
+	<div class="brands__inner">
+		{
+			data.map((i) => (
+				<div class="brands__item">
+					{i.img ? <img src={i.img} alt="" /> : <b>{i.title}</b>}
+				</div>
+			))
+		}
+		{
+			data.map((i) => (
+				<div class="brands__item">
+					{i.img ? <img src={i.img} alt="" /> : <b>{i.title}</b>}
+				</div>
+			))
+		}
+	</div>
+	<div class="brands__inner">
+		{
+			data
+				.slice()
+				.reverse()
+				.map((i) => (
+					<div class="brands__item">
+						{i.img ? <img src={i.img} alt="" /> : <b>{i.title}</b>}
+					</div>
+				))
+		}
+		{
+			data
+				.slice()
+				.reverse()
+				.map((i) => (
+					<div class="brands__item">
+						{i.img ? <img src={i.img} alt="" /> : <b>{i.title}</b>}
+					</div>
+				))
+		}
+	</div>
+</div>

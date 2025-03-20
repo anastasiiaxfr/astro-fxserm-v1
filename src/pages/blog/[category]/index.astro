@@ -1,0 +1,88 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import Search from '../../../components/ui/Search.astro';
+import Tag from '../../../components/ui/Tags.astro';
+import Card from '../../../components/cards/_post-card.astro';
+import PaginationStatic from '../../../components/ui/PaginationStatic.astro';
+import TopPosts from '../_top-posts.astro';
+import {
+	postPerPage,
+	countTopPost,
+	allTags,
+	sortedPosts
+} from '../constant.js';
+
+const { category } = Astro.params;
+export async function getStaticPaths() {
+	const otherPosts = sortedPosts.slice(countTopPost);
+	return allTags.flatMap((cat) => {
+		const filteredPosts = otherPosts.filter(
+			(post) => post.frontmatter.category.slug === cat.slug
+		);
+		return {
+			params: { category: cat.slug },
+			props: { posts: filteredPosts }
+		};
+	});
+}
+
+const { posts } = Astro.props;
+
+const currentCategory = allTags.find((cat) => cat.slug === category);
+const categoryTitle = currentCategory
+	? currentCategory.title
+	: 'Category Not Found';
+
+const bgImg = '/assets/img/bg/blog.jpg';
+
+const title = 'Блог';
+
+const seo = {
+	title: title,
+	description: 'SEO Blog DESC',
+	url: `blog`
+};
+---
+
+<Layout bg={bgImg} seo={seo}>
+	<section class="section hero">
+		<div class="container text-center">
+			<h1>{title}: <span class="text-main">{categoryTitle}</span></h1>
+			<Search />
+			<Tag
+				data={[{ title: 'All', slug: 'all' }, ...allTags]}
+				uri="/blog/"
+			/>
+		</div>
+	</section>
+	<section class="section page-container">
+		<div class="container">
+			<div class="posts-wrap">
+				<section class="posts-block">
+					<h2>Последнее</h2>
+					<TopPosts count={countTopPost} data={sortedPosts} />
+				</section>
+				<section class="posts-block">
+					<h2>Все посты</h2>
+					<div class="cards">
+						{
+							posts
+								.slice(0, postPerPage)
+								.map((item) => (
+									<Card
+										data={item.frontmatter}
+										url={item.url}
+									/>
+								))
+						}
+					</div>
+					<PaginationStatic
+						count={postPerPage}
+						data={posts}
+						slug={`blog/${category}`}
+					/>
+				</section>
+			</div>
+		</div>
+	</section>
+</Layout>

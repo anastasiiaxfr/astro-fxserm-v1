@@ -8,42 +8,42 @@ const thumbnailType = ['default', 'banner'];
 const { data, type = thumbnailType[0], key } = Astro.props;
 const { thumbnail, title, pubdate, read, category, slug } = data;
 const meta = [
-    {
-        title: formatPubDate(pubdate),
-        icon: 'date'
-    },
-    {
-        title: read || '5 min',
-        icon: 'time'
-    }
+	{
+		title: formatPubDate(pubdate),
+		icon: 'date'
+	},
+	{
+		title: read || '5 min',
+		icon: 'time'
+	}
 ];
 ---
 
 <article
-    class="post animate__animated animate__zoomIn"
-    style={`animation-delay: ${key / 10}s`}
+	class="post animate__animated animate__fadeIn"
+	style={`animation-delay: ${key / 10}s`}
 >
-    <a
-        href={`/blog/${slug}`}
-        class={`${type === 'banner' ? 'post__banner' : 'post__img'}`}
-    >
-        <button class="post__cta">
-            <svg class="icon" width="48" height="48">
-                <use xlink:href="#arr-t-r"></use>
-            </svg>
-        </button>
-        <Corner type={type} img={thumbnail} />
-    </a>
-    <div class="post__body">
-        <div class="post__meta">
-            <PostMeta data={meta} />
-            <button class="chip">{category}</button>
-        </div>
+	<a
+		href={`/blog/${slug}`}
+		class={`${type === 'banner' ? 'post__banner' : 'post__img'}`}
+	>
+		<button class="post__cta">
+			<svg class="icon" width="48" height="48">
+				<use xlink:href="#arr-t-r"></use>
+			</svg>
+		</button>
+		<Corner type={type} img={thumbnail} />
+	</a>
+	<div class="post__body">
+		<div class="post__meta">
+			<PostMeta data={meta} />
+			<button class="chip">{category.title}</button>
+		</div>
 
-        <a class="post__content" href={`/blog/${slug}`}>
-            <h3 class="post__title">
-                {title}
-            </h3>
-        </a>
-    </div>
+		<a class="post__content" href={`/blog/${slug}`}>
+			<h3 class="post__title">
+				{title}
+			</h3>
+		</a>
+	</div>
 </article>

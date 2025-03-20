@@ -1,0 +1,56 @@
+---
+const { data } = Astro.props;
+
+const faqSchema = {
+	'@context': 'https://schema.org',
+	'@type': 'FAQPage',
+	mainEntity: data.map(({ qw, answ }) => ({
+		'@type': 'Question',
+		name: qw,
+		acceptedAnswer: {
+			'@type': 'Answer',
+			text: answ
+		}
+	}))
+};
+---
+
+<div class="faq-wrapper">
+	{
+		data.map(({ qw, answ }) => (
+			<div class="faq">
+				<button class="faq__toggle">
+					<h3>{qw}</h3>
+				</button>
+				<div class="faq__body" set:html={answ} />
+			</div>
+		))
+	}
+</div>
+
+<script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+
+<script is:inline>
+	document.addEventListener('astro:page-load', () => {
+		const accordionToggles = document.querySelectorAll('.faq__toggle');
+
+		accordionToggles.forEach((toggle) => {
+			toggle.addEventListener('click', function (event) {
+				this.classList.toggle('active');
+
+				const accordionBody = event.target
+					.closest('.faq')
+					.querySelector('.faq__body');
+
+				if (
+					accordionBody.style.display === 'none' ||
+					!accordionBody.style.display
+				) {
+					accordionBody.style.display = 'block';
+				} else {
+					accordionBody.style.display = 'none';
+				}
+			});
+		});
+	});
+</script>

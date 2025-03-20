@@ -1,16 +1,71 @@
 ---
-import Welcome from '../components/Welcome.astro';
 import Layout from '../layouts/Layout.astro';
+import Button from '../components/ui/Forms/Button.astro';
+import Banner from '../components/ui/Banner.astro';
+import AccordionSection from '../components/sections/_accordion/index.astro';
+import NewsSection from '../components/sections/_news.astro';
+import BrandsSection from '../components/sections/_brands.astro';
+import OwnerSection from '../components/sections/_owner.astro';
+import CasesSection from '../components/sections/_cases.astro';
+import FaqSection from '../components/sections/_faq.astro';
+import ServicesSection from '../components/sections/_services.astro';
 
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+const bgImg = '/assets/img/bg/home.jpg';
+const heroImg = '/assets/img/bg/hero.png';
+const bannerBgImg = '/assets/img/banner/banner_2.png';
+const bannerBgImg2 = '/assets/img/banner/banner_3.png';
+const bannerBgImg3 = '/assets/img/banner/banner_1.png';
+
+const banner = {
+	title: 'Эффективный маркетинг в криптовалюте',
+	desc: 'Мы организуем полноценный крипто маркетинг для криптовалютных бирж, платежных сервисов и других проектов из сферы финтех.'
+};
+
+const banner2 = {
+	title: 'Эффективный маркетинг в криптовалюте',
+	desc: 'Мы организуем полноценный крипто маркетинг для криптовалютных бирж, платежных сервисов и других проектов из сферы финтех.'
+};
+
+const banner3 = {
+	title: 'Эффективный маркетинг в криптовалюте',
+	desc: 'Мы организуем полноценный крипто маркетинг для криптовалютных бирж, платежных сервисов и других проектов из сферы финтех.'
+};
+
+const title = 'SERM | ORM | Финтех маркетинг';
+const desc = 'для Форекс брокеров, крипто бирж, необанков, блокчейн проектов';
 
 const seo = {
-	title: 'Home page',
+	title: title,
 	description: 'SEO Home desc'
 };
 ---
 
-<Layout seo={seo}>
-	<Welcome />
+<Layout seo={seo} bg={bgImg}>
+	<section class="section hero hero-home">
+		<div class="container">
+			<div class="hero__row">
+				<div class="hero__hgroup">
+					<h1>{title}</h1>
+					<p class="text-desc">{desc}</p>
+					<Button />
+				</div>
+				<div>
+					<img src={heroImg} alt="ALT" />
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<ServicesSection />
+
+	<CasesSection />
+
+	<Banner title={banner3.title} desc={banner3.desc} bg={bannerBgImg3} />
+	<OwnerSection />
+	<BrandsSection />
+	<FaqSection />
+	<Banner title={banner2.title} desc={banner2.desc} bg={bannerBgImg2} />
+	<NewsSection />
+	<AccordionSection />
+	<Banner title={banner.title} desc={banner.desc} bg={bannerBgImg} />
 </Layout>

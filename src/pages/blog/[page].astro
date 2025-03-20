@@ -1,7 +1,7 @@
 ---
 import Layout from '../../layouts/Layout.astro';
 import Search from '../../components/ui/Search.astro';
-import Tag from '../../components/ui/Tag.astro';
+import Tag from '../../components/ui/Tags.astro';
 import Card from '../../components/cards/_post-card.astro';
 import Pagination from '../../components/ui/Pagination.astro';
 import TopPosts from './_top-posts.astro';
@@ -15,7 +15,6 @@ export async function getStaticPaths({ paginate }) {
 const { page } = Astro.props;
 
 const bgImg = '/assets/img/bg/blog.jpg';
-const bgFill = 'contain';
 
 const title = 'Блог';
 
@@ -26,12 +25,15 @@ const seo = {
 };
 ---
 
-<Layout bg={{ bgImg: bgImg, bgFill: bgFill }} seo={seo}>
+<Layout bg={bgImg} seo={seo}>
 	<section class="section hero">
 		<div class="container text-center">
 			<h1>{title}</h1>
 			<Search />
-			<Tag data={['All', ...allTags]} />
+			<Tag
+				data={[{ title: 'All', slug: 'all' }, ...allTags]}
+				uri="/blog/"
+			/>
 		</div>
 	</section>
 	<section class="section page-container">

@@ -1,0 +1,130 @@
+.features
+	display: grid
+	grid-template-columns: 2fr 0.75fr
+	gap: $gap3
+	+maw($lg)
+		grid-template-columns: 1fr
+
+.feature
+	&__content	
+		display: grid
+		grid-template-columns: 1fr 1fr
+		gap: $gap3
+		align-items: stretch
+		+maw($md)
+			grid-template-columns: 1fr
+	&__cat
+		padding: 2em
+		border-radius: $brs2
+		+theme(dark2)
+		border: none
+		display: grid
+		align-items: center
+		cursor: pointer
+		text-align: left
+		grid-column: 1
+		[data-bs-theme="light"] &
+			+theme(dark)
+		h3
+			margin: 0
+		&:hover, &.active
+			color: $main
+	&__body
+		border-radius: 2em
+		+theme(dark2)
+		grid-column: 2
+		flex-direction: column
+		display: none
+		overflow: hidden
+		overflow-y: auto
+		@extend %scroll
+		[data-bs-theme="light"] &
+			+theme(dark)
+		+maw($md)
+			grid-column: 1
+			grid-row: initial !important
+		
+	
+	&-item-toggle
+		+flex(flex, center, start, nowrap)
+		gap: $gap2
+		width: 100%
+		@extend .h5
+		margin: 0
+		padding: 1em 2em
+		border: none
+		color: inherit
+		background: none
+		border: 1px solid rgba($white, 0.1)
+		border-width: 1px 0 0
+		cursor: pointer
+		transition: $trs
+		text-align: left
+		&:hover
+			color: $main
+			border: 1px solid rgba($white, 0.1)
+			border-width: 1px 0 0
+		&:first-child
+			border: 0
+	&__cta
+		display: grid
+		gap: $gap3
+		+maw($lg)
+			grid-template-columns: 1fr 1fr
+		+maw(640)
+			grid-template-columns: 1fr
+	&-desc
+		height: 100%
+		padding: 2em
+		display: flex
+		flex-direction: column
+		gap: $gap3
+		display: none
+		&.active
+			display: flex !important
+		
+		&__header
+			+flex(flex, center, start, nowrap)
+			gap: $gap2
+			margin-bottom: $gap2
+			user-select: none
+			cursor: pointer
+			svg
+				min-width: 24px
+			h3
+				margin: 0
+		&__body
+			flex: 1
+			display: flex
+			flex-direction: column
+			justify-content: space-between
+			gap: $gap3
+		&__text
+			opacity: $op
+	&-banner
+		position: relative
+		padding: 2em
+		min-height: 200px
+		+theme(dark2)
+		border-radius: $brs2
+		overflow: hidden
+		[data-bs-theme="light"] &
+			+theme(dark)
+		&.active
+			background: $grad
+		p
+			opacity: $op
+			margin-bottom: 0
+			margin-right: 6em
+		.corner
+			+sz(9em, 9em)
+			button, a
+				+sz(6.5em, 6.5em)
+		&__body
+			display: flex
+			flex-direction: column
+			justify-content: space-between
+			height: 100%
+		
+			
+				

@@ -1,21 +1,30 @@
 ---
-const { title = 'Вам также будет интересно' } = Astro.props;
+const {
+	title = 'Вам также будет интересно',
+	btn,
+	theme = 'light'
+} = Astro.props;
 import Card from '../../components/cards/_post-card.astro';
+import Button from '../../components/ui/Forms/Button.astro';
+
 import { sortedPosts } from './constant.js';
 
 const countRelatedPosts = 3;
 ---
 
-<section class="section">
-    <div class="container">
-        <h2>{title}</h2>
+<section class={theme === 'dark' ? 'section_dark' : 'section'}>
+	<div class="container">
+		<hgroup>
+			<h2>{title}</h2>
+			{btn && <Button title={btn.title} url={btn.url} />}
+		</hgroup>
 
-        <div class="posts">
-            {
-                sortedPosts
-                    .slice(0, countRelatedPosts)
-                    .map((i) => <Card data={i.frontmatter} type="default" />)
-            }
-        </div>
-    </div>
+		<div class="posts">
+			{
+				sortedPosts
+					.slice(0, countRelatedPosts)
+					.map((i) => <Card data={i.frontmatter} type="default" />)
+			}
+		</div>
+	</div>
 </section>

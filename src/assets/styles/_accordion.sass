@@ -1,0 +1,62 @@
+
+
+.accordion
+	display: grid
+	gap: $gap3
+	margin-top: $gap4
+	&__item
+		display: grid
+		gap: $gap3
+	&__toggle
+		+flex(flex, center, space-between, nowrap)
+		gap: $gap2
+		width: 100%
+		padding: $gap3
+		border-radius: $brs2
+		border: none
+		+theme(dark2)
+		text-align: left
+		cursor: pointer
+		svg
+			min-width: 24px
+		&.active
+			+theme(white)
+			svg
+				transform: rotate(180deg)
+		&:hover
+			+theme(main)
+		h3
+			@extend .h4
+			margin: 0
+		[data-bs-theme="light"] &
+			+theme(dark)
+			&:hover
+				+theme(main)
+
+	&__body
+		width: 100%
+		padding: 3em 3em
+		border-radius: $brs2
+		border: none
+		+theme(dark2)
+		text-align: left
+		color: rgba($white, $op)
+		display: none
+		b, strong
+			color: $white
+		p
+			&:first-child
+				margin-top: 0
+		li
+			margin: 4px 0
+		[data-bs-theme="light"] &
+			+theme(light)
+			color: rgba($black, $op)
+			b, strong
+				color: $black
+	+maw($sm)
+		h3
+			font-size: 1.4em
+	+maw($xs)
+		&__body
+			padding: 2em

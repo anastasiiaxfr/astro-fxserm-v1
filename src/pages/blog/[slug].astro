@@ -52,10 +52,10 @@ const meta = [
 ];
 ---
 
-<Layout bg={{ bgImg: bgImg, bgFill: bgFill }} seo={seo}>
+<Layout bg={bgImg} seo={seo}>
 	<section class="section hero hero-post">
 		<div class="container">
-			<button class="chip">{category}</button>
+			<button class="chip">{category.title}</button>
 			<h1 class="mt-2">{title}</h1>
 			<PostMeta data={meta} />
 			<div class="mt-4">

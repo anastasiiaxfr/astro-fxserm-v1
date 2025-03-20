@@ -1,0 +1,90 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import Card from '../../../components/cards/_service-card.astro';
+import Tags from '../../../components/ui/Tags.astro';
+import Search from '../../../components/ui/Search.astro';
+import { allTags, allServices } from '../constant';
+const bgImg = '/assets/img/bg/services.jpg';
+const bgFill = 'contain';
+
+const title = 'Услуги';
+
+// Collect all unique categories
+
+const seo = {
+	title: title,
+	description: 'SEO services desc',
+	url: 'services'
+};
+
+export async function getStaticPaths() {
+	return allTags.flatMap((cat) => {
+		const filteredPosts = allServices.filter(
+			(post) => post.frontmatter.category.slug === cat.slug
+		);
+		return {
+			params: { category: cat.slug },
+			props: { posts: filteredPosts }
+		};
+	});
+}
+
+const { posts } = Astro.props;
+
+const { category } = Astro.params;
+const currentCategory = allTags.find((cat) => cat.slug === category);
+const categoryTitle = currentCategory
+	? currentCategory.title
+	: 'Unknown';
+---
+
+<Layout bg={bgImg} seo={seo}>
+	<section class="section hero">
+		<div class="container text-center">
+			<h1>{title}: <span class="text-main">{categoryTitle}</span></h1>
+			<Search />
+			<Tags
+				data={[{ title: 'All', slug: 'all' }, ...allTags]}
+				uri="/services/"
+			/>
+		</div>
+	</section>
+
+	<section class="section page-container">
+		<div class="container">
+			<div class="">
+				<div class="service-sections">
+					<div id="services-container">
+						
+									<section
+										class="service__block"
+										key={category}
+										data-category={category}
+									>
+										<div>
+											<h2 class="my-0">
+												{categoryTitle}
+											</h2>
+										</div>
+										<div>
+											<div class="services">
+												{posts.map(
+													(service, ind) => (
+														<Card
+															data={
+																service.frontmatter
+															}
+															key={ind}
+														/>
+													)
+												)}
+											</div>
+										</div>
+									</section>
+							
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+</Layout>

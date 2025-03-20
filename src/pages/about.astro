@@ -7,7 +7,6 @@ import Button from '../components/ui/Forms/Button.astro';
 import { Content, frontmatter } from '../md/about.md';
 
 const bgImg = '/assets/img/bg/about.jpg';
-const bgFill = 'contain';
 const bannerBgImg = '/assets/img/banner/banner_2.png';
 
 const banner = {
@@ -22,7 +21,7 @@ const seo = {
 };
 ---
 
-<Layout bg={{ bgImg: bgImg, bgFill: bgFill }} seo={seo}>
+<Layout bg={bgImg} seo={seo}>
 	<section class="section hero">
 		<div class="container hero__content">
 			<h1>{frontmatter.title}</h1>

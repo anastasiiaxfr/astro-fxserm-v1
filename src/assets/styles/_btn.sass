@@ -344,9 +344,16 @@
 				transform: rotate(-15deg)
 				
 .corner
+	+ps(absolute, (r, 0), (b, -2px))
 	& > svg
 		fill: var(--cornerFill)
+		.section_services &, .section_dark &
+			[data-bs-theme="light"] &
+				fill: $light
+			[data-bs-theme="dark"] &
+				fill: $dark
+
 	button, a
-		+ps(absolute, (b, 0), (r, 0))
+		+ps(absolute, (b, 2px), (r, 0))
 		@extend %circle-btn
 

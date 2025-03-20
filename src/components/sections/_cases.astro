@@ -1,0 +1,25 @@
+---
+import Button from '../ui/Forms/Button.astro';
+import Card from '../../components/cards/_case-card.astro';
+import { sortedCases } from '../../pages/cases/constant';
+const title = 'Наши кейсы';
+---
+
+<section class="section section_dark">
+	<div class="container">
+		<hgroup>
+			<h2>{title}</h2>
+			<Button title="Просмотреть все" url="/cases" />
+		</hgroup>
+
+		<div class="cases-wrap-invert">
+			{
+				sortedCases
+					.slice(0, 3)
+					.map((item, ind) => (
+						<Card data={item.frontmatter} key={ind} />
+					))
+			}
+		</div>
+	</div>
+</section>

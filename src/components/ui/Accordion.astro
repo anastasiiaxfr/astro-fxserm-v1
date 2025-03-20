@@ -1,0 +1,49 @@
+---
+const { data } = Astro.props;
+---
+
+<nav class="accordion">
+	{
+		data.map(({ title, content }, index) => (
+			<div class="accordion__item" key={index}>
+				<button class="accordion__toggle">
+					<h3>{title}</h3>
+					<svg class="icon" width="24" height="24">
+						<use xlink:href="#arr-btm" />
+					</svg>
+				</button>
+				<div
+					class="accordion__body"
+					id={`body-${index}`}
+					set:html={content}
+				/>
+			</div>
+		))
+	}
+</nav>
+
+<script is:inline>
+	document.addEventListener('astro:page-load', () => {
+		const accordionToggles =
+			document.querySelectorAll('.accordion__toggle');
+
+		accordionToggles.forEach((toggle) => {
+			toggle.addEventListener('click', function (event) {
+				this.classList.toggle('active');
+
+				const accordionBody = event.target
+					.closest('.accordion__item')
+					.querySelector('.accordion__body');
+
+				if (
+					accordionBody.style.display === 'none' ||
+					!accordionBody.style.display
+				) {
+					accordionBody.style.display = 'block';
+				} else {
+					accordionBody.style.display = 'none';
+				}
+			});
+		});
+	});
+</script>

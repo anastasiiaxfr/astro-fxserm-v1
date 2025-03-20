@@ -10,7 +10,6 @@ import Bg from '../components/ui/HeroBg.astro';
 import SVG from '../components/_svg.astro';
 
 const { bg, seo } = Astro.props;
-const { bgImg } = bg || {};
 
 import { ClientRouter } from 'astro:transitions';
 
@@ -47,8 +46,8 @@ const customTransition = {
 	</head>
 
 	<body class="page__body" data-bs-theme="dark">
-		<Bg bg={{ bgImg: bgImg }} />
 		<Preloader />
+		{bg && <Bg bg={bg} />}
 		<div class="page__wrapper">
 			<Header />
 			<main transition:animate={customTransition}>

@@ -3,6 +3,15 @@
         display: grid
         grid-template-columns: 1fr 2fr
         gap: $gap3
+    &_2
+        display: grid
+        grid-template-columns: 1.5fr 2fr
+        gap: $gap3 3em
+        align-items: center
+    
     +maw($md)
-        &_1
+        &_1, &_2
             grid-template-columns: 1fr
+        &_2
+            & > *:first-child
+                order: 2

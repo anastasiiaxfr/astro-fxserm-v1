@@ -1,0 +1,160 @@
+---
+import Corner from '../cards/_corner.astro';
+import { allTags, allServices } from '../../pages/services/constant';
+import Button from '../ui/Forms/Button.astro';
+
+const servicesByCategory = allServices.reduce((acc, service) => {
+	const { category } = service.frontmatter;
+	if (category.slug) {
+		if (!acc[category.slug]) {
+			acc[category.slug] = [];
+		}
+		acc[category.slug].push(service);
+	}
+	return acc;
+}, {});
+
+function getCatTitle(slug) {
+	const currentCategory = allTags.find((cat) => cat.slug === slug);
+	const categoryTitle = currentCategory ? currentCategory.title : 'Unknown';
+	return categoryTitle;
+}
+
+const title = 'Услуги';
+
+const data = Object.entries(servicesByCategory)
+---
+
+<section class="section_services">
+	<div class="container">
+		<h2>{title}</h2>
+
+		<div class="features">
+			<div class="feature__content">
+				{
+					data.map(
+						([category, services], ind) => (
+							<button class="feature__cat" data-index={ind}>
+								<h3 class="my-0">{getCatTitle(category)}</h3>
+							</button>
+						
+							<div
+								class={`feature__body  ${ind === 0 ? 'active' : ''}`}
+								style={`grid-row: 1/${data.length + 1}`}
+								id={`feature-body-${category}`}
+							>
+								<article>
+									{services.map((service) => (
+										<button class="feature-item-toggle" key={service.frontmatter.slug}>
+											<span> ☆</span>
+											{service.frontmatter.title}
+										</button>
+										<div class="feature-desc">
+											<div class="feature-desc__header">
+												<svg class="icon" width="24" height="24">
+												<use xlink:href="#arr-l"></use>
+												</svg>
+												<h3>{service.frontmatter.title}</h3>
+											</div>
+											<div class="feature-desc__body">
+												<div class="feature-desc__text">
+													{service.frontmatter.desc}
+												</div>
+												<Button title="Узнать больше" url={`/services/${service.frontmatter.slug}`}/>
+											</div>
+										</div>
+									))}
+								</article>
+
+								
+							</div>
+						)
+					)
+				}
+			</div>
+			<div class="feature__cta">
+				<article class="feature-banner">
+					<div class="feature-banner__body">
+						<h4>Еще хочешь увидеть как это работает?</h4>
+						<p>Посмотреть наш кейс</p>
+					</div>
+					<Corner />
+				</article>
+				<article class="feature-banner active">
+					<div class="feature-banner__body">
+						<h4>Еще остались вопросы?</h4>
+						<p>Задать нам вопросы</p>
+					</div>
+					<Corner />
+				</article>
+			</div>
+		</div>
+	</div>
+</section>
+
+<script is:inline>
+
+	document.addEventListener('astro:page-load', () => {
+		const desc = document.querySelectorAll('.feature-desc');
+		const item = document.querySelectorAll('.feature-item-toggle');
+		const body = document.querySelectorAll('.feature__body');
+		const button = document.querySelectorAll('.feature__cat');
+
+		function setActiveTab(index) {
+			item.forEach(el => el.classList.remove('hide'));
+			desc.forEach(el => el.classList.remove('active'));
+		
+			body
+				.forEach((tabContent, idx) => {
+					if (idx === index) {
+						tabContent.classList.add('active');
+					} else {
+						tabContent.classList.remove('active');
+					}
+				});
+
+			button
+				.forEach((btn, idx) => {
+					btn.setAttribute('aria-selected', idx === index);
+					if (idx === index) {
+						btn.classList.add('active');
+					} else {
+						btn.classList.remove('active');
+					}
+				});
+		}
+
+		button.forEach((btn) => {
+			btn.addEventListener('click', () => {
+				const index = parseInt(btn.getAttribute('data-index'), 10);
+				setActiveTab(index);
+			});
+		});
+
+
+		item.forEach(function(i){
+			i.addEventListener('click', function() {
+				item.forEach(el => el.classList.add('hide'));
+
+				const nextFeatureDesc = i.nextElementSibling;
+				if (nextFeatureDesc && nextFeatureDesc.classList.contains('feature-desc')) {
+					nextFeatureDesc.classList.add('active');
+				}
+			});
+		});
+
+		document.querySelectorAll('.feature-desc__header').forEach((header) => {
+			header.addEventListener('click', function() {
+				item.forEach(el => el.classList.remove('hide'));
+
+
+				const featureDesc = header.closest('.feature-desc');
+				if (featureDesc) {
+					featureDesc.classList.remove('active');
+				}
+			});
+		});
+
+		setActiveTab(0);
+	});
+</script>

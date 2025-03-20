@@ -64,8 +64,19 @@ p, li
     +ft(16, 16*1.4, 400)
 
 .text
+    opacity: $op
+    &-subtitle
+        color: $main
+        text-transform: uppercase
+        margin-top: 0
+    &-desc
+        opacity: $op
+        font-size: 1.4em
+        margin-bottom: $gap4
     &-center
         text-align: center
+    &-main
+        color: $main
     &--note
         display: inline-block
         font-size: 140%
@@ -179,3 +190,11 @@ p, li
         opacity: $op
     +maw($md)
         grid-template-columns: 1fr
+
+
+hgroup
+    +flex(flex, center, space-between, wrap)
+    gap: $gap2
+    margin-bottom: $gap4
+    h2
+        margin: 0

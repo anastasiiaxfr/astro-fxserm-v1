@@ -186,12 +186,26 @@
 			flex-direction: column
 
 .hero
+	position: relative
 	padding: 5em 0
+	overflow: hidden
+	&-home
+		position: relative
+		overflow: hidden
+		padding: 5em 0
+		&::after
+			content: ''
+			position: absolute
+			inset: 0
+			z-index: 1
+			background: linear-gradient(180deg, transparent, $dark_1)
 	&.section
 		margin: 0
 	[data-bs-theme="light"] &
 		+theme(dark)
 		margin-bottom: var(--gapSection)
+		&-home
+			margin-bottom: 0
 	.container
 		display: flex
 		flex-direction: column
@@ -201,6 +215,23 @@
 	&-post
 		.container
 			align-items: start
+	&__hgroup
+		position: relative
+		z-index: 2
+	&__row
+		width: 100%
+		align-items: start
+		display: grid
+		grid-template-columns: 1.5fr 2fr
+		gap: 0 $gap3
+		img
+			display: block
+			position: absolute
+			bottom: 0
+			right: 0
+			z-index: 0
+			max-width: 100%
+			height: 100%
 	&__content
 		max-width: 750px
 		margin-left: auto
@@ -210,6 +241,15 @@
 			opacity: $op
 			margin-top: 0
 			margin-bottom: $gap2
+	+maw($lg)
+		&__row
+			grid-template-columns: 1fr
+	+maw($lsm)
+		&__row
+			grid-template-columns: 1fr
+			img
+				position: relative
+				transform: translateY(20%) scale(1.4)
 
 
 .hero-base
@@ -220,6 +260,8 @@
 	background-position: top right
 	border-radius: $brs2
 	overflow: hidden
+	[data-bs-theme="light"] &
+		+theme(dark)
 	&__body
 		display: grid
 		grid-template-columns: 1fr 1fr

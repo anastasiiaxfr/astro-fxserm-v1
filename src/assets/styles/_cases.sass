@@ -51,13 +51,17 @@
         overflow: hidden
         [data-bs-theme="light"] &
             +theme(light)
-    &__cta
+        .section_dark &
+            [data-bs-theme="light"] &
+                +theme(white)
+    .corner
         +ps(absolute, (b, -2px), (r, -2px))
         +sz(10em, 10em)
         button, a
             +sz(6em, 6em)
             bottom: 2px
             right: 2px
+       
     &__desc
         opacity: $op
     &__result

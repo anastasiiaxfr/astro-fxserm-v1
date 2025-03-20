@@ -2,7 +2,9 @@
 title: ORM
 desc: 'Раскрутка сайта Форекс или крипто тематики с учетом особенностей поисковой оптимизации в нише финтех'
 icon: '/assets/img/icon/s1.svg'
-category: Репутационный менеджмент
+category:
+    title: Репутационный менеджмент
+    slug: reputation-management
 slug: 'orm'
 excerpt: 'Создание положительного имиджа бренда в сети и комплексное управление персональной репутацией в вертикалях Forex и Crypto'
 thumbnail: '/assets/img/services/orm-thumb.png'

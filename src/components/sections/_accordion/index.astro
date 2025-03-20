@@ -1,0 +1,12 @@
+---
+import Accordion from '../../ui/Accordion.astro';
+import { data } from './const.js';
+const title = 'Маркетинг для финтех-проектов';
+---
+
+<section class="section section_marketing">
+	<div class="container">
+		<h2>{title}</h2>
+		<Accordion data={data} />
+	</div>
+</section>
