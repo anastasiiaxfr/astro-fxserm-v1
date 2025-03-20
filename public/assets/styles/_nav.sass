@@ -1,166 +1,297 @@
+.logo
 .header
-    padding: 1em 0
-    background-color: rgba($black, 0.1)
-    backdrop-filter: blur(10px)
-    .container
-        +flex(flex, center, space-between, nowrap)
-        gap: $gap2
-    &__menu
-        +flex(flex, center, start, nowrap)
-        gap: $gap3
-        a
-            &:hover
-                color: $main
-        .dropdown-toggle
-            svg
-                transform: rotate(180deg)
-            &::after
-                display: none
-            &.show
-                svg
-                    transform: none
-        .dropdown-menu
-            +theme(dark)
-            border: $bd
-            border-radius: $brs1
-            a
-                color: $white
-                &:hover
-                    background: none
-                    color: $main
-    +maw($lg)
-        &__menu
-            display: none
-    +maw($sm)
-        .btn-secondary
-            display: none
-        .logo
-            width: 100%
-            height: auto
-    
+	+ps(sticky, (t, 0), (l, 0))
+	z-index: 100500
+	width: 100%
+	padding: 1em 0
+	background-color: rgba($black, 0.1)
+	backdrop-filter: blur(10px)
+	[data-bs-theme="light"] &
+		+theme(dark)
+	.container
+		+flex(flex, center, space-between, nowrap)
+		gap: $gap2
+	&__menu
+		+flex(flex, center, start, nowrap)
+		gap: $gap3
+		a
+			font-weight: 500
+			letter-spacing: 0.02em
+			&:hover
+				color: $main
+		.dropdown-toggle
+			svg
+				transform: rotate(180deg)
+			&::after
+				display: none
+			&.show
+				svg
+					transform: none
+		.dropdown-menu
+			+theme(dark)
+			border: $bd
+			border-radius: $brs1
+			a
+				color: $white
+				&:hover
+					background: none
+					color: $main
+	+maw($lg)
+		&__menu
+			display: none
+	+maw($sm)
+		.btn-secondary
+			display: none
+		.logo
+			width: 100%
+			height: auto
+
 .drawer
-    +ps(fixed, (r, 0), (t, 0)) 
-    z-index: 100500
-    max-width: 300px
-    width: 100%
-    +theme(dark)
-    height: 100vh
-    padding: $gap3
-    transform: translateX(100%)
-    transition: $trs
-    &.show
-        transform: none
-    .accordion
-        &-item
-            background: none
-            border: none
-            color: inherit
-        &-button
-            +flex(flex, center, space-between, nowrap)
-            gap: $gap1
-            background: none
-            color: inherit
-            padding: 0
-            box-shadow: none
-            svg
-                transform: rotate(180deg)
-            &::after
-              display: none  
-            &[aria-expanded="true"]
-                svg
-                    transform: rotate(0deg)
-        &-body
-            a
-                display: block
-    &__header
-        +flex(flex, center, space-between, nowrap)
-        gap: $gap1
-        margin-bottom: $gap3
-        padding-bottom: $gap3
-        border-bottom: 1px solid rgba($white, 0.5)
-    &__menu
-        display: flex
-        flex-direction: column
-        gap: $gap2
-    &__toggle
-        background: none
-        border: none
-        padding: 0
-        color: inherit
-    a
-        &:hover
-            color: $main
-    +miw($lg)
-        display: none
-        &__toggle
-             display: none
+	+ps(fixed, (r, 0), (t, 0))
+	z-index: 100500
+	max-width: 300px
+	width: 100%
+	+theme(dark)
+	height: 100vh
+	padding: $gap3
+	transform: translateX(100%)
+	transition: $trs
+	&.show
+		transform: none
+	.accordion
+		&-item
+			background: none
+			border: none
+			color: inherit
+		&-button
+			+flex(flex, center, space-between, nowrap)
+			gap: $gap1
+			background: none
+			color: inherit
+			padding: 0
+			box-shadow: none
+			cursor: pointer
+			svg
+				transform: rotate(180deg)
+			&::after
+				display: none
+			&[aria-expanded="true"]
+				svg
+					transform: rotate(0deg)
+		&-body
+			a
+				display: block
+	&__header
+		+flex(flex, center, space-between, nowrap)
+		gap: $gap1
+		margin-bottom: $gap3
+		padding-bottom: $gap3
+		border-bottom: 1px solid rgba($white, 0.2)
+		cursor: pointer
+	&__menu
+		display: flex
+		flex-direction: column
+		gap: $gap2
+		& *
+			text-transform: uppercase
+			font-weight: 500
+	&__toggle
+		background: none
+		border: none
+		padding: 0
+		color: inherit
+		cursor: pointer
+	a
+		&:hover
+			color: $main
+	+miw($lg)
+		display: none
+		&__toggle
+			display: none
 
 .footer
-    +theme(dark)
-    hr
-        margin: 0
-    &__top
-        padding: 3em 0
-        .container
-            display: grid
-            grid-template-columns: 0.5fr 2fr auto
-            gap: $gap3
-    &__btm
-        padding: var(--gap2) 0
-        text-align: center
-        opacity: 0.5
-    &__col-1
-        display: flex
-        flex-direction: column
-        gap: $gap2
-    &__nav
-        display: grid
-        grid-template-columns: repeat(4, auto)
-        gap: $gap3
-        &-col
-            display: flex
-            flex-direction: column
-            gap: $gap1
-            align-items: start
-            a
-                opacity: 0.5
-                +ft(14, 14*1.2, 400)
-                &:hover
-                    opacity: 1
-    &__soc
-        padding: 0
-        display: flex
-        flex-direction: column
-        gap: $gap1 $gap3
-        li
-            +flex(flex, center, start, nowrap)
-            gap: $gap1
-            list-style-type: none
-            a
-                transition: $trs
-                &:hover
-                    color: $main
-    +maw(1200)
-        &__top
-            .container
-                grid-template-columns: 1fr 2fr
-                div:last-child
-                    grid-column: 2
-        &__soc
-            flex-direction: row
-        &__nav
-            grid-template-columns: 1fr 1fr
-    +maw($md)
-        &__top
-            .container
-                grid-template-columns: 1fr
-                div:last-child
-                    grid-column: 1
-    +maw(375)
-        &__nav
-            grid-template-columns: 1fr
-        &__soc
-            flex-direction: column
+	+theme(dark)
+	hr
+		margin: 0
+		opacity: 0.2
+	&__top
+		padding: 3em 0
+		.container
+			display: grid
+			grid-template-columns: 0.5fr 2fr auto
+			gap: $gap3
+	&__btm
+		padding: var(--gap2) 0
+		text-align: center
+		opacity: $op
+	&__col-1
+		display: flex
+		flex-direction: column
+		gap: $gap2
+		p:last-child
+			margin: 0
+	&__nav
+		display: grid
+		grid-template-columns: repeat(4, auto)
+		gap: $gap3
+		&-col
+			display: flex
+			flex-direction: column
+			gap: $gap1
+			align-items: start
+			h4
+				margin-bottom: $gap2
+			a
+				opacity: $op
+				+ft(14, 14*1.2, 400)
+				&:hover
+					opacity: 1
+	&__soc
+		padding: 0
+		display: flex
+		flex-direction: column
+		gap: $gap1 $gap3
+		li
+			+flex(flex, center, start, nowrap)
+			gap: $gap1
+			list-style-type: none
+
+			a
+				transition: $trs
+				&:hover
+					color: $main
+	+maw(1200)
+		&__top
+			.container
+				grid-template-columns: 1fr 2fr
+				div:last-child
+					grid-column: 2
+		&__soc
+			flex-direction: row
+		&__nav
+			grid-template-columns: 1fr 1fr
+	+maw($md)
+		&__top
+			.container
+				grid-template-columns: 1fr
+				div:last-child
+					grid-column: 1
+	+maw(420)
+		&__soc
+			li
+				+ft(14, 14, 400)
+	+maw(375)
+		&__nav
+			grid-template-columns: 1fr
+		&__soc
+			flex-direction: column
 
 .hero
-    padding: 5em 0
+	position: relative
+	padding: 5em 0
+	overflow: hidden
+	&-home
+		position: relative
+		overflow: hidden
+		padding: 5em 0
+		&::after
+			content: ''
+			position: absolute
+			inset: 0
+			z-index: 1
+			background: linear-gradient(180deg, transparent, $dark_1)
+	&.section
+		margin: 0
+	[data-bs-theme="light"] &
+		+theme(dark)
+		margin-bottom: var(--gapSection)
+		&-home
+			margin-bottom: 0
+	.container
+		display: flex
+		flex-direction: column
+		gap: $gap2
+		align-items: center
+
+	&-post
+		.container
+			align-items: start
+	&__hgroup
+		position: relative
+		z-index: 2
+	&__row
+		width: 100%
+		align-items: start
+		display: grid
+		grid-template-columns: 1.5fr 2fr
+		gap: 0 $gap3
+		img
+			display: block
+			position: absolute
+			bottom: 0
+			right: 0
+			z-index: 0
+			max-width: 100%
+			height: 100%
+	&__content
+		max-width: 750px
+		margin-left: auto
+		margin-right: auto
+		text-align: center
+		p
+			opacity: $op
+			margin-top: 0
+			margin-bottom: $gap2
+	+maw($lg)
+		&__row
+			grid-template-columns: 1fr
+	+maw($lsm)
+		&__row
+			grid-template-columns: 1fr
+			img
+				position: relative
+				transform: translateY(20%) scale(1.4)
+	+maw($xs)
+		&__row
+			img
+				display: none
+
+
+.hero-base
+	padding: 4em
+	+theme(dark2)
+	background-repeat: no-repeat
+	background-size: cover
+	background-position: top right
+	border-radius: $brs2
+	overflow: hidden
+	[data-bs-theme="light"] &
+		+theme(dark)
+	&__body
+		display: grid
+		grid-template-columns: 1fr 1fr
+		align-items: center
+		gap: $gap4 $gap2
+		p
+			opacity: $op
+			margin-bottom: $gap4
+			font-size: 120%
+		img
+			display: block
+			transform: scale(1.1)
+			margin-left: auto
+			margin-right: auto
+			z-index: -1
+		+maw($md)
+			grid-template-columns: 1fr
+			justify-content: center
+			text-align: center
+	+maw($xs)
+		padding: 1em
+		&__body
+			p
+				font-size: 100%
+			img
+				transform: none
+			
+	

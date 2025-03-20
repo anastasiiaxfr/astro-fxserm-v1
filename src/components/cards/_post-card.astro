@@ -26,8 +26,9 @@ const meta = [
 	<a
 		href={`/blog/${slug}`}
 		class={`${type === 'banner' ? 'post__banner' : 'post__img'}`}
+		title={title}
 	>
-		<button class="post__cta">
+		<button class="post__cta" title="Go To">
 			<svg class="icon" width="48" height="48">
 				<use xlink:href="#arr-t-r"></use>
 			</svg>

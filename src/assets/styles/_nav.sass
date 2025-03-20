@@ -1,3 +1,7 @@
+.logo
+	width: 100%	
+
+
 .header
 	+ps(sticky, (t, 0), (l, 0))
 	z-index: 100500
@@ -250,6 +254,10 @@
 			img
 				position: relative
 				transform: translateY(20%) scale(1.4)
+	+maw($xs)
+		&__row
+			img
+				display: none
 
 
 .hero-base

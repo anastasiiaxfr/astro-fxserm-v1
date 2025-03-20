@@ -3,28 +3,28 @@ const { url } = Astro.props;
 ---
 
 <div class="corner">
-    <svg viewBox="0 0 160.6 160">
-        <g>
-            <path
-                d="M161.1,1.1C161,43,143.8,39.4,116,43c-31,4-44,11-56,24c-12.8,13.9-14.1,30.9-16,55c-0.7,8.9-6,38-44,38
+	<svg viewBox="0 0 160.6 160">
+		<g>
+			<path
+				d="M161.1,1.1C161,43,143.8,39.4,116,43c-31,4-44,11-56,24c-12.8,13.9-14.1,30.9-16,55c-0.7,8.9-6,38-44,38
 		l0.1,0.1l0,0L161,160"
-            ></path>
-        </g>
-    </svg>
+			></path>
+		</g>
+	</svg>
 
-    {
-        url ? (
-            <a class="" href={url}>
-                <svg class="icon" width="48" height="48">
-                    <use xlink:href="#arr-t-r" />
-                </svg>
-            </a>
-        ) : (
-            <button class="">
-                <svg class="icon" width="48" height="48">
-                    <use xlink:href="#arr-t-r" />
-                </svg>
-            </button>
-        )
-    }
+	{
+		url ? (
+			<a class="" href={url} title="Go To">
+				<svg class="icon" width="48" height="48">
+					<use xlink:href="#arr-t-r" />
+				</svg>
+			</a>
+		) : (
+			<button class="" title="Go To">
+				<svg class="icon" width="48" height="48">
+					<use xlink:href="#arr-t-r" />
+				</svg>
+			</button>
+		)
+	}
 </div>
