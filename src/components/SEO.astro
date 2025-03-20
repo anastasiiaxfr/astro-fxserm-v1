@@ -14,7 +14,7 @@ const {
 <title>{`FxSerm | ${seo.title}`}</title>
 <meta name="description" content={seo.description || 'Home Desc'} />
 <meta name="author" content={seo.author || 'FxSerm'} />
-<link rel="canonical" href={`${Astro.site}${seo.url}/`} />
+<link rel="canonical" href={`${Astro.site}${seo.url ? seo.url : ''}`} />
 
 <link rel="sitemap" href="/sitemap-index.xml" />
 
@@ -31,11 +31,11 @@ const {
 
 <meta property="og:type" content="website" />
 <meta property="og:site_name" content={seo.site_name || 'FxSerm'} />
-<meta property="og:url" content={`${Astro.site}${seo.url}/`} />
+<meta property="og:url" content={`${Astro.site}${seo.url ? seo.url : ''}`} />
 
 <!-- THE TWITTER MACHINE -->
 <meta name="twitter:card" content="summary" />
-<meta name="twitter:url" content={`${Astro.site}${seo.url}/`} />
+<meta name="twitter:url" content={`${Astro.site}${seo.url ? seo.url : ''}`} />
 <meta name="twitter:site" content={seo.site_name || 'FxSerm'} />
 <meta name="twitter:creator" content={seo.author || 'FxSerm'} />
 <meta name="twitter:title" content={seo.title || 'FxSerm'} />
