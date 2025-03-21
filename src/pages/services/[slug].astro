@@ -139,6 +139,7 @@ const seo = {
 					<h2>{slider.title}</h2>
 					<div class="slider">
 						<Slider
+							className="slider-services"
 							data={slider.slides}
 							CardComponent={Slide}
 							count={slider?.count || { lg: 1, md: 1, sm: 1 }}
@@ -202,6 +203,7 @@ const seo = {
 		)
 	}
 	{tabs && <Tabs title={tabs.title} data={tabs.items} />}
+
 	<TopBlogs title="Блог" />
 
 	<Banner title={banner.title} desc={banner.desc} bg={bannerBgImg} />

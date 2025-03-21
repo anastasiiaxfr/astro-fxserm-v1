@@ -19,6 +19,7 @@ const countRelatedPosts = 6;
 			<h2>{title}</h2>
 			{btn && <Button title={btn.title} url={btn.url} />}
 		</hgroup>
+
 		<Slider
 			data={sortedPosts.slice(0, countRelatedPosts)}
 			CardComponent={Card}
