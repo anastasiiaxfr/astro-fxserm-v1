@@ -55,11 +55,7 @@ const seo = {
 		<div class="container">
 			<h2>{categoryTitle}</h2>
 			<div class="cases-wrap-invert">
-				{
-					page.data.map((item, ind) => (
-						<Card data={item.frontmatter} key={ind} />
-					))
-				}
+				{page.data.map((item, ind) => <Card data={item} key={ind} />)}
 			</div>
 
 			<Pagination page={page} />

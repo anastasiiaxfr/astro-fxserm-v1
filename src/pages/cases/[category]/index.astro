@@ -57,9 +57,7 @@ const seo = {
 				{
 					posts
 						.slice(0, postsPerPage)
-						.map((post, ind) => (
-							<Card data={post.frontmatter} key={ind} />
-						))
+						.map((post, ind) => <Card data={post} key={ind} />)
 				}
 			</div>
 			<PaginationStatic

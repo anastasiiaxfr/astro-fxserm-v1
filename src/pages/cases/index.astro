@@ -3,7 +3,7 @@ import Layout from '../../layouts/Layout.astro';
 import Tags from '../../components/ui/Tags.astro';
 import Card from '../../components/cards/_case-card.astro';
 import Button from '../../components/ui/Forms/Button.astro';
-
+import Slider from '../../components/ui/Swiper.astro';
 import { allTags, casesByCategory } from './constant';
 
 const bgImg = '/assets/img/bg/cases.avif';
@@ -15,6 +15,8 @@ const seo = {
 	description: 'SEO Cases Desc',
 	url: 'cases'
 };
+
+const data = Object.entries(casesByCategory);
 ---
 
 <Layout bg={bgImg} seo={seo}>
@@ -32,29 +34,20 @@ const seo = {
 	<article class="page-container">
 		<div class="container cases-wrap">
 			{
-				Object.entries(casesByCategory).map(
-					([categorySlug, { title, cases }]) => (
-						<section
-							class="cases__block"
-							data-category={categorySlug}
-							key={categorySlug}
-						>
-							<div>
-								<h2 class="my-0">{title}</h2>
-							</div>
-							<div>
-								<div class="cases">
-									{cases.slice(0, 1).map((item, ind) => (
-										<Card
-											data={item.frontmatter}
-											key={ind}
-										/>
-									))}
-								</div>
-							</div>
-						</section>
-					)
-				)
+				data.map(([categorySlug, { title, cases }]) => (
+					<section class="cases__block" data-category={categorySlug}>
+						<div>
+							<h2 class="my-0">{title}</h2>
+						</div>
+						<div>
+							<Slider
+								data={cases.slice(0, 3)}
+								CardComponent={Card}
+								count={{ lg: 1, md: 1, sm: 1 }}
+							/>
+						</div>
+					</section>
+				))
 			}
 		</div>
 	</article>
