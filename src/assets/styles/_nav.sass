@@ -59,9 +59,11 @@
 	height: 100vh
 	padding: $gap3
 	transform: translateX(100%)
-	transition: $trs
+	opacity: 0
+	transition: transform 0.3s linear
 	&.show
 		transform: none
+		opacity: 1
 	.accordion
 		&-item
 			background: none

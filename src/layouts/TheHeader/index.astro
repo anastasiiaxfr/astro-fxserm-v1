@@ -85,7 +85,7 @@ const customTransition = {
 	</div>
 </header>
 
-<div class="drawer" transition:animate="fade">
+<div class="drawer">
 	<div class="drawer__header">
 		<Logo height="25" />
 		<button class="drawer__toggle" title="Toggle menu">
@@ -138,7 +138,7 @@ const customTransition = {
 	</div>
 </div>
 
-<script is:client>
+<script is:inline>
 	document.addEventListener('astro:page-load', () => {
 		const drawerToggleBtns = document.querySelectorAll('.drawer__toggle');
 		const drawer = document.querySelector('.drawer');
