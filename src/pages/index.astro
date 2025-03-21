@@ -38,6 +38,8 @@ const seo = {
 	title: title,
 	description: 'SEO Home desc'
 };
+
+const isHomePage = Astro.url.pathname === '/';
 ---
 
 <Layout seo={seo} bg={bgImg}>
@@ -69,3 +71,13 @@ const seo = {
 	<AccordionSection />
 	<Banner title={banner.title} desc={banner.desc} bg={bannerBgImg} />
 </Layout>
+
+{isHomePage && (
+    <style is:global>
+        @media only screen and (max-width: 480px) {
+            .page__bg {
+                display: none;
+            }
+        }
+    </style>
+)}
