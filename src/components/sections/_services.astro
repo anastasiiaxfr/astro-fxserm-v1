@@ -99,6 +99,7 @@ const data = Object.entries(servicesByCategory)
 		const item = document.querySelectorAll('.feature-item-toggle');
 		const body = document.querySelectorAll('.feature__body');
 		const button = document.querySelectorAll('.feature__cat');
+		const item_toggle = document.querySelectorAll('.feature-desc__header');
 
 		function setActiveTab(index) {
 			item.forEach(el => el.classList.remove('hide'));
@@ -143,7 +144,7 @@ const data = Object.entries(servicesByCategory)
 			});
 		});
 
-		document.querySelectorAll('.feature-desc__header').forEach((header) => {
+		item_toggle.forEach((header) => {
 			header.addEventListener('click', function() {
 				item.forEach(el => el.classList.remove('hide'));
 
