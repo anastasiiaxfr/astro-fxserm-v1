@@ -1,4 +1,4 @@
-export const countTopPost = 2;
+export const countTopPost = 4;
 export const uri = 'blog';
 export const postPerPage = 6;
 

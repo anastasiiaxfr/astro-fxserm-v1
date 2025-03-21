@@ -2,11 +2,14 @@
     display: grid
     grid-template-columns: repeat(auto-fill, minmax(350px, 1fr))
     gap: $gap4 $gap4
+    overflow: hidden
     &-wrap, &-block
         display: grid
         gap: $gap3
+        overflow: hidden
     &--top
         grid-template-columns: repeat(auto-fill, minmax(450px, 1fr))
+        overflow: hidden
     +maw($lg)
         grid-template-columns: repeat(3, 1fr)
         &--top

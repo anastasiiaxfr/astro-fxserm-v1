@@ -1,9 +1,15 @@
 ---
 import Card from '../../components/cards/_post-card.astro';
+import Slider from '../../components/ui/Swiper.astro';
 
 const { count, data } = Astro.props;
 ---
 
-<div class="posts posts--top">
-	{data.slice(0, count).map((i) => <Card data={i} type="banner" />)}
+<div class="posts--top">
+	<Slider
+		data={data.slice(0, count)}
+		CardComponent={Card}
+		count={{ lg: 2, md: 2, sm: 1 }}
+		type="banner"
+	/>
 </div>

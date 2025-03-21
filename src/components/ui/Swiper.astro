@@ -4,7 +4,12 @@ import 'swiper/css/pagination';
 import 'swiper/css/navigation';
 import 'swiper/css/effect-fade';
 
-const { data, CardComponent, count = { lg: 3, md: 2, sm: 1 } } = Astro.props;
+const {
+	data,
+	CardComponent,
+	type = 'default',
+	count = { lg: 3, md: 2, sm: 1 }
+} = Astro.props;
 ---
 
 <div class="swiper my-swiper" data-count={JSON.stringify(count)}>
@@ -12,7 +17,7 @@ const { data, CardComponent, count = { lg: 3, md: 2, sm: 1 } } = Astro.props;
 		{
 			data.map((item, index) => (
 				<div class="swiper-slide" key={index}>
-					<CardComponent data={item} count={count} />
+					<CardComponent data={item} count={count} type={type} />
 				</div>
 			))
 		}
