@@ -37,7 +37,7 @@
 		@extend .h5
 		margin-bottom: $gap1
 	
-	button
+	button, a
 		@extend %circle-btn
 		position: relative
 		+sz(5em, 5em)
@@ -49,7 +49,7 @@
 			padding-right: calc(5em + $gap4)
 			[data-bs-theme="light"] &
 				background: rgba($black, 0.05)
-		button
+		button, a
 			+ps(absolute, (b, 0), (t, 0), (r, $gap4))
 			margin: auto
 	+maw($xs)
@@ -57,3 +57,55 @@
 			+ft(17, 17*1.4, 500)
 		
 			
+.team
+	&-about
+		text-align: center
+		p
+			opacity: $op
+		.img
+			margin-bottom: -4em
+			z-index: -1
+	&-box
+		@extend .box
+		padding: 2em
+		margin: $gap4 auto
+		display: grid
+		gap: $gap4
+		position: relative
+		border-radius: $brs2
+		overflow: hidden
+		
+		h2
+			@extend .h3
+		li
+			color: rgba($white, $op)
+			margin: 4px 0
+		&__header
+			+flex(flex, center, space-between, wrap)
+			gap: $gap2
+			padding-bottom: 1em
+			border-bottom: 1px solid rgba($white, 0.2)
+			h2
+				margin: 0
+		&__body
+			position: relative
+			padding-right: 10px
+			overflow: hidden
+			&::after
+				content: ''
+				+ps(absolute, (b, 0), (l, 0))
+				height: 30%
+				width: calc(100% - 20px)
+				background: linear-gradient(180deg, transparent, $dark_2 70%)
+				z-index: 1
+				[data-bs-theme="light"] &
+					background: linear-gradient(180deg, transparent, $black 70%)
+			&-wrapper
+				position: relative
+				overflow: hidden
+				overflow-y: auto
+				@extend %scroll
+				max-height: 15em
+				padding-right: 10px
+				
+		

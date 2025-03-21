@@ -1,11 +1,11 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import Banner from '../components/ui/Banner.astro';
-import Card from '../components/cards/_team-card.astro';
-import Form from '../components/ui/Forms/Job.astro';
+import Layout from '../../layouts/Layout.astro';
+import Banner from '../../components/ui/Banner.astro';
+import Card from '../../components/cards/_team-card.astro';
+import Form from '../../components/ui/Forms/Job.astro';
 
-const bgImg = '/assets/img/bg/team.jpg';
-const bgFill = 'contain';
+const bgImg = '/assets/img/bg/team.avif';
+
 const bannerBgImg = '/assets/img/banner/banner_2.avif';
 
 const banner = {
@@ -16,7 +16,7 @@ const banner = {
 const title = 'Наша команда';
 
 const teams = Object.values(
-	import.meta.glob('../md/team/*.md', { eager: true })
+	import.meta.glob('../../md/team/*.md', { eager: true })
 );
 
 const seo = {

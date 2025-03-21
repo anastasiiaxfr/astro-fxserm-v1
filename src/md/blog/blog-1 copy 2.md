@@ -7,7 +7,12 @@ read: 3 min
 category:
     title: 'Форекс'
     slug: forex
-authors: ['XFR', 'John Galt']
+authors:
+  - name: 'Александр Прашко'
+    slug: 'team-2'
+  - name: 'Александр Прашко2'
+    slug: 'team-3'
+
 thumbnail: '/assets/img/blog/blog-2.avif'
 poster: '/assets/img/blog/b0.avif'
 excerpt: 'A brief excerpt of your article...'

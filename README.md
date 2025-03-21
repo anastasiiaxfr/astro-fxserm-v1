@@ -49,6 +49,7 @@ Feel free to check [our documentation](https://docs.astro.build) or jump into ou
 
 ## PAGES:
 
+-   https://astro-ex-1.vercel.app/
 -   https://astro-ex-1.vercel.app/about
 -   https://astro-ex-1.vercel.app/policy
 -   https://astro-ex-1.vercel.app/contacts
@@ -60,25 +61,28 @@ Feel free to check [our documentation](https://docs.astro.build) or jump into ou
 -   https://astro-ex-1.vercel.app/cases/
 -   https://astro-ex-1.vercel.app/cases/case-1
 -   https://astro-ex-1.vercel.app/team
--   https://astro-ex-1.vercel.app/services/seo
+-   https://astro-ex-1.vercel.app/services/aso
+-   https://astro-ex-1.vercel.app/services/gmb-optimization
 -   https://astro-ex-1.vercel.app/services/orm
--   https://astro-ex-1.vercel.app/services/serm
--   https://astro-ex-1.vercel.app/services/pbn
 -   https://astro-ex-1.vercel.app/services/reputation-marketing
+-   https://astro-ex-1.vercel.app/services/reviews
 -   https://astro-ex-1.vercel.app/services/serm-department
+-   https://astro-ex-1.vercel.app/services/serm
+-   https://astro-ex-1.vercel.app/services/automatization-rpa
+-   https://astro-ex-1.vercel.app/services/site-dev
+-   https://astro-ex-1.vercel.app/services/ux
 -   https://astro-ex-1.vercel.app/services/comunity-menegment
 -   https://astro-ex-1.vercel.app/services/delete-negotiv
--   https://astro-ex-1.vercel.app/services/automatization-rpa
--   https://astro-ex-1.vercel.app/services/gmb-optimization
--   https://astro-ex-1.vercel.app/services/linkbilding
--   https://astro-ex-1.vercel.app/services/ux
--   https://astro-ex-1.vercel.app/services/aso
+-   https://astro-ex-1.vercel.app/services/influence-merketing
 -   https://astro-ex-1.vercel.app/services/pr
--   https://astro-ex-1.vercel.app/services/site-dev
 -   https://astro-ex-1.vercel.app/services/youtube
 -   https://astro-ex-1.vercel.app/services/leadgeneration
+-   https://astro-ex-1.vercel.app/services/linkbilding
+-   https://astro-ex-1.vercel.app//services/pbn
+-   https://astro-ex-1.vercel.app//services/seo
 -   https://astro-ex-1.vercel.app/404
 -   https://astro-ex-1.vercel.app/500
 -   https://astro-ex-1.vercel.app/sitemap-index.xml
 -   https://astro-ex-1.vercel.app/robots.txt
 -   https://astro-ex-1.vercel.app/rss.xml
+-   https://astro-ex-1.vercel.app/team/team-6

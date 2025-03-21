@@ -7,20 +7,24 @@ const img = '/assets/img/authors/author-1.avif';
 <div class="authors">
 	{
 		data.map((author) => (
-			<div class="author">
+			<a
+				class="author"
+				href={author.slug ? `/team/${author.slug}` : '/authors'}
+				title={author.name}
+			>
 				<span>Автор:</span>
 				<img
 					src={img}
-					alt={author}
+					alt={author.name}
 					class="author__ava"
 					width="50"
 					height="50"
 				/>
 				<div class="author__body">
-					<div class="author__name">{author}</div>
+					<div class="author__name">{author.name}</div>
 					<div class="author__info">{job}</div>
 				</div>
-			</div>
+			</a>
 		))
 	}
 </div>

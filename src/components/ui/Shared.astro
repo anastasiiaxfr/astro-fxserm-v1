@@ -1,42 +1,36 @@
 ---
-const title = 'Поделиться:';
 const netw = [
-    {
-        icon: 'vb',
-        title: 'Viber',
-        url: '#'
-    },
-    {
-        icon: 'tm-2',
-        title: 'Telegram',
-        url: '#'
-    },
-    {
-        icon: 'tw',
-        title: 'Twitter',
-        url: '#'
-    },
-    {
-        icon: 'fb-2',
-        title: 'Facebook',
-        url: '#'
-    }
+	{
+		icon: 'vb',
+		title: 'Viber',
+		url: '#'
+	},
+	{
+		icon: 'tm-2',
+		title: 'Telegram',
+		url: '#'
+	},
+	{
+		icon: 'tw',
+		title: 'Twitter',
+		url: '#'
+	},
+	{
+		icon: 'fb-2',
+		title: 'Facebook',
+		url: '#'
+	}
 ];
 ---
 
-<div class="shared">
-    <span>
-        {title}
-    </span>
-    <nav class="share">
-        {
-            netw.map((i) => (
-                <a href={i.url} target="_blank">
-                    <svg class="icon" width="24" height="24">
-                        <use xlink:href={`#${i.icon}`} />
-                    </svg>
-                </a>
-            ))
-        }
-    </nav>
-</div>
+<nav class="share">
+	{
+		netw.map((i) => (
+			<a href={i.url} target="_blank">
+				<svg class="icon" width="24" height="24">
+					<use xlink:href={`#${i.icon}`} />
+				</svg>
+			</a>
+		))
+	}
+</nav>

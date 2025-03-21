@@ -1,0 +1,25 @@
+---
+import { formatPubDate } from '../../assets/js/utils';
+import PostMeta from './_post-meta.astro';
+
+const { data } = Astro.props;
+const { slug, title, excerpt, pubdate, read } = data;
+const meta = [
+	{
+		title: formatPubDate(pubdate),
+		icon: 'date'
+	},
+	{
+		title: read || '5 min',
+		icon: 'time'
+	}
+];
+---
+
+<a href={`/blog/${slug}`} class="post-inline">
+	<div class="post-inline-meta">
+		<PostMeta data={meta} />
+	</div>
+	<h5>{title}</h5>
+	<p>{excerpt}</p>
+</a>

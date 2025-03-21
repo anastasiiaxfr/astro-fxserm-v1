@@ -60,3 +60,20 @@
         &__banner
             .post__cta
                 +sz(10vmin, 10vmin)
+
+.post-inline    
+    display: grid
+    gap: $gap1
+    margin: $gap2 0
+    align-items: start
+    &-meta
+        display: inline-flex
+        width: auto
+        & *
+            font-size: 14px
+           
+    h5
+        margin: 0
+        & + p
+            opacity: $op
+            margin-top: 0

@@ -7,7 +7,12 @@ read: 2 min
 category:
     title: 'Финансы'
     slug: finance
-authors: ['XFR', 'John Galt']
+authors:
+  - name: 'Александр Прашко'
+    slug: 'team-6'
+  - name: 'Александр Прашко2'
+    slug: 'team-1'
+
 thumbnail: '/assets/img/blog/blog-7.avif'
 poster: '/assets/img/blog/b0.avif'
 excerpt: 'A brief excerpt of your article...'

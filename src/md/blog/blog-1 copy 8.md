@@ -6,7 +6,11 @@ read: 2 min
 category:
     title: 'Крипто валюта'
     slug: crypto-currency
-authors: ['XFR', 'John Galt']
+authors:
+  - name: 'Александр Прашко'
+    slug: 'team-4'
+
+
 thumbnail: '/assets/img/blog/blog-1.avif'
 poster: '/assets/img/blog/b0.avif'
 excerpt: 'A brief excerpt of your article...'

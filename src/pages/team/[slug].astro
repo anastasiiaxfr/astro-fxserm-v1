@@ -1,0 +1,96 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Banner from '../../components/ui/Banner.astro';
+import Button from '../../components/ui/Forms/Button.astro';
+import Post from '../../components/cards/_post-card-inline.astro';
+import Shared from '../../components/ui/Shared.astro';
+import { sortedPosts } from '../blog/constant';
+const bgImg = '/assets/img/bg/team.avif';
+
+const bannerBgImg = '/assets/img/banner/banner_2.avif';
+
+const banner = {
+	title: 'Эффективный маркетинг в криптовалюте',
+	desc: 'Мы организуем полноценный крипто маркетинг для криптовалютных бирж, платежных сервисов и других проектов из сферы финтех.'
+};
+
+export async function getStaticPaths() {
+	const teams = Object.values(
+		import.meta.glob('../../md/team/*.md', { eager: true })
+	);
+
+	return teams.map((team) => ({
+		params: { slug: team.frontmatter.slug },
+		props: { team }
+	}));
+}
+
+const { team } = Astro.props;
+const { slug, name, ava, job, desc, responsibilities } = team.frontmatter;
+
+const teamPosts = sortedPosts.filter((post) =>
+	post.frontmatter.authors.some((author) => author.slug === slug)
+);
+
+const seo = {
+	title: `Team: ${name}`,
+	description: 'SEO TEAM desc',
+	url: 'team'
+};
+---
+
+<Layout bg={bgImg} seo={seo}>
+	<section class="section">
+		<div class="container">
+			<div class="row_1">
+				<div class="team-about">
+					<div class="img">
+						<img src={ava} alt={name} width="500" height="500" />
+					</div>
+					<div>
+						<h1>{name}</h1>
+						<p class="text--lg">{job}</p>
+						<Shared />
+					</div>
+				</div>
+				<div>
+					<section class="team-box">
+						<div>
+							<h2>Об {name}</h2>
+							<div class="text">
+								{desc}
+							</div>
+						</div>
+						<div>
+							<h2>Зоны ответственности</h2>
+
+							<ul class="list">
+								{responsibilities.map((res) => <li>{res}</li>)}
+							</ul>
+						</div>
+					</section>
+
+					{
+						teamPosts.length > 1 && (
+							<section class="team-box">
+								<div class="team-box__header">
+									<h2>Статьи в блоге</h2>
+									<Button title="Все посты" url="/blog" />
+								</div>
+								<div class="team-box__body">
+									<div class="team-box__body-wrapper">
+										{teamPosts.map((post) => (
+											<Post data={post.frontmatter} />
+										))}
+									</div>
+								</div>
+							</section>
+						)
+					}
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<Banner title={banner.title} desc={banner.desc} bg={bannerBgImg} />
+</Layout>

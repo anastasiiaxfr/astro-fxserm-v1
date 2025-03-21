@@ -318,30 +318,30 @@
 			opacity: 0
 
 .shared
-	+flex(flex, center, start, wrap)
+	+flex(inline-flex, center, start, wrap)
 	gap: $gap2
 	span
 		opacity: $op
-	.share
-		+flex(flex, center, center, wrap)
+.share
+	+flex(flex, center, center, wrap)
+	gap: $gap1
+	a
+		+flex(flex, center, center, nowrap)
 		gap: $gap1
-		a
-			+flex(flex, center, center, nowrap)
-			gap: $gap1
-			+sz(50px, 50px)
-			min-width: 50px
-			overflow: hidden
-			+theme(dark2)
-			color: rgba($white, $op)
-			border-radius: 50%
-			transform-origin: center
-			[data-bs-theme="light"] &
-				background: $grad
-				color: $white
-			&:hover, &:active, &:focus
-				background: $grad
-				color: $white
-				transform: rotate(-15deg)
+		+sz(50px, 50px)
+		min-width: 50px
+		overflow: hidden
+		+theme(dark2)
+		color: rgba($white, $op)
+		border-radius: 50%
+		transform-origin: center
+		[data-bs-theme="light"] &
+			background: $grad
+			color: $white
+		&:hover, &:active, &:focus
+			background: $grad
+			color: $white
+			transform: rotate(-15deg)
 				
 .corner
 	+ps(absolute, (r, 0), (b, -2px))
