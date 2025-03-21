@@ -69,10 +69,7 @@ const seo = {
 							posts
 								.slice(0, postPerPage)
 								.map((item) => (
-									<Card
-										data={item.frontmatter}
-										url={item.url}
-									/>
+									<Card data={item} url={item.url} />
 								))
 						}
 					</div>

@@ -6,7 +6,7 @@ import PostMeta from './_post-meta.astro';
 const thumbnailType = ['default', 'banner'];
 
 const { data, type = thumbnailType[0], key } = Astro.props;
-const { thumbnail, title, pubdate, read, category, slug } = data;
+const { thumbnail, title, pubdate, read, category, slug } = data.frontmatter;
 const meta = [
 	{
 		title: formatPubDate(pubdate),

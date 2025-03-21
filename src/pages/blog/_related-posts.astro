@@ -6,10 +6,11 @@ const {
 } = Astro.props;
 import Card from '../../components/cards/_post-card.astro';
 import Button from '../../components/ui/Forms/Button.astro';
+import Slider from '../../components/ui/Swiper.astro';
 
 import { sortedPosts } from './constant.js';
 
-const countRelatedPosts = 3;
+const countRelatedPosts = 6;
 ---
 
 <section class={theme === 'dark' ? 'section_dark' : 'section'}>
@@ -18,13 +19,9 @@ const countRelatedPosts = 3;
 			<h2>{title}</h2>
 			{btn && <Button title={btn.title} url={btn.url} />}
 		</hgroup>
-
-		<div class="posts">
-			{
-				sortedPosts
-					.slice(0, countRelatedPosts)
-					.map((i) => <Card data={i.frontmatter} type="default" />)
-			}
-		</div>
+		<Slider
+			data={sortedPosts.slice(0, countRelatedPosts)}
+			CardComponent={Card}
+		/>
 	</div>
 </section>
