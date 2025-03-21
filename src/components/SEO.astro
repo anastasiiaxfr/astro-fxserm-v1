@@ -24,7 +24,7 @@ const {
 
 <meta property="og:image:height" content="600" />
 <meta property="og:image:width" content="314" />
-<meta property="og:image" content={seo.img || '/seo/og.jpg'} />
+<meta property="og:image" content={`/seo/og.jpg`} />
 
 <meta property="fb:app_id" content="..." />
 <meta property="fb:admins" content={seo.author || 'FxSerm'} />
@@ -40,12 +40,15 @@ const {
 <meta name="twitter:creator" content={seo.author || 'FxSerm'} />
 <meta name="twitter:title" content={seo.title || 'FxSerm'} />
 <meta name="twitter:description" content={seo.description || 'Home Desc'} />
-<meta name="twitter:image" content={seo.img || '/seo/twog.jpg'} />
+<meta
+	name="twitter:image"
+	content={`${Astro.site}${seo.img ? seo.img : `seo/twog.jpg?v=${new Date().toISOString()}`}`}
+/>
 
 <!-- G++ -->
 <meta itemprop="name" content={seo.title || 'FxSerm'} />
 <meta itemprop="description" content={seo.description || 'Home Desc'} />
-<meta itemprop="image" content={seo.img || '/seo/og.jpg'} />
+<meta itemprop="image" content={`/seo/og.jpg`} />
 
 <link rel="icon" type="image/png" href="/fav/favicon-96x96.png" sizes="96x96" />
 <link rel="icon" type="image/svg+xml" href="/fav/favicon.svg" />
