@@ -4,7 +4,7 @@ const {
 		title: `FxSerm`,
 		description: 'Home Desc',
 		url: new URL(Astro.url.pathname || '/', Astro.site),
-		img: '/seo/og.avif',
+		img: '/seo/og.jpg',
 		author: 'FxSerm',
 		site_name: 'FxSerm'
 	}
@@ -24,7 +24,7 @@ const {
 
 <meta property="og:image:height" content="600" />
 <meta property="og:image:width" content="314" />
-<meta property="og:image" content={seo.img || '/seo/og.avif'} />
+<meta property="og:image" content={seo.img || '/seo/og.jpg'} />
 
 <meta property="fb:app_id" content="..." />
 <meta property="fb:admins" content={seo.author || 'FxSerm'} />
@@ -40,12 +40,12 @@ const {
 <meta name="twitter:creator" content={seo.author || 'FxSerm'} />
 <meta name="twitter:title" content={seo.title || 'FxSerm'} />
 <meta name="twitter:description" content={seo.description || 'Home Desc'} />
-<meta name="twitter:image" content={seo.img || '/seo/og.avif'} />
+<meta name="twitter:image" content={seo.img || '/seo/og.jpg'} />
 
 <!-- G++ -->
 <meta itemprop="name" content={seo.title || 'FxSerm'} />
 <meta itemprop="description" content={seo.description || 'Home Desc'} />
-<meta itemprop="image" content={seo.img || '/seo/og.avif'} />
+<meta itemprop="image" content={seo.img || '/seo/og.jpg'} />
 
 <link rel="icon" type="image/png" href="/fav/favicon-96x96.png" sizes="96x96" />
 <link rel="icon" type="image/svg+xml" href="/fav/favicon.svg" />
