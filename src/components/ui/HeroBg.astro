@@ -1,9 +1,10 @@
 ---
+import { Image } from 'astro:assets';
 const { bg } = Astro.props;
 ---
 
 <section class="page__bg">
 	<div class="page__bg-img-wrap">
-		<img src={bg} alt="Hero BG" />
+		<Image src={bg} alt="Hero BG" width="900" height="450" />
 	</div>
 </section>
