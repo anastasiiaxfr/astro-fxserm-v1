@@ -12,8 +12,11 @@ import CasesSection from '../components/sections/_cases.astro';
 import FaqSection from '../components/sections/_faq.astro';
 import ServicesSection from '../components/sections/_services.astro';
 
+import heroImage from '../assets/img/bg/hero.png'; 
+
+
 const bgImg = '/assets/img/bg/home.avif';
-const heroImg = '/assets/img/bg/hero.avif';
+const heroImg = '/assets/img/bg/hero.png';
 const bannerBgImg = '/assets/img/banner/banner_2.avif';
 const bannerBgImg2 = '/assets/img/banner/banner_3.avif';
 const bannerBgImg3 = '/assets/img/banner/banner_1.avif';
@@ -54,7 +57,9 @@ const isHomePage = Astro.url.pathname === '/';
 					<Button />
 				</div>
 				<div>
-					<Image src={heroImg} alt="Hero BG" width="600" height="600"/>
+					<!-- <img src={heroImg} alt="ALT" width="600" height="600" decoding="async" loading="lazy"/> -->
+					<Image src={heroImage} alt="ALT"  />
+
 				</div>
 			</div>
 		</div>
